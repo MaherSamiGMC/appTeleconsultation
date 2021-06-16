@@ -7,6 +7,7 @@ const connectDB= require('./config/connectDB')
 app.use(express.json())
 app.use(cors())
 
+// database connection
 connectDB()
 
 const PORT=process.env.PORT || 5000
