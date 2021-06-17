@@ -14,4 +14,15 @@ const addNewPatient=asyncHandler((async(req,res)=>{
     
 }))
 
-module.exports={getPatients,addNewPatient}
+const updatePatient=asyncHandler((async(req,res)=>{
+    let updatePatient=await patient.findByIdAndUpdate(req.params.id, { $set: {...req.body}})
+    res.json({message:'data updated successfully',updatePatient})
+}))
+
+const deletePatient=asyncHandler((async(req,res)=>{
+    let deletedPatient=await patient.findByIdAndRemove(req.params.id)
+    res.json({message:'data deleted successfully',deletedPatient})
+}))
+
+
+module.exports={getPatients,addNewPatient,updatePatient,deletePatient}
