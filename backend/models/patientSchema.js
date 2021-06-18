@@ -2,6 +2,11 @@ const mongoose=require('mongoose')
 const {Schema}=mongoose
 
 const patientSchema=new Schema({
+    affiliateDoctor:{
+        type:mongoose.Schema.Types.ObjectId,
+        required:true,
+        ref:'doctor'
+    },
     firstName:{
         type:String,
         required:true
@@ -17,6 +22,9 @@ const patientSchema=new Schema({
     email:{
         type:String,
         required:true
+    },
+    imageUrl:{
+        type:String
     },
     dateOfBirth:{
         type:String,
