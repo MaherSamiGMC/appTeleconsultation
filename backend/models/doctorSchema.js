@@ -18,7 +18,10 @@ const doctorSchema=new Schema({
         type:String,
         required:true
     },
-    Address:{
+    imageUrl:{
+        type:String
+    },
+    address:{
         type:String,
         required:true
     },
@@ -26,6 +29,16 @@ const doctorSchema=new Schema({
         type:String,
         required:true
     },
+    assistant:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'assistant'
+    },
+    patients:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'patient'
+        }
+    ],
     password:{
         type:String,
         required:true

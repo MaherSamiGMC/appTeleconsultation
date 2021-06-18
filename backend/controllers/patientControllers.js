@@ -3,7 +3,7 @@ const patient=require('../models/patientSchema')
 
 //Find patients
 const getPatients=asyncHandler(async(req,res)=>{
-    const patients=await patient.find()
+    const patients=await patient.find().populate("affiliateDoctor")
     res.json({message:'data loaded successfully',patients})
 })
 

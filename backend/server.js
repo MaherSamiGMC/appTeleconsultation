@@ -12,6 +12,8 @@ connectDB()
 
 //user routes
 app.use('/api/patient/',require('./routes/patientRoute'))
+app.use('/api/assistant/',require('./routes/assistantRoute'))
+app.use('/api/doctor/',require('./routes/doctorRoute'))
 
 const PORT=process.env.PORT || 5000
 
