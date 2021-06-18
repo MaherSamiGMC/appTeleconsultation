@@ -29,16 +29,10 @@ const doctorSchema=new Schema({
         type:String,
         required:true
     },
-    assistant:{
+    patients:[{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'assistant'
-    },
-    patients:[
-        {
-            type:mongoose.Schema.Types.ObjectId,
-            ref:'patient'
-        }
-    ],
+        ref:'patient'
+    }],
     password:{
         type:String,
         required:true

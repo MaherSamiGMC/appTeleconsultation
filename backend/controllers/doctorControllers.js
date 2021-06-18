@@ -3,8 +3,13 @@ const doctor=require('../models/DoctorSchema')
 
 //Find doctors
 const getDoctors=asyncHandler(async(req,res)=>{
-    const doctors=await doctor.find().populate("patients")
+    const doctors=await doctor.find()
     res.json({message:'data loaded successfully',doctors})
+})
+
+const getDoctor=asyncHandler(async(req,res)=>{
+    const getDoctor=await doctor.findById(req.params.id).populate("patients")
+    res.json({message:'data loaded successfully',getDoctor})
 })
 
 const addNewDoctor=asyncHandler((async(req,res)=>{
@@ -25,4 +30,4 @@ const deleteDoctor=asyncHandler((async(req,res)=>{
 }))
 
 
-module.exports={getDoctors,addNewDoctor,updateDoctor,deleteDoctor}
+module.exports={getDoctors,addNewDoctor,updateDoctor,deleteDoctor,getDoctor}
