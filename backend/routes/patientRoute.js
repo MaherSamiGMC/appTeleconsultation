@@ -1,6 +1,6 @@
 const express=require('express')
 const router=express.Router()
-const {getPatients,addNewPatient,updatePatient,deletePatient,getPatient} = require('../controllers/patientControllers')
+const {getPatients,addNewPatient,updatePatient,deletePatient,getPatient,authPatient} = require('../controllers/patientControllers')
 
 // URL : /api/patient/
 // GET Method 
@@ -22,5 +22,11 @@ router.put('/:id',updatePatient)
 // DEL Method 
 // Private route
 router.delete('/:id',deletePatient)
+
+
+// URL : /api/patient/login
+// POST Method 
+// public route
+router.post('/login',authPatient)
 
 module.exports=router
