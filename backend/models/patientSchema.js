@@ -42,6 +42,10 @@ const patientSchema=new Schema({
 },
 { timestamps: true })
 
+patientSchema.methods.matchPassword=async function(enterPassword){
+    return await bcrypt.compare(enterPassword,this.password)
+}
+
 patientSchema.pre('save',async function(){
 
     const salt=await bcrypt.genSalt(10)
