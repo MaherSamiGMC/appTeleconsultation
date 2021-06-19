@@ -49,13 +49,12 @@ const deletePatient=asyncHandler((async(req,res)=>{
 const authPatient=asyncHandler((async(req,res)=>{
 
     const authPatient=await patient.findOne({"email":req.body.email})
-    if (authPatient && (await patient.matchPassword(req.body.password))){
+    if (authPatient && (await authPatient.matchPassword(req.body.password))){
         res.json({message:"patient authenticated successfully",authPatient})
     }else {
         res.json({error:"Invalid email or password"})
     }
 }))
-
 
 
 module.exports={getPatients,addNewPatient,updatePatient,deletePatient,getPatient,authPatient}

@@ -43,5 +43,17 @@ const deleteAssistant=asyncHandler((async(req,res)=>{
     res.json({message:'Assistant deleted successfully',deletedAssistant})
 }))
 
+//authentification Assistant
 
-module.exports={getAssistants,addNewAssistant,updateAssistant,deleteAssistant,getAssistant}
+const authAssistant=asyncHandler((async(req,res)=>{
+
+    const authAssistant=await assistant.findOne({"email":req.body.email})
+    if (authAssistant && (await authAssistant.matchPassword(req.body.password))){
+        res.json({message:"Assistant authenticated successfully",authAssistant})
+    }else {
+        res.json({error:"Invalid email or password"})
+    }
+}))
+
+
+module.exports={getAssistants,addNewAssistant,updateAssistant,deleteAssistant,getAssistant,authAssistant}

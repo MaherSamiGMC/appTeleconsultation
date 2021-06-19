@@ -1,6 +1,6 @@
 const express=require('express')
 const router=express.Router()
-const {getAssistants,addNewAssistant,updateAssistant,deleteAssistant,getAssistant} = require('../controllers/AssistantControllers')
+const {getAssistants,addNewAssistant,updateAssistant,deleteAssistant,getAssistant,authAssistant} = require('../controllers/AssistantControllers')
 
 // URL : /api/assistant/
 // GET Method 
@@ -22,5 +22,9 @@ router.put('/:id',updateAssistant)
 // DEL Method 
 // Private route
 router.delete('/:id',deleteAssistant)
+// URL : /api/assistant/login
+// POST Method 
+// public route
+router.post('/login',authAssistant)
 
 module.exports=router
