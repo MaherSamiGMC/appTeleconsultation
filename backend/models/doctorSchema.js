@@ -33,6 +33,10 @@ const doctorSchema=new Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'patient'
     }],
+    assistant:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'assistant'
+    },
     password:{
         type:String,
         required:true
