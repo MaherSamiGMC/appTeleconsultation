@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
 const {Schema}=mongoose
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 
 const doctorSchema=new Schema({
@@ -45,6 +45,10 @@ const doctorSchema=new Schema({
     }
 },
 { timestamps: true })
+
+doctorSchema.methods.matchPassword=async function(enterPassword){
+    return await bcrypt.compare(enterPassword,this.password)
+}
 
 doctorSchema.pre('save',async function(){
 
