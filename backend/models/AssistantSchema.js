@@ -32,7 +32,8 @@ const assistantSchema=new Schema({
     imageUrl:{
         type:String
     }
-})
+},
+{ timestamps: true })
 
 assistantSchema.pre('save',async function(){
 

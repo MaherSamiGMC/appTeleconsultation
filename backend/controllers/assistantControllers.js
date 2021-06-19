@@ -17,11 +17,16 @@ const getAssistant=asyncHandler(async(req,res)=>{
 
 //Add new Assistant
 const addNewAssistant=asyncHandler((async(req,res)=>{
+    const userExists= await assistant.findOne({"email":req.body.email})
+    if (userExists){
+        res.status(400).json({error:"assistant already exists"})
+    } else {
     const newAssistant=new assistant({...req.body})
     await newAssistant.save()
     // the new Assistant ID will be added to the object assistant in doctor's document
     await doctor.findByIdAndUpdate(req.body.affiliateDoctor,{ $set: {"assistant":newAssistant._id}})
     res.json({message:'new assistant added successfully',newAssistant})
+}
     
 }))
 //update Assistant's data 

@@ -13,9 +13,14 @@ const getDoctor=asyncHandler(async(req,res)=>{
 })
 //Add new doctor
 const addNewDoctor=asyncHandler((async(req,res)=>{
+    const userExists= await doctor.findOne({"email":req.body.email})
+    if (userExists){
+        res.status(400).json({error:"doctor already exists"})
+    } else {
     const newDoctor=new doctor({...req.body})
     await newDoctor.save()
     res.json({message:'new doctor added successfully',newDoctor})
+    }
     
 }))
 //update doctor's data 
