@@ -43,7 +43,8 @@ const doctorSchema=new Schema({
         type:String,
         required:true
     }
-})
+},
+{ timestamps: true })
 
 doctorSchema.pre('save',async function(){
 

@@ -39,7 +39,8 @@ const patientSchema=new Schema({
         type:String,
         required:true
     }
-})
+},
+{ timestamps: true })
 
 patientSchema.pre('save',async function(){
 
