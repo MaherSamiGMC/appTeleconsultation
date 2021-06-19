@@ -1,5 +1,7 @@
 const mongoose=require('mongoose')
 const {Schema}=mongoose
+const bcrypt = require('bcrypt');
+
 
 const assistantSchema=new Schema({
     affiliateDoctor:{
@@ -30,6 +32,12 @@ const assistantSchema=new Schema({
     imageUrl:{
         type:String
     }
+})
+
+assistantSchema.pre('save',async function(){
+
+    const salt=await bcrypt.genSalt(10)
+    this.password= await bcrypt.hash(this.password,salt)
 })
 
 module.exports=mongoose.model('assistant',assistantSchema)

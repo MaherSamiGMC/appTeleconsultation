@@ -39,4 +39,5 @@ const deletePatient=asyncHandler((async(req,res)=>{
 }))
 
 
+
 module.exports={getPatients,addNewPatient,updatePatient,deletePatient,getPatient}
