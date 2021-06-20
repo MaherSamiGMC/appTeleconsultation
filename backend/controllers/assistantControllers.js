@@ -49,7 +49,7 @@ const authAssistant=asyncHandler((async(req,res)=>{
 
     const authAssistant=await assistant.findOne({"email":req.body.email})
     if (authAssistant && (await authAssistant.matchPassword(req.body.password))){
-        res.json({message:"Assistant authenticated successfully",authAssistant})
+        res.json({message:"Assistant authenticated successfully",authAssistant:{...authAssistant.toObject(),token:'test'}})
     }else {
         res.json({error:"Invalid email or password"})
     }
