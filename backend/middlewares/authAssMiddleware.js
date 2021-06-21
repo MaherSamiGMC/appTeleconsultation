@@ -2,6 +2,7 @@ const jwt=require('jsonwebtoken')
 const AsyncHandler= require('express-async-handler')
 const assistant=require('../models/AssistantSchema')
 
+//protect middelware for patient route 
 const protectAssistant=AsyncHandler(async(req,res,next)=>{
     let token 
 
