@@ -1,7 +1,7 @@
 const express=require('express')
 const router=express.Router()
 const {getAssistants,addNewAssistant,updateAssistant,deleteAssistant,getAssistant,authAssistant} = require('../controllers/AssistantControllers')
-
+const protectAssistant=require('../middlewares/authAssMiddleware')
 // URL : /api/assistant/
 // GET Method 
 // Private route
@@ -13,7 +13,7 @@ router.post('/newAssistant',addNewAssistant)
 // URL : /api/assistant/:id
 // GET Method 
 // Private route
-router.get('/:id',getAssistant)
+router.get('/:id',protectAssistant,getAssistant)
 // URL : /api/assistant/:id
 // PUT Method 
 // Private route
