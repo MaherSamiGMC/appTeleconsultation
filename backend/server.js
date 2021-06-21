@@ -15,6 +15,7 @@ app.use('/api/patient/',require('./routes/patientRoute'))
 app.use('/api/assistant/',require('./routes/assistantRoute'))
 app.use('/api/doctor/',require('./routes/doctorRoute'))
 
+// port
 const PORT=process.env.PORT || 5000
 
 app.listen(PORT, console.log(`server running on port ${PORT}`) )
