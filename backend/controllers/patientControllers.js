@@ -38,7 +38,7 @@ const updatePatient=asyncHandler((async(req,res)=>{
         req.body.password= await bcrypt.hash(req.body.password,salt)
     }
     let updatePatient=await patient.findByIdAndUpdate(req.params.id, { $set: {...req.body}}).select('-password')
-    res.json({message:' Patient data updated successfully',updatePatient})
+    res.json({message:'Patient data updated successfully',updatePatient})
 }))
 
 //delete Patient

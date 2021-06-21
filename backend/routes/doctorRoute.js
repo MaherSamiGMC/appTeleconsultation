@@ -1,7 +1,7 @@
 const express=require('express')
 const router=express.Router()
 const {getDoctors,addNewDoctor,updateDoctor,deleteDoctor,getDoctor,authDoctor} = require('../controllers/DoctorControllers')
-
+const protectDoctor=require('../middlewares/authDocMiddleware')
 // URL : /api/doctor/
 // GET Method 
 // Private route
@@ -13,7 +13,7 @@ router.post('/newDoctor',addNewDoctor)
 // URL : /api/doctor/:id
 // GET Method 
 // Private route
-router.get('/:id',getDoctor)
+router.get('/:id',protectDoctor,getDoctor) 
 // URL : /api/doctor/:id
 // PUT Method 
 // Private route
