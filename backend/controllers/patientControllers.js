@@ -6,13 +6,13 @@ const generateToken=require('../utils/generateToken')
 
 //Find patients
 const getPatients=asyncHandler(async(req,res)=>{
-    const patients=await patient.find()
+    const patients=await patient.find().select('-password')
     res.json({message:'patients loaded successfully',patients})
 })
 
 //Find Patient by id
 const getPatient=asyncHandler(async(req,res)=>{
-    const getPatient=await patient.findById(req.params.id)
+    const getPatient=await patient.findById(req.params.id).select('-password')
     res.json({message:'Patient data loaded successfully',getPatient})
 })
 
@@ -33,13 +33,17 @@ const addNewPatient=asyncHandler((async(req,res)=>{
 }))
 //update Patient's data 
 const updatePatient=asyncHandler((async(req,res)=>{
-    let updatePatient=await patient.findByIdAndUpdate(req.params.id, { $set: {...req.body}})
+    if(req.body.password){
+        const salt=await bcrypt.genSalt(10)
+        req.body.password= await bcrypt.hash(req.body.password,salt)
+    }
+    let updatePatient=await patient.findByIdAndUpdate(req.params.id, { $set: {...req.body}}).select('-password')
     res.json({message:' Patient data updated successfully',updatePatient})
 }))
 
 //delete Patient
 const deletePatient=asyncHandler((async(req,res)=>{
-    let deletedPatient=await patient.findByIdAndRemove(req.params.id)
+    let deletedPatient=await patient.findByIdAndRemove(req.params.id).select('-password')
     console.log(deletedPatient.affiliateDoctor)
     // the patient will be deleted from the array of patients in doctor's document
     await doctor.findByIdAndUpdate(deletedPatient.affiliateDoctor,{ $pull: {"patients":deletedPatient._id}})
