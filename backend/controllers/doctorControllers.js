@@ -1,5 +1,7 @@
 const asyncHandler = require('express-async-handler')
 const doctor=require('../models/DoctorSchema')
+const generateToken=require('../utils/generateToken')
+
 
 //Find doctors
 const getDoctors=asyncHandler(async(req,res)=>{
@@ -40,7 +42,7 @@ const authDoctor=asyncHandler((async(req,res)=>{
 
     const authDoctor=await doctor.findOne({"email":req.body.email})
     if (authDoctor && (await authDoctor.matchPassword(req.body.password))){
-        res.json({message:"Doctor authenticated successfully",authDoctor:{...authDoctor.toObject(),token:'test'}})
+        res.json({message:"Doctor authenticated successfully",authDoctor:{...authDoctor.toObject(),token:generateToken(authDoctor._id)}})
     }else {
         res.json({error:"Invalid email or password"})
     }

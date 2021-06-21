@@ -1,7 +1,7 @@
 const asyncHandler = require('express-async-handler')
 const assistant=require('../models/AssistantSchema')
 const doctor=require('../models/DoctorSchema')
-
+const generateToken=require('../utils/generateToken')
 
 //Find assistants
 const getAssistants=asyncHandler(async(req,res)=>{
@@ -49,7 +49,7 @@ const authAssistant=asyncHandler((async(req,res)=>{
 
     const authAssistant=await assistant.findOne({"email":req.body.email})
     if (authAssistant && (await authAssistant.matchPassword(req.body.password))){
-        res.json({message:"Assistant authenticated successfully",authAssistant:{...authAssistant.toObject(),token:'test'}})
+        res.json({message:"Assistant authenticated successfully",authAssistant:{...authAssistant.toObject(),token:generateToken(authAssistant._id)}})
     }else {
         res.json({error:"Invalid email or password"})
     }
