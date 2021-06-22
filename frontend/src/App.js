@@ -4,7 +4,7 @@ import Header from './Components/LandingPage/Header'
 import Footer from './Components/LandingPage/Footer'
 import Banner from './Components/LandingPage/Banner'
 import Contenu from './Components/LandingPage/Contenu';
-
+import ArticleScreen from './Screens/LandingPage/ArticleScreen';
 
 function App() {
   return (
@@ -15,6 +15,9 @@ function App() {
         <Container>
           <Contenu />
         </Container>
+        <section className="articles">
+          <ArticleScreen />
+        </section>
       </main>
       <Footer />
     </>
