@@ -9,8 +9,8 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                        <Nav.Link href="/conex">Connexion</Nav.Link>
-                        <Nav.Link href="/inscri">Inscription</Nav.Link>
+                        <Nav.Link href="/conex" >Connexion</Nav.Link>
+                        <Nav.Link href="/inscri" className='btn'>Inscription</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
