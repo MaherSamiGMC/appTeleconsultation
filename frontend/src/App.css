@@ -1,38 +1,85 @@
-.App {
+body {
+  font-size: 16px;
+  color: #343443;
+}
+h1 {
+  color: #ff3a65;
+  font-size: 40px;
+}
+h2 {
+  color: #343443;
+  font-size: 30px;
+}
+.navbar-light .navbar-nav .nav-link {
+  font-size: 20px;
+  color: #343443;
+  padding: 10px 30px;
+  transition: all 0.4s;
+}
+.navbar-light .navbar-nav .btn {
+  background: #ff3a65;
+  border-radius: 20px;
+  color: #fff;
+}
+.navbar-light .navbar-nav .btn:focus,
+.navbar-light .navbar-nav .btn:hover {
+  color: #fff;
+  background: #0147ff;
+}
+footer {
+  background: #343443;
+  color: #fff;
+}
+footer .bas {
+  background: #282835;
+  font-size: 20px;
+}
+a {
+  text-decoration: none;
+  color: #ff3a65;
+}
+.slider {
+  position: relative;
+}
+.slider .slogan {
+  position: absolute;
+  bottom: 24vh;
+  left: 0;
+  font-size: 40px;
+  text-transform: uppercase;
+  color: #fff;
+  right: 0;
+}
+.slider .slogan .change {
+  color: #ff3a65;
+}
+.carousel {
+  background: #343443;
+}
+.carousel-inner {
+  opacity: 0.7;
+}
+
+/***** Actualités *****/
+
+.articles {
+  background: #f4f3f2;
+  position: relative;
+  padding: 50px 0;
+}
+.articles h2 {
+  text-transform: uppercase;
+  color: #ff3a65;
+}
+
+/***** Static *****/
+
+.static {
+  background: #18c;
+  color: #fff;
+  padding: 40px 0;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.stat-icon i {
+  font-size: 40px;
 }

@@ -1,7 +1,7 @@
 import React from 'react'
-import Articles from '../../articles'
+import Articles from '../../ArticlesBD'
 import CardArt from '../../Components/LandingPage/CardArt'
-import { Container, Row, Col, Card } from 'react-bootstrap'
+import { Container, Row, Col} from 'react-bootstrap'
 
 
 const ArticleScreen = () => {
