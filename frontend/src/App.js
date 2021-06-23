@@ -15,6 +15,7 @@ function App() {
       <main>
         <Route path='/' component={AccueilScreen} exact/>
         <Route path='/Actualités/:id' component={ArticleScreen}/>
+
       </main>
       <Footer />
     </Router>
