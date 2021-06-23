@@ -1,27 +1,23 @@
 import './App.css';
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 
 import Header from './Components/LandingPage/Header'
 import Footer from './Components/LandingPage/Footer'
-import Banner from './Components/LandingPage/Banner'
-import Contenu from './Components/LandingPage/Contenu';
+import AccueilScreen from './Screens/LandingPage/AccueilScreen';
 import ArticleScreen from './Screens/LandingPage/ArticleScreen';
-import StaticScreen from './Screens/LandingPage/StaticScreen';
+
 function App() {
   return (
     <>
+    <Router>
       <Header />
-      <Banner />
-      <main className='pt-5'>
-
-        <Contenu />
-        <section className="articles text-center">
-          <ArticleScreen />
-        </section>
-        <section className="static text-center">
-          <StaticScreen />
-        </section>
+      
+      <main>
+        <Route path='/' component={AccueilScreen} exact/>
+        <Route path='/Actualités/:id' component={ArticleScreen}/>
       </main>
       <Footer />
+    </Router>
     </>
   );
 }
