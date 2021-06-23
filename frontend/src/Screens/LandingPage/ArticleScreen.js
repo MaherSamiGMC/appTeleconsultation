@@ -1,24 +1,27 @@
 import React from 'react'
+import { Col, Container , Image} from 'react-bootstrap'
+import{ Link } from 'react-router-dom'
 import Articles from '../../ArticlesBD'
-import CardArt from '../../Components/LandingPage/CardArt'
-import { Container, Row, Col} from 'react-bootstrap'
 
+const ArticleScreen = ({match}) => {
 
-const ArticleScreen = () => {
+    const article = Articles.find(p => p._id === match.params.id)
+    
     return (
         <>
-            <Container>
-                <h2>Actualités</h2>
-                <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia</p>
-                <Row>
-                    {Articles.map( article => 
-                        <Col sm={12} md={4} lg={4}>
-                            <CardArt  article = {article} />
-                        </Col>
-                    )}
-                </Row>
-            </Container>
+        <Container>
             
+                <Col md={6} className='mt-5'>
+                    <Image src= {article.image} alt={article.name} fluid/>
+                </Col>
+
+                <Col md={8} className='pt-4'>
+                    <h5 class="card-title">{article.name}</h5>
+                    <p class="card-text">{article.description}</p>
+                </Col>
+
+            <Link className='btn btn-light my-3 ml-auto' to='/' >Retour</Link>
+        </Container>
         </>
     )
 }
