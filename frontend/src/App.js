@@ -19,7 +19,6 @@ function App() {
         <Route path='/' component={AccueilScreen} exact/>
         <Route path='/Actualités/:id' component={ArticleScreen}/>
       {window.location.pathname !== '/Dashboard' && <Footer />}
-
     </Fragment>
     </Router>
     </>
