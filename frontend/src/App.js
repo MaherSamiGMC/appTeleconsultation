@@ -1,4 +1,6 @@
 import './App.css';
+import './fonts/font.css';
+
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 
 import Header from './Components/LandingPage/Header'

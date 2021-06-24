@@ -1,14 +1,21 @@
 body {
   font-size: 16px;
   color: #343443;
+  font-family: 'open_sansregular';
 }
 h1 {
   color: #ff3a65;
   font-size: 40px;
+  font-family: 'robotoblack';
 }
-h2 {
+h2,
+h3,
+h4,
+h5,
+.card-title {
   color: #343443;
-  font-size: 30px;
+  font-size: 22px;
+  font-family: 'robotobold';
 }
 .navbar-light .navbar-nav .nav-link {
   font-size: 20px;
@@ -32,7 +39,6 @@ footer {
 }
 footer .bas {
   background: #282835;
-  font-size: 18px;
 }
 a {
   text-decoration: none;
@@ -49,6 +55,7 @@ a {
   text-transform: uppercase;
   color: #fff;
   right: 0;
+  font-family: 'robotobold';
 }
 .slider .slogan .change {
   color: #ff3a65;
@@ -70,8 +77,27 @@ a {
 .articles h2 {
   text-transform: uppercase;
   color: #ff3a65;
+  font-family: 'robotobold';
 }
-
+.card {
+  background-color: #f4f3f2;
+  box-shadow: 0 0 4px rgb(34 34 102 / 10%);
+  border-radius: 8px 8px 64px 8px;
+  min-height: 100%;
+}
+.card a .card-body {
+  color: #282835;
+}
+.card a .card-body .card-title {
+  color: #0147ff;
+}
+.card a:hover {
+  text-decoration: none;
+}
+.card a:hover .card-title {
+  text-decoration: none;
+  color: #ff3a65;
+}
 /***** Static *****/
 
 .static {
@@ -82,4 +108,8 @@ a {
 }
 .stat-icon i {
   font-size: 40px;
+}
+.static h3 {
+  color: #fff;
+  margin: 10px 0 0;
 }
