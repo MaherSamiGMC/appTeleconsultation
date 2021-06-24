@@ -9,10 +9,10 @@ const ArticleScreen = () => {
         <>
             <Container>
                 <h2>Actualités</h2>
-                <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia</p>
+                <p>L’actualité de Near Doctor, se trouve ici !</p>
                 <Row>
                     {Articles.map( article => 
-                        <Col sm={12} md={4} lg={4}>
+                        <Col sm={12} md={4} lg={4} className='mb-4'>
                             <CardArt  article = {article} />
                         </Col>
                     )}

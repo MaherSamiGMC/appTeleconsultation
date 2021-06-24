@@ -4,7 +4,7 @@ import { Card } from 'react-bootstrap'
 const CardArt = ({article}) => {
     return (
         <>
-            <Card className='my-3 p-3 rounded'>
+            <Card>
                 <Link to ={`/Actualités/${article._id}`}>
                     <Card.Img variant="top" src={article.image} />
                     <Card.Body>

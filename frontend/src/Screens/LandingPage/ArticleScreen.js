@@ -10,17 +10,16 @@ const ArticleScreen = ({match}) => {
     return (
         <>
         <Container>
-            
-                <Col md={6} className='mt-5'>
-                    <Image src= {article.image} alt={article.name} fluid/>
-                </Col>
+            <h1 class="mt-5 mb-3">{article.name}</h1>
+            <Col md={6}>
+                <Image src= {article.image} alt={article.name} fluid/>
+            </Col>
 
-                <Col md={8} className='pt-4'>
-                    <h5 class="card-title">{article.name}</h5>
-                    <p class="card-text">{article.description}</p>
-                </Col>
+            <Col md={10} className='pt-4'>
+                <p class="card-text">{article.description}</p>
+                <p style={{textAlign :'right'}}><Link className='btn btn-dark my-3' to='/' >Retour</Link></p>
+            </Col>
 
-            <Link className='btn btn-light my-3 ml-auto' to='/' >Retour</Link>
         </Container>
         </>
     )
