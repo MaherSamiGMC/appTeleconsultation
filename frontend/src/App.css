@@ -3,6 +3,7 @@ body {
   color: #343443;
   font-family: 'open_sansregular';
 }
+
 /**** style page accueil ****/
 
 .contenu h1 {
@@ -116,7 +117,7 @@ a {
   color: #fff;
   margin: 10px 0 0;
 }
-
+/**** style page accueil ****/
 .login,
 .imageL {
   min-height: 80vh;
