@@ -4,12 +4,13 @@ import { Card } from 'react-bootstrap'
 const CardArt = ({article}) => {
     return (
         <>
+        {console.log(article)}
             <Card>
                 <Link to ={`/Actualités/${article._id}`}>
                     <Card.Img variant="top" src={article.image} />
                     <Card.Body>
                         <Card.Title>{article.name}</Card.Title>
-                        <Card.Text>{article.description.slice(0, 100)}</Card.Text>
+                        <Card.Text>{article.description.p}</Card.Text>
                     </Card.Body>
                 </Link>
             </Card> 

@@ -16,7 +16,10 @@ const ArticleScreen = ({match}) => {
             </Col>
 
             <Col md={10} className='pt-4'>
-                <p class="card-text">{article.description}</p>
+                <p class="card-text">{article.description.p}</p>
+                <h2 class="card-text">{article.description.titre}</h2>
+                <p class="card-text">{article.description.p2}</p>
+                
                 <p style={{textAlign :'right'}}><Link className='btn btn-dark my-3' to='/' >Retour</Link></p>
             </Col>
 

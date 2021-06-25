@@ -13,7 +13,7 @@ const ArticleScreen = () => {
                 <Row>
                     {Articles.map( article => 
                         <Col sm={12} md={4} lg={4} className='mb-4'>
-                            <CardArt  article = {article} />
+                            <CardArt   article = {article} />
                         </Col>
                     )}
                 </Row>
