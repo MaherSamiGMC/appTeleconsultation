@@ -8,6 +8,7 @@ import Footer from './Components/LandingPage/Footer'
 import AccueilScreen from './Screens/LandingPage/AccueilScreen';
 import ArticleScreen from './Screens/LandingPage/ArticleScreen';
 import MainPage from './Screens/Dashboard/MainPage';
+import LoginScreen from './Screens/LandingPage/LoginScreen';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       {window.location.pathname !== '/Dashboard' && <Header />}
         <Route path='/' component={AccueilScreen} exact/>
         <Route path='/Actualités/:id' component={ArticleScreen}/>
+        <Route path='/connexion' component={LoginScreen} exact/>
       {window.location.pathname !== '/Dashboard' && <Footer />}
     </Fragment>
     </Router>
