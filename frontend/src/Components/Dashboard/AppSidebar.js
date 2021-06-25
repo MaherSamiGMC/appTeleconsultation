@@ -2,15 +2,14 @@ import React from 'react'
 import { ProSidebar, Menu, MenuItem, SidebarHeader } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 
 function AppSidebar() {
     return (
-<aside className="main-sidebar sidebar-dark-primary elevation-4">
+<aside className="main-sidebar sidebar-light-primary elevation-4">
         {/* Brand Logo */}
         <a href="/Dashboard" className="brand-link">
-          <img src="../images/dash_neardoctor.png" alt="NearDoctor Logo" />
+          <img src="../images/dash_neardoctor.png" alt="NearDoctor Logo" className="mx-auto  d-flex" />
           {/* <span className="brand-text font-weight-light"> - </span> */}
         </a>
         {/* Sidebar */}
