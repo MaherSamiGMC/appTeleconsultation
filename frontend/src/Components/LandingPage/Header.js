@@ -1,6 +1,7 @@
 import React from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container } from 'react-bootstrap'
+
 const Header = () => {
     return (
         <header>
@@ -13,8 +14,8 @@ const Header = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
 
-                    <LinkContainer to="/conex" ><Nav.Link>Connexion</Nav.Link></LinkContainer>
-                    <LinkContainer to="/inscri" ><Nav.Link className='btn'>Inscription</Nav.Link></LinkContainer>
+                    <LinkContainer to="/connexion" ><Nav.Link>Connexion</Nav.Link></LinkContainer>
+                    <LinkContainer to="/inscription" ><Nav.Link className='btn'>Inscription</Nav.Link></LinkContainer>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

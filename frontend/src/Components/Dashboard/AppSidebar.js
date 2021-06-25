@@ -9,9 +9,9 @@ function AppSidebar() {
     return (
 <aside className="main-sidebar sidebar-dark-primary elevation-4">
         {/* Brand Logo */}
-        <a href="index3.html" className="brand-link">
-          <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" className="brand-image img-circle elevation-3" style={{opacity: '.8'}} />
-          <span className="brand-text font-weight-light">AdminLTE 3</span>
+        <a href="/Dashboard" className="brand-link">
+          <img src="../images/dash_neardoctor.png" alt="NearDoctor Logo" />
+          {/* <span className="brand-text font-weight-light"> - </span> */}
         </a>
         {/* Sidebar */}
         <div className="sidebar">
