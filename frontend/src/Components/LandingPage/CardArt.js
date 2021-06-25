@@ -10,7 +10,7 @@ const CardArt = ({article}) => {
                     <Card.Img variant="top" src={article.image} />
                     <Card.Body>
                         <Card.Title>{article.name}</Card.Title>
-                        <Card.Text>{article.description.p}</Card.Text>
+                        <Card.Text>{article.description.p.slice(0,100)}</Card.Text>
                     </Card.Body>
                 </Link>
             </Card> 
