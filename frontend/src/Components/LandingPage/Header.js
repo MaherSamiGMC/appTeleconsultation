@@ -4,7 +4,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap'
 
 const Header = () => {
     return (
-        <header>
+        <header className="top">
             <Container>
             <Navbar expand="lg">
                 <LinkContainer to='/'>

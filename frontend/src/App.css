@@ -3,44 +3,48 @@ body {
   color: #343443;
   font-family: 'open_sansregular';
 }
-/* 
-h1 {
+
+.contenu h1 {
   color: #ff3a65;
   font-size: 40px;
   font-family: 'robotoblack';
 }
-h2,
-h3,
-h4,
-h5,
+.contenu h2,
+.contenu h3,
+.contenu h4,
+.contenu h5,
 .card-title {
   color: #343443;
   font-size: 22px;
   font-family: 'robotobold';
 }
-.navbar-light .navbar-nav .nav-link {
+header.top .navbar-light .navbar-nav .nav-link {
   font-size: 20px;
   color: #343443;
   padding: 10px 30px;
   transition: all 0.4s;
 }
-.navbar-light .navbar-nav .btn {
+header.top .navbar-light .navbar-nav .btn {
   background: #ff3a65;
   border-radius: 20px;
   color: #fff;
 }
-.navbar-light .navbar-nav .btn:focus,
-.navbar-light .navbar-nav .btn:hover {
+header.top .navbar-light .navbar-nav .btn:focus,
+header.top .navbar-light .navbar-nav .btn:hover {
   color: #fff;
   background: #0147ff;
 }
-footer {
+header.top .navbar {
+  background: transparent;
+}
+footer.bottom {
   background: #343443;
   color: #fff;
 }
-footer .bas {
+footer.bottom {
   background: #282835;
 }
+
 a {
   text-decoration: none;
   color: #ff3a65;
@@ -68,7 +72,6 @@ a {
   opacity: 0.7;
 }
 
-
 .articles {
   background: #f4f3f2;
   position: relative;
@@ -79,22 +82,22 @@ a {
   color: #ff3a65;
   font-family: 'robotobold';
 }
-.card {
+.articles .card {
   background-color: #f4f3f2;
   box-shadow: 0 0 4px rgb(34 34 102 / 10%);
   border-radius: 8px 8px 64px 8px;
   min-height: 100%;
 }
-.card a .card-body {
+.articles .card a .card-body {
   color: #282835;
 }
-.card a .card-body .card-title {
+.articles .card a .card-body .card-title {
   color: #0147ff;
 }
-.card a:hover {
+.articles .card a:hover {
   text-decoration: none;
 }
-.card a:hover .card-title {
+.articles .card a:hover .card-title {
   text-decoration: none;
   color: #ff3a65;
 }
@@ -111,15 +114,14 @@ a {
 .static h3 {
   color: #fff;
   margin: 10px 0 0;
-} */
+}
 
-
-  .login,
-  .imageL {
-    min-height: 80vh;
-  }
-  .bg-imageL {
-    background-image: url('https://image.freepik.com/vecteurs-libre/conception-arriere-plan-medical_1212-116.jpg');
-    background-size: cover;
-    background-position: center center;
-  }
+.login,
+.imageL {
+  min-height: 80vh;
+}
+.bg-imageL {
+  background-image: url('https://image.freepik.com/vecteurs-libre/conception-arriere-plan-medical_1212-116.jpg');
+  background-size: cover;
+  background-position: center center;
+}

@@ -4,7 +4,7 @@ const Contenu = () => {
     return (
         <>
             <Container>
-                <div className='my-5'>
+                <div className='my-5 contenu'>
                     <h1 className='mb-5'>Médecine connectée et téléconsultation</h1>
                     <p>Le secteur de la santé se développe de plus en plus notamment avec l’essor que connaît la télémédecine. Cette pratique médicale ouvre de nouvelles possibilités, offre
                     des perspectives prometteuses et donne davantage accès aux soins.</p>
