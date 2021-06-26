@@ -10,19 +10,22 @@ import ArticleScreen from './Screens/LandingPage/ArticleScreen';
 import MainPage from './Screens/Dashboard/MainPage';
 import LoginScreen from './Screens/LandingPage/LoginScreen';
 import InscriScreen from './Screens/LandingPage/InscriScreen';
+import MainDocPortal from './Screens/DocPortal/MainDocPortal';
 
 function App() {
   return (
     <>
     <Router>
     <Route path='/Dashboard' component={MainPage}/>
+    <Route path='/Portail' component={MainDocPortal}/>
+
     <Fragment>
-      {window.location.pathname !== '/Dashboard' && <Header />}
+      {window.location.pathname !== ('/Dashboard' || '/Portail' ) && <Header />}
         <Route path='/' component={AccueilScreen} exact/>
         <Route path='/Actualités/:id' component={ArticleScreen}/>
         <Route path='/inscription' component={InscriScreen} exact/>
         <Route path='/connexion' component={LoginScreen} exact/>
-      {window.location.pathname !== '/Dashboard' && <Footer />}
+      {window.location.pathname !==('/Dashboard' || '/Portail' )  && <Footer />}
     </Fragment>
     </Router>
     </>
