@@ -18,12 +18,17 @@ function LoginScreen({history}) {
         if (userInfo){
             // history.push('/Dashboard')
         }
-    },[userInfo])
+    },[])
 
     const submitHandler=(e)=>{
         e.preventDefault()
         dispatch(Login(type,email,password))
-        // history.push('/Dashboard')
+        console.log(userInfo)
+        if ( userInfo.authDoctor &&  userInfo.authDoctor.role==='doctor'){
+            history.push('/Dashboard')
+        }else if ( userInfo.authPatient && userInfo.authPatient.role==='patient'){
+            history.push('/Portail')
+        }
     }
 
     return (

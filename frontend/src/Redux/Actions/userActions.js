@@ -70,10 +70,10 @@ export const Getuserdetails =(id)=> async(dispatch,getState)=>{
         const config={
             headers:{
                 'Content-Type':'application/json',
-                Authorization:`Bearer ${userInfo.token}`
+                Authorization:userInfo.token
             }
         }
-        const {data}=await axios.get( `http://localhost:5000/api/users/${id}`,config)
+        const {data}=await axios.get( `http://localhost:5000/api/doctor/${id}`,config)
         dispatch({type:USER_DETAILS_SUCCESS,payload:data})
 
     } catch (error) {

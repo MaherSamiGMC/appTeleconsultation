@@ -31,7 +31,8 @@ const assistantSchema=new Schema({
     },
     imageUrl:{
         type:String
-    }
+    },
+    role: { type: String, default: 'Assistant' }
 },
 { timestamps: true })
 
