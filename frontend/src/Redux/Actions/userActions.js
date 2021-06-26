@@ -31,7 +31,7 @@ export const logout=()=>(dispatch)=>{
     
 }
 
-export const Register =(name,email,password)=> async(dispatch)=>{
+export const Register =(firstName,lastName,phoneNumber,email,address,password)=> async(dispatch)=>{
     try {
         dispatch({
             type:USER_REGISTER_REQUEST
@@ -42,15 +42,21 @@ export const Register =(name,email,password)=> async(dispatch)=>{
                 'Content-Type':'application/json'
             }
         }
-        const {data}=await axios.post(' http://localhost:5000/api/users/',{name,email,password},config)
-        dispatch({type:USER_REGISTER_SUCCESS,payload:data})
-        dispatch({type:USER_LOGIN_SUCCESS,payload:data})
+        const {data}=await axios.post(' http://localhost:5000/api/users/',{firstName,lastName,phoneNumber,email,address,password},config)
+        
+        dispatch({
+            type:USER_REGISTER_SUCCESS,
+            payload:data
+        })
+        
+        dispatch({
+            type:USER_LOGIN_SUCCESS,
+            payload:data
+        })
         localStorage.setItem('userInfo',JSON.stringify(data))
-
-
-
     } catch (error) {
-        dispatch({type:USER_REGISTER_FAIL,
+        dispatch({
+            type:USER_REGISTER_FAIL,
             payload:error.response && error.response.data.message ? error.response.data.message: error.message})
     }
 }
