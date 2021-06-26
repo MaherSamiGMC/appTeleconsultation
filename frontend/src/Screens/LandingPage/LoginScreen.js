@@ -20,15 +20,24 @@ function LoginScreen({history}) {
         }
     },[])
 
-    const submitHandler=(e)=>{
+    async function  submitHandler(e){
         e.preventDefault()
         dispatch(Login(type,email,password))
-        console.log(userInfo)
-        if ( userInfo.authDoctor &&  userInfo.authDoctor.role==='doctor'){
-            history.push('/Dashboard')
-        }else if ( userInfo.authPatient && userInfo.authPatient.role==='patient'){
-            history.push('/Portail')
-        }
+        setTimeout(function(){
+            console.log(userLogin);
+          }, 5000)
+        // try {
+        //     await userInfo 
+            
+        // } catch (error) {
+        //     console.log(error)
+        // }
+        
+        // if ( userInfo.authDoctor &&  userInfo.authDoctor.role==='doctor'){
+        //     history.push('/Dashboard')
+        // }else if ( userInfo.authPatient && userInfo.authPatient.role==='patient'){
+        //     history.push('/Portail')
+        // }
     }
 
     return (
