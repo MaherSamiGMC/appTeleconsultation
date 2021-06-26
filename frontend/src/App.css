@@ -11,6 +11,11 @@ body {
   font-size: 40px;
   font-family: 'robotoblack';
 }
+.titlepage {
+  color: #ff3a65;
+  font-size: 40px;
+  font-family: 'robotoblack';
+}
 .contenu h2,
 .contenu h3,
 .contenu h4,
@@ -21,15 +26,26 @@ body {
   font-family: 'robotobold';
 }
 header.top .navbar-light .navbar-nav .nav-link {
-  font-size: 20px;
+  font-size: 16px;
   color: #343443;
   padding: 10px 30px;
   transition: all 0.4s;
 }
 header.top .navbar-light .navbar-nav .btn {
   background: #ff3a65;
-  border-radius: 20px;
+  border-radius: 0.25rem;
   color: #fff;
+}
+.adbtn {
+  background: #ff3a65;
+  border-radius: 0.25rem;
+  color: #fff;
+  border-color: transparent;
+  border: none;
+  padding: 12px;
+}
+.adbtn:hover {
+  background: #0147ff;
 }
 header.top .navbar-light .navbar-nav .btn:focus,
 header.top .navbar-light .navbar-nav .btn:hover {
@@ -118,12 +134,32 @@ a {
   margin: 10px 0 0;
 }
 /**** style page accueil ****/
+
+/**** style page Inscription ****/
+
+.inscri {
+  background: url('https://image.freepik.com/vecteurs-libre/groupe-medecins-debout-au-batiment-hopital-equipe-praticiens-voiture-ambulance_74855-14034.jpg')
+    no-repeat;
+  /* background-size: cover; */
+  background-position: bottom left;
+}
+.inscri form {
+  text-align: left;
+}
+.inscri .adbtn {
+  background: #0147ff;
+}
+.inscri .adbtn:hover {
+  background: #282835;
+}
+
+/**** style page Inscription ****/
 .login,
 .imageL {
   min-height: 80vh;
 }
 .bg-imageL {
-  background-image: url('https://image.freepik.com/vecteurs-libre/conception-arriere-plan-medical_1212-116.jpg');
-  background-size: cover;
+  background-image: url('https://image.freepik.com/vecteurs-libre/concept-medecin-ligne_52683-37585.jpg');
+  /* background-size: cover; */
   background-position: center center;
 }
