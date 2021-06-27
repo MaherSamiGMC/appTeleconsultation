@@ -16,28 +16,22 @@ function LoginScreen({history}) {
 
     useEffect(()=>{
         if (userInfo){
-            // history.push('/Dashboard')
+            if ( userInfo.authDoctor &&  userInfo.authDoctor.role==='doctor'){
+                history.push('/Dashboard')
+            }else if( userInfo.authAssistant && userInfo.authAssistant.role==='Assistant'){
+                history.push('/Dashboard')
+            }else if ( userInfo.authPatient && userInfo.authPatient.role==='patient'){
+                history.push('/Portail')
+            }
         }
-    },[])
 
-    async function  submitHandler(e){
+    },[userInfo,history])
+
+     function  submitHandler(e){
         e.preventDefault()
         dispatch(Login(type,email,password))
-        setTimeout(function(){
-            console.log(userLogin);
-          }, 5000)
-        // try {
-        //     await userInfo 
-            
-        // } catch (error) {
-        //     console.log(error)
-        // }
         
-        // if ( userInfo.authDoctor &&  userInfo.authDoctor.role==='doctor'){
-        //     history.push('/Dashboard')
-        // }else if ( userInfo.authPatient && userInfo.authPatient.role==='patient'){
-        //     history.push('/Portail')
-        // }
+
     }
 
     return (
