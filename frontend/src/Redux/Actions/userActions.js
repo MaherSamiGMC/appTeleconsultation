@@ -1,7 +1,7 @@
 import { USER_DETAILS_FAIL, USER_DETAILS_REQUEST, USER_DETAILS_SUCCESS, USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_UPDATE_PROFILE_FAIL, USER_UPDATE_PROFILE_REQUEST, USER_UPDATE_PROFILE_SUCCESS } from "../Constants/userConstants"
 import axios from 'axios'
 
-export const Login =(type,email,password)=> async(dispatch,done)=>{
+export const Login =(role,email,password)=> async(dispatch,done)=>{
     try {
         dispatch({
             type:USER_LOGIN_REQUEST
@@ -13,7 +13,7 @@ export const Login =(type,email,password)=> async(dispatch,done)=>{
             }
         }
 
-        const {data}=await axios.post(`http://localhost:5000/api/${type}/login`,{email,password},config)
+        const {data}=await axios.post(`http://localhost:5000/api/${role}/login`,{email,password},config)
         dispatch({type:USER_LOGIN_SUCCESS,payload:data})
 
         localStorage.setItem('userInfo',JSON.stringify(data))
@@ -62,19 +62,20 @@ export const Register =(firstName,lastName,phoneNumber,email,address,password)=>
     }
 }
 
-export const Getuserdetails =(id)=> async(dispatch,getState)=>{
+export const Getuserdetails =(role,id)=> async(dispatch,getState)=>{
     try {
         dispatch({
             type:USER_DETAILS_REQUEST
         })
         const {userLogin:{userInfo}}=getState()
+        console.log(userInfo)
         const config={
             headers:{
                 'Content-Type':'application/json',
-                Authorization:userInfo.token
+                authorization:userInfo.authDoctor.token
             }
         }
-        const {data}=await axios.get( `http://localhost:5000/api/doctor/${id}`,config)
+        const {data}=await axios.get( `http://localhost:5000/api/${role}/${id}`,config)
         dispatch({type:USER_DETAILS_SUCCESS,payload:data})
 
     } catch (error) {
