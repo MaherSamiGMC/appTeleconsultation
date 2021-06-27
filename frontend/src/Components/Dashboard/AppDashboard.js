@@ -1,6 +1,36 @@
 import React from 'react'
-
-function AppDashboard() {
+import Datatable from 'react-bs-datatable';
+import moment from 'moment';
+function AppDashboard({userdetails}) {
+  const header = [
+    { title: 'Nom', prop: 'firstName' },
+    { title: 'Prenom', prop: 'lastName' },
+    { title: 'N° de telephone', prop: 'phoneNumber' },
+    { title: 'date de naissance', prop: 'dateOfBirth' }
+  ];
+  const body = Array.from(new Array(57), () => {
+    const rd = (Math.random() * 10).toFixed(1);
+  
+    if (rd > 0.5) {
+      return {
+        username: 'i-am-billy',
+        realname: `Billy ${rd}`,
+        location: 'Mars',
+        date: moment()
+          .subtract(1, 'days')
+          .format('Do MMMM YYYY')
+      };
+    }
+  
+    return {
+      username: 'john-nhoj',
+      realname: `John ${rd}`,
+      location: 'Saturn',
+      date: moment()
+        .subtract(2, 'days')
+        .format('Do MMMM YYYY')
+    };
+  });
     return (
         <div className="content-wrapper">
         {/* Content Header (Page header) */}
@@ -8,12 +38,12 @@ function AppDashboard() {
           <div className="container-fluid">
             <div className="row mb-2">
               <div className="col-sm-6">
-                <h1 className="m-0">Dashboard</h1>
+                <h1 className="m-0">Tableau de bord</h1>
               </div>{/* /.col */}
               <div className="col-sm-6">
                 <ol className="breadcrumb float-sm-right">
-                  <li className="breadcrumb-item"><a href="#">Home</a></li>
-                  <li className="breadcrumb-item active">Dashboard v1</li>
+                  <li className="breadcrumb-item"><a href="/">Accueil</a></li>
+                  <li className="breadcrumb-item active">Tableau de bord</li>
                 </ol>
               </div>{/* /.col */}
             </div>{/* /.row */}
@@ -25,96 +55,65 @@ function AppDashboard() {
           <div className="container-fluid">
             {/* Small boxes (Stat box) */}
             <div className="row">
-              <div className="col-lg-3 col-6">
+              <div className="col-lg-4 col-6">
                 {/* small box */}
                 <div className="small-box bg-info">
                   <div className="inner">
-                    <h3>150</h3>
-                    <p>New Orders</p>
+                    <h3>{userdetails && userdetails.patients.length}</h3>
+                    <p>Nombre de patients</p>
                   </div>
                   <div className="icon">
-                    <i className="ion ion-bag" />
+                    <i className="fas fa-hospital-user" />
                   </div>
-                  <a href="#" className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></a>
+                  <a href="#" className="small-box-footer">Plus d'info <i className="fas fa-arrow-circle-right" /></a>
                 </div>
               </div>
               {/* ./col */}
-              <div className="col-lg-3 col-6">
+              <div className="col-lg-4 col-6">
                 {/* small box */}
                 <div className="small-box bg-success">
                   <div className="inner">
-                    <h3>53<sup style={{fontSize: '20px'}}>%</sup></h3>
-                    <p>Bounce Rate</p>
+                    <h5>L'assistant(e) :</h5>
+                    <p><br/> {userdetails && `${ userdetails.assistant.firstName} ${ userdetails.assistant.lastName}`}</p>
                   </div>
                   <div className="icon">
-                    <i className="ion ion-stats-bars" />
+                    <i className="fas fa-user-clock" />
                   </div>
-                  <a href="#" className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></a>
+                  <a href="#" className="small-box-footer">Plus d'info <i className="fas fa-arrow-circle-right" /></a>
                 </div>
               </div>
               {/* ./col */}
-              <div className="col-lg-3 col-6">
+              <div className="col-lg-4 col-6">
                 {/* small box */}
                 <div className="small-box bg-warning">
                   <div className="inner">
                     <h3>44</h3>
-                    <p>User Registrations</p>
+                    <p>Nombre de rendez-vous</p>
                   </div>
                   <div className="icon">
-                    <i className="ion ion-person-add" />
+                    <i className="fas fa-calendar-day" />
                   </div>
-                  <a href="#" className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></a>
+                  <a href="#" className="small-box-footer">Plus info <i className="fas fa-arrow-circle-right" /></a>
                 </div>
               </div>
-              {/* ./col */}
-              <div className="col-lg-3 col-6">
-                {/* small box */}
-                <div className="small-box bg-danger">
-                  <div className="inner">
-                    <h3>65</h3>
-                    <p>Unique Visitors</p>
-                  </div>
-                  <div className="icon">
-                    <i className="ion ion-pie-graph" />
-                  </div>
-                  <a href="#" className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></a>
-                </div>
-              </div>
-              {/* ./col */}
+
             </div>
             {/* /.row */}
             {/* Main row */}
             <div className="row">
               {/* Left col */}
-              <section className="col-lg-7 connectedSortable">
+              <section className="col-lg-12 connectedSortable">
                 {/* Custom tabs (Charts with tabs)*/}
                 <div className="card">
-                  <div className="card-header">
+                  <div className="card-header1">
                     <h3 className="card-title">
                       <i className="fas fa-chart-pie mr-1" />
-                      Sales
+                      Liste de patients :
                     </h3>
-                    <div className="card-tools">
-                      <ul className="nav nav-pills ml-auto">
-                        <li className="nav-item">
-                          <a className="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                        </li>
-                        <li className="nav-item">
-                          <a className="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                        </li>
-                      </ul>
-                    </div>
+
                   </div>{/* /.card-header */}
                   <div className="card-body">
-                    <div className="tab-content p-0">
-                      {/* Morris chart - Sales */}
-                      <div className="chart tab-pane active" id="revenue-chart" style={{position: 'relative', height: '300px'}}>
-                        <canvas id="revenue-chart-canvas" height={300} style={{height: '300px'}} />
-                      </div>
-                      <div className="chart tab-pane" id="sales-chart" style={{position: 'relative', height: '300px'}}>
-                        <canvas id="sales-chart-canvas" height={300} style={{height: '300px'}} />
-                      </div>
-                    </div>
+                  {userdetails && <Datatable tableHeaders={header} tableBody={userdetails.patients}  rowsPerPage={5}/>}
                   </div>{/* /.card-body */}
                 </div>
                 {/* /.card */}

@@ -1,8 +1,5 @@
-import React,{useState,useEffect} from 'react'
-import { ProSidebar, Menu, MenuItem, SidebarHeader } from 'react-pro-sidebar';
+import React from 'react'
 import 'react-pro-sidebar/dist/css/styles.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {useDispatch,useSelector} from 'react-redux'
 
 
  function AppSidebar({userdetails}) {
@@ -39,48 +36,72 @@ import {useDispatch,useSelector} from 'react-redux'
               <li className="nav-header">PATIENTS</li>
               <li className="nav-item">
                 <a href="pages/calendar.html" className="nav-link">
+                  <i className="nav-icon fas fa-user-plus" />
+                  <p>
+                    Ajouter nouveau patient
+                    {/* <span className="badge badge-info right">2</span> */}
+                  </p>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a href="pages/calendar.html" className="nav-link">
+                  <i className="nav-icon fas fa-stream" />
+                  <p>
+                    Liste des patients
+                    {/* <span className="badge badge-info right">2</span> */}
+                  </p>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a href="pages/calendar.html" className="nav-link">
                   <i className="nav-icon far fa-calendar-alt" />
                   <p>
-                    Calendar
+                     Calendrier
+                    {/* <span className="badge badge-info right">2</span> */}
+                  </p>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a href="pages/calendar.html" className="nav-link">
+                  <i className="nav-icon fas fa-video" />
+                  <p>
+                     Téléconsultation
+                    {/* <span className="badge badge-info right">2</span> */}
+                  </p>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a href="pages/calendar.html" className="nav-link">
+                  <i className="nav-icon far fa-file-alt" />
+                  <p>
+                     Consultation textuelle
                     {/* <span className="badge badge-info right">2</span> */}
                   </p>
                 </a>
               </li>
               
 
-              <li className="nav-header">MISCELLANEOUS</li>
+              <li className="nav-header">ASSISTANT</li>
               <li className="nav-item">
                 <a href="iframe.html" className="nav-link">
-                  <i className="nav-icon fas fa-ellipsis-h" />
-                  <p>Tabbed IFrame Plugin</p>
+                  <i className="nav-icon fas fa-user-plus" />
+                  <p>Ajouter un assistant</p>
                 </a>
               </li>
+              <li className="nav-item">
+                <a href="iframe.html" className="nav-link">
+                  <i className="nav-icon fas fa-users-cog" />
+                  <p>Modifier données de l'assistant</p>
+                </a>
+              </li>
+              
 
-              <li className="nav-header">MULTI LEVEL EXAMPLE</li>
+              <li className="nav-header">GESTION CABINET</li>
 
-              <li className="nav-item">
-                <a href="#" className="nav-link">
-                  <i className="fas fa-circle nav-icon" />
-                  <p>Level 1</p>
-                </a>
-              </li>
-              <li className="nav-header">LABELS</li>
-              <li className="nav-item">
-                <a href="#" className="nav-link">
-                  <i className="nav-icon far fa-circle text-danger" />
-                  <p className="text">Important</p>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="#" className="nav-link">
-                  <i className="nav-icon far fa-circle text-warning" />
-                  <p>Warning</p>
-                </a>
-              </li>
               <li className="nav-item">
                 <a href="#" className="nav-link">
                   <i className="nav-icon far fa-circle text-info" />
-                  <p>Informational</p>
+                  <p>Modifier les paramètres du compte</p>
                 </a>
               </li>
             </ul>

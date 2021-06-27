@@ -26,7 +26,7 @@ const MainPage = ({history}) => {
         <div  className="wrapper" > 
                 <AppHeader/>
                 <AppSidebar userdetails={user.getDoctor} />
-                <AppDashboard/>
+                <AppDashboard userdetails={user.getDoctor} />
                 <AppFooter/>
 
         </div>
