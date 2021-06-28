@@ -32,7 +32,7 @@ export const logout=()=>(dispatch)=>{
     
 }
 
-export const Register =(firstName,lastName,phoneNumber,email,address,password)=> async(dispatch)=>{
+export const Register =(role,newRole,newuser)=> async(dispatch)=>{
     try {
         dispatch({
             type:USER_REGISTER_REQUEST
@@ -43,7 +43,7 @@ export const Register =(firstName,lastName,phoneNumber,email,address,password)=>
                 'Content-Type':'application/json'
             }
         }
-        const {data}=await axios.post(' http://localhost:5000/api/users/',{firstName,lastName,phoneNumber,email,address,password},config)
+        const {data}=await axios.post(`http://localhost:5000/api/${role}/${newRole}`,newuser,config)
         
         dispatch({
             type:USER_REGISTER_SUCCESS,
@@ -54,7 +54,7 @@ export const Register =(firstName,lastName,phoneNumber,email,address,password)=>
             type:USER_LOGIN_SUCCESS,
             payload:data
         })
-        localStorage.setItem('userInfo',JSON.stringify(data))
+        // localStorage.setItem('userInfo',JSON.stringify(data))
     } catch (error) {
         dispatch({
             type:USER_REGISTER_FAIL,

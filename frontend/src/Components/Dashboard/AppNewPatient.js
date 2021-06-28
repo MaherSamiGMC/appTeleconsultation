@@ -7,10 +7,12 @@ import {
 import { Container, Col, Row, Form, Button } from 'react-bootstrap'
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 import 'bootstrap-daterangepicker/daterangepicker.css';
+import { Register } from '../../Redux/Actions/userActions';
+import {useDispatch,useSelector} from 'react-redux'
 
 
 function AppNewPatient({userdetails}) {
-
+    const dispatch = useDispatch()
     const [nom, setNom] = useState('')
     const [prenom, setPrenom] = useState('')
     const [email, setEmail] = useState('')
@@ -20,13 +22,11 @@ function AppNewPatient({userdetails}) {
 
     const submitHandler=(e)=>{
         e.preventDefault()
+        const newpatient={firstName:prenom,lastName:nom,phoneNumber:tel,email,dateOfBirth:date,gender:sexe,password:"123456",affiliateDoctor:userdetails._id}
         //DISPATSH REGISTER
-        // if(password !== confirmpassword){
-        //     setMessage('mot passe inccorret')
-        // }
-        // else{
-        //     dispatch(Register(nom,prenom,email,special,tel,adresse,password))
-        // }
+
+        dispatch(Register('patient','newpatient',newpatient))
+
         
     }
 
@@ -103,7 +103,7 @@ function AppNewPatient({userdetails}) {
                                     minYear: 1901,
                                     }}
                                     onApply={(e)=>setDate(e.target.value)}
-
+                                    value={date}
                                 >
                                     <input type="text"  className="form-control col-9" />
                                 </DateRangePicker>
@@ -116,7 +116,7 @@ function AppNewPatient({userdetails}) {
                                     </Form.Group>
                                 </Col>
                                 <Col>
-                                <select  onChange={(e)=>setSexe(e.target.value)} className="form-select form-select-lg mb-2"  aria-label="Default select example">
+                                <select  onChange={(e)=>setSexe(e.target.value)} className="form-select form-select-lg mb-2" value={sexe} aria-label="Default select example">
                                                 <option selected>Le sexe du patient : </option>
                                                 <option  value="Homme">Homme</option>
                                                 <option  value="Femme">Femme</option>
@@ -132,14 +132,6 @@ function AppNewPatient({userdetails}) {
                             </Button>
                         </Form>
 
-                        {/* <Row className='py-3'>
-                            <Col>
-                                Have a Account ? {''}
-                                <Link to={redirect ? `/connexion?redirect=${redirect}` : '/connexion'}>
-                                    Connexion
-                                </Link>
-                            </Col>
-                        </Row> */}
 
                     </Col>
                 </Row>
