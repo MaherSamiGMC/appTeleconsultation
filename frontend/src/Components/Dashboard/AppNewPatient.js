@@ -5,6 +5,8 @@ import {
     Link
   } from "react-router-dom";
 import { Container, Col, Row, Form, Button } from 'react-bootstrap'
+import DateRangePicker from 'react-bootstrap-daterangepicker';
+import 'bootstrap-daterangepicker/daterangepicker.css';
 
 
 function AppNewPatient({userdetails}) {
@@ -12,12 +14,9 @@ function AppNewPatient({userdetails}) {
     const [nom, setNom] = useState('')
     const [prenom, setPrenom] = useState('')
     const [email, setEmail] = useState('')
-    const [special, setSpecial] = useState('')
+    const [date, setDate] = useState('')
     const [tel, setTel] = useState('')
-    const [adresse, setAdresse] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmpassword, setConfirmPassword] = useState('')
-    const [message, setMessage] = useState(null)
+    const [sexe, setSexe] = useState('')
 
     const submitHandler=(e)=>{
         e.preventDefault()
@@ -96,11 +95,18 @@ function AppNewPatient({userdetails}) {
                             </Form.Group>
                             <Row>
                                 <Col>
-                                    <Form.Group controlId="formBasicSpecial">
-                                        <Form.Control 
-                                        value={special} onChange={(e)=>setSpecial(e.target.value)}
-                                        type="text" placeholder="Votre Spécialité" />
-                                    </Form.Group>  
+                                <DateRangePicker
+                                    initialSettings={{
+                                    singleDatePicker: true,
+                                    showDropdowns: true,
+                                    startDate: '10/18/1984',
+                                    minYear: 1901,
+                                    }}
+                                    onApply={(e)=>setDate(e.target.value)}
+
+                                >
+                                    <input type="text"  className="form-control col-9" />
+                                </DateRangePicker>
                                 </Col>
                                 <Col>
                                     <Form.Group controlId="formBasicTel">
@@ -109,28 +115,20 @@ function AppNewPatient({userdetails}) {
                                         type="text" placeholder="Votre Télephone" />
                                     </Form.Group>
                                 </Col>
+                                <Col>
+                                <select  onChange={(e)=>setSexe(e.target.value)} className="form-select form-select-lg mb-2"  aria-label="Default select example">
+                                                <option selected>Le sexe du patient : </option>
+                                                <option  value="Homme">Homme</option>
+                                                <option  value="Femme">Femme</option>
+ 
+                                </select>
+                                </Col>
                             </Row>
 
                             
-                            <Form.Group controlId="exampleForm.ControlTextarea1">
-                                
-                                <Form.Control 
-                                value={adresse} onChange={(e)=>setAdresse(e.target.value)}
-                                as="textarea" rows={3} placeholder="Votre Adresse" />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicPassword">
-                                <Form.Control 
-                                value={password} onChange={(e)=>setPassword(e.target.value)}
-                                type="password" placeholder="Mot de passe" />
-                            </Form.Group>
-                            <Form.Group controlId="formBasicPassword">
-                                <Form.Control 
-                                value={confirmpassword} onChange={(e)=>setConfirmPassword(e.target.value)}
-                                type="password" placeholder="Confirmer Mot de passe" />
-                            </Form.Group>
 
                             <Button variant="primary" type="submit" className="adbtn" onClick={submitHandler}>
-                                Créer mon compte
+                                Ajouter un patient
                             </Button>
                         </Form>
 
