@@ -11,6 +11,7 @@ import MainPage from './Screens/Dashboard/MainPage';
 import LoginScreen from './Screens/LandingPage/LoginScreen';
 import InscriScreen from './Screens/LandingPage/InscriScreen';
 import MainDocPortal from './Screens/DocPortal/MainDocPortal';
+import ScrollToTop from "react-scroll-to-top";
 
 const App=withRouter(({location}) =>{
   return (
@@ -19,6 +20,7 @@ const App=withRouter(({location}) =>{
     <Route path='/Portail' component={MainDocPortal}/>
 
     <Fragment>
+      <ScrollToTop smooth/>
       {location.pathname !== '/Dashboard' && location.pathname !=='/Portail'  && <Header />}
         <Route path='/' component={AccueilScreen} exact/>
         <Route path='/Actualités/:id' component={ArticleScreen}/>

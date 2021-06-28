@@ -56,11 +56,8 @@ header.top .navbar {
   background: transparent;
 }
 footer.bottom {
-  background: #343443;
-  color: #fff;
-}
-footer.bottom {
-  background: #282835;
+  background: #2c2c2c;
+  color: #bbb;
 }
 
 a {
@@ -111,6 +108,7 @@ a {
 }
 .articles .card a .card-body .card-title {
   color: #0147ff;
+  text-align: left;
 }
 .articles .card a:hover {
   text-decoration: none;
@@ -119,7 +117,19 @@ a {
   text-decoration: none;
   color: #ff3a65;
 }
-
+.card-info h1 {
+  color: #ff3a65;
+  font-size: 40px;
+  font-family: 'robotoblack';
+}
+.card-info h2 {
+  color: #343443;
+  font-size: 22px;
+  font-family: 'robotobold';
+}
+.card-info p {
+  text-align: justify;
+}
 .static {
   background: #18c;
   color: #fff;
@@ -132,6 +142,56 @@ a {
 .static h3 {
   color: #fff;
   margin: 10px 0 0;
+}
+
+footer.bottom a {
+  color: #bbb;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  border: none;
+  line-height: 22px;
+}
+footer.bottom a:hover {
+  color: #ff3a65;
+}
+footer.bottom .social_sidebar_internal a {
+  background-color: #313131;
+  width: 41px;
+  height: 41px;
+  padding: 11px 0;
+  margin: 0 10px 10px 0;
+  text-align: center;
+  display: inline-block;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  color: #bbb;
+  border-radius: 5px;
+}
+
+footer.bottom .social_sidebar_internal i {
+  font-size: 19px;
+}
+footer.bottom .social_sidebar_internal a:hover,
+footer.bottom .social_sidebar_internal a:hover {
+  background-color: #0147ff;
+  color: #fff;
+}
+footer.bottom .social_sidebar_internal a:hover {
+  color: #fff;
+}
+footer.bottom .bas {
+  background: #1f1f1f;
+}
+footer.bottom h3 {
+  font-size: 20px;
+  font-family: 'robotoregular';
+}
+footer.bottom .same {
+  padding-top: 45px !important;
 }
 /**** style page accueil ****/
 
