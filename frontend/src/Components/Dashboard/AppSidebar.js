@@ -1,6 +1,8 @@
 import React from 'react'
 import 'react-pro-sidebar/dist/css/styles.css';
-
+import {
+  Link
+} from "react-router-dom";
 
  function AppSidebar({userdetails}) {
 
@@ -19,10 +21,10 @@ import 'react-pro-sidebar/dist/css/styles.css';
           {/* Sidebar user panel (optional) */}
           <div className="user-panel mt-3 pb-3 mb-3 d-flex">
             <div className="image">
-              <img src="dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image" />
+              <img src="https://images.emojiterra.com/google/android-oreo/512px/1f468-1f3fb-2695.png" className="img-circle elevation-2" alt="User Image" />
             </div>
             <div className="info">
-              <a href="#" className="d-block">{userdetails && `Dr. ${ userdetails.firstName} ${ userdetails.lastName}`}</a>
+              <a href="/Dashboard" className="d-block">{userdetails && `Dr. ${ userdetails.firstName} ${ userdetails.lastName}`}</a>
             </div>
           </div>
 
@@ -35,22 +37,22 @@ import 'react-pro-sidebar/dist/css/styles.css';
 
               <li className="nav-header">PATIENTS</li>
               <li className="nav-item">
-                <a href="pages/calendar.html" className="nav-link">
+                <Link to="/Dashboard/new-patient" className="nav-link">
                   <i className="nav-icon fas fa-user-plus" />
                   <p>
                     Ajouter nouveau patient
                     {/* <span className="badge badge-info right">2</span> */}
                   </p>
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="pages/calendar.html" className="nav-link">
+                <Link to="/Dashboard/list-of-patients" className="nav-link">
                   <i className="nav-icon fas fa-stream" />
                   <p>
                     Liste des patients
                     {/* <span className="badge badge-info right">2</span> */}
                   </p>
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <a href="pages/calendar.html" className="nav-link">

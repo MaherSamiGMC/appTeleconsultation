@@ -57,7 +57,7 @@ const authAssistant=asyncHandler((async(req,res)=>{
     if (authAssistant && (await authAssistant.matchPassword(req.body.password))){
         res.json({message:"Assistant authenticated successfully",authAssistant:{...authAssistant.toObject(),token:generateToken(authAssistant._id)}})
     }else {
-        res.json({error:"Invalid email or password"})
+        res.status(401).json({error:"Invalid email or password"})
     }
 }))
 

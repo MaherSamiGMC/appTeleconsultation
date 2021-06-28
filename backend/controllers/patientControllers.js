@@ -58,7 +58,7 @@ const authPatient=asyncHandler((async(req,res)=>{
     if (authPatient && (await authPatient.matchPassword(req.body.password))){
         res.json({message:"patient authenticated successfully",authPatient:{...authPatient.toObject(),token:generateToken(authPatient._id)}})
     }else {
-        res.json({error:"Invalid email or password"})
+        res.status(401).json({error:"Invalid email or password"})
     }
 }))
 
