@@ -1,10 +1,11 @@
 import React from 'react'
 import Datatable from 'react-bs-datatable';
-import { css } from '@emotion/react';
-import Calendar from 'react-calendar';
 import { useState } from 'react';
 import 'react-calendar/dist/Calendar.css';
-
+import ClearIcon from '@material-ui/icons/Clear';
+import {
+    Link
+  } from "react-router-dom";
 import {
   Table,
   TableBody,
@@ -23,24 +24,54 @@ import {
   Grid,
   ButtonGroup
 } from '@material-ui/core';
-function AppDashboard({userdetails}) {
-  const [value, onChange] = useState(new Date());
+function AppListsOfPatients({userdetails}) {
 
   const header = [
-    { title: 'Nom', prop: 'firstName',sortable:true },
-    { title: 'Prenom', prop: 'lastName' },
+    { title: 'Nom', prop: 'firstName',sortable:true,filterable: true },
+    { title: 'Prenom', prop: 'lastName',filterable: true },
     { title: 'N° de telephone', prop: 'phoneNumber' },
-    { title: 'Date de naissance', prop: 'dateOfBirth' }
+    { title: 'Date de naissance', prop: 'dateOfBirth' },
+    { title: 'Email', prop: 'email'} ,
+    { title: 'Afficher le profil', prop: '_id',
+      cell: row => <Link to={`Dashboard/list-of-patients/${row._id}`} > <i class="fas fa-external-link-alt"></i></Link>} ,
   ];
-  const classes = {
-    buttonGroup: css`
-      height: 100%;
-    `,
-    paginationButton: css`
-      .ButtonGroup__root & {
-        padding: 8px 12px;
-      }
-    `
+
+  const customLabels = {
+    first: '<<',
+    last: '>>',
+    prev: '<',
+    next: '>',
+    show: 'Display',
+    entries: 'rows',
+    noResults: 'Pas de patients à afficher ',
+    filterPlaceholder:"aa"
+  };
+  function FilterGroup({ classes, filterText, onChangeFilter, onClearFilter }) {
+    return (
+      <TextField
+        fullWidth
+        id="outlined-filter"
+        label="Search text"
+        className={classes.textField}
+        value={filterText}
+        onChange={onChangeFilter}
+        margin="none"
+        variant="outlined"
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                edge="end"
+                aria-label="toggle password visibility"
+                onClick={onClearFilter}
+              >
+                <ClearIcon />
+              </IconButton>
+            </InputAdornment>
+          )
+        }}
+      />
+    );
   }
     return (
         <div className="content-wrapper">
@@ -49,12 +80,12 @@ function AppDashboard({userdetails}) {
           <div className="container-fluid">
             <div className="row mb-2">
               <div className="col-sm-6">
-                <h1 className="m-0">Tableau de bord</h1>
+                <h1 className="m-0">Liste des patients :</h1>
               </div>{/* /.col */}
               <div className="col-sm-6">
                 <ol className="breadcrumb float-sm-right">
                   <li className="breadcrumb-item"><a href="/">Accueil</a></li>
-                  <li className="breadcrumb-item active">Tableau de bord</li>
+                  <li className="breadcrumb-item active">Liste des patients</li>
                 </ol>
               </div>{/* /.col */}
             </div>{/* /.row */}
@@ -66,9 +97,9 @@ function AppDashboard({userdetails}) {
           <div className="container-fluid">
             {/* Small boxes (Stat box) */}
             <div className="row">
-              <div className="col-lg-4 col-6">
+              <div className="col-lg-12 col-6">
                 {/* small box */}
-                <div className="small-box bg-info">
+                <div className="small-box ">
                   <div className="inner">
                     <h3>{userdetails && userdetails.patients.length}</h3>
                     <p>Nombre de patients</p>
@@ -76,35 +107,6 @@ function AppDashboard({userdetails}) {
                   <div className="icon">
                     <i className="fas fa-hospital-user" />
                   </div>
-                  <a href="#" className="small-box-footer">Plus d'info <i className="fas fa-arrow-circle-right" /></a>
-                </div>
-              </div>
-              {/* ./col */}
-              <div className="col-lg-4 col-6">
-                {/* small box */}
-                <div className="small-box bg-success">
-                  <div className="inner">
-                    <h5>L'assistant(e) :</h5>
-                    <p><br/> {userdetails && `${ userdetails.assistant.firstName} ${ userdetails.assistant.lastName}`}</p>
-                  </div>
-                  <div className="icon">
-                    <i className="fas fa-user-clock" />
-                  </div>
-                  <a href="#" className="small-box-footer">Plus d'info <i className="fas fa-arrow-circle-right" /></a>
-                </div>
-              </div>
-              {/* ./col */}
-              <div className="col-lg-4 col-6">
-                {/* small box */}
-                <div className="small-box bg-warning">
-                  <div className="inner">
-                    <h3>44</h3>
-                    <p>Nombre de rendez-vous</p>
-                  </div>
-                  <div className="icon">
-                    <i className="fas fa-calendar-day" />
-                  </div>
-                  <a href="#" className="small-box-footer">Plus info <i className="fas fa-arrow-circle-right" /></a>
                 </div>
               </div>
 
@@ -128,7 +130,8 @@ function AppDashboard({userdetails}) {
                   <Datatable 
                   tableHeaders={header} 
                   tableBody={userdetails.patients}  
-                  rowsPerPage={3}
+                  rowsPerPage={10}
+                  labels={customLabels}
                   Components={{
                     Row(props) {
                       return <Grid container spacing={2} {...props} />;
@@ -157,6 +160,7 @@ function AppDashboard({userdetails}) {
                         />
                       );
                     },
+                    FilterGroup,
                     PaginationOptsGroup({ onChange, options, value }) {
                       const inputLabel = React.useRef(null);
                       const [labelWidth, setLabelWidth] = React.useState(0);
@@ -200,18 +204,6 @@ function AppDashboard({userdetails}) {
               </section>
               {/* /.Left col */}
               {/* right col (We are only adding the ID to make the widgets sortable)*/}
-              <div className="col-lg-3 col-6">
-                {/* small box */}
-                <div className="small-box ">
-                  <div className="inner">
-                  <Calendar
-                  onChange={onChange}
-                  value={value}/>
-                  </div>
-                  <div className="icon">
-                  </div>
-                </div>
-              </div>
               
             </div>
             {/* /.row (main row) */}
@@ -222,4 +214,4 @@ function AppDashboard({userdetails}) {
     )
 }
 
-export default AppDashboard
+export default AppListsOfPatients
