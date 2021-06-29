@@ -12,9 +12,7 @@ const AccueilScreen = () => {
             <section className="articles text-center">
             <Articles />
             </section>
-            <section className="static text-center">
             <Static />
-            </section>
         </>
     )
 }
