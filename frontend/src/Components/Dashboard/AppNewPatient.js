@@ -32,7 +32,7 @@ function AppNewPatient({userdetails}) {
 
 
     return (
-        <div className="content-wrapper">
+        <div className="content-wrapper list-patients">
         {/* Content Header (Page header) */}
         <div className="content-header">
           <div className="container-fluid">
@@ -58,7 +58,7 @@ function AppNewPatient({userdetails}) {
               {/* Left col */}
               <section className="col-lg-12 connectedSortable">
                 {/* Custom tabs (Charts with tabs)*/}
-                <div className="card">
+                <div className="card ">
                   <div className="card-header1">
                     <h3 className="card-title">
                       <i className="fas fa-users" />

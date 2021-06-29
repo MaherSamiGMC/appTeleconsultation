@@ -25,20 +25,20 @@ const Header = () => {
 
                          userInfo && userInfo.authDoctor &&  userInfo.authDoctor.role==='doctor' ? 
                                     <>
-                                    <LinkContainer to="/Dashboard" ><Nav.Link>Dashboard</Nav.Link></LinkContainer>
+                                    <LinkContainer to="/Dashboard" ><Nav.Link style={{fontWeight:"800"}}>Dashboard</Nav.Link></LinkContainer>
                                     <Button onClick={logoutHandler} variant="warning">Déconnexion</Button>
                                     </>
                          :
                          userInfo && userInfo.authAssistant && userInfo.authAssistant.role==='Assistant' ? 
                                     <>
-                                    <LinkContainer to="/Dashboard" ><Nav.Link>Dashboard</Nav.Link></LinkContainer>
+                                    <LinkContainer to="/Dashboard" ><Nav.Link style={{fontWeight:"800"}}>Dashboard</Nav.Link></LinkContainer>
                                     <Button onClick={logoutHandler} variant="warning">Déconnexion</Button>
 
                                     </>
                          :
                          userInfo && userInfo.authPatient && userInfo.authPatient.role==='patient' ?
                                     <>
-                                    <LinkContainer to="/Portail" ><Nav.Link>Portail</Nav.Link></LinkContainer>
+                                    <LinkContainer to="/Portail" ><Nav.Link style={{fontWeight:"800"}}>Portail</Nav.Link></LinkContainer>
                                     <Button onClick={logoutHandler} variant="warning">Déconnexion</Button>
                                     </>
                          :
