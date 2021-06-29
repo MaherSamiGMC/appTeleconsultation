@@ -49,11 +49,6 @@ export const Register =(role,newRole,newuser)=> async(dispatch)=>{
             type:USER_REGISTER_SUCCESS,
             payload:data
         })
-        
-        dispatch({
-            type:USER_LOGIN_SUCCESS,
-            payload:data
-        })
         // localStorage.setItem('userInfo',JSON.stringify(data))
     } catch (error) {
         dispatch({
@@ -62,7 +57,7 @@ export const Register =(role,newRole,newuser)=> async(dispatch)=>{
     }
 }
 
-export const Getuserdetails =(role,id)=> async(dispatch,getState)=>{
+export const Getuserdetails =(role,id,auth)=> async(dispatch,getState)=>{
     try {
         dispatch({
             type:USER_DETAILS_REQUEST
@@ -72,7 +67,7 @@ export const Getuserdetails =(role,id)=> async(dispatch,getState)=>{
         const config={
             headers:{
                 'Content-Type':'application/json',
-                authorization:userInfo.authDoctor.token
+                authorization:userInfo[auth].token
             }
         }
         const {data}=await axios.get( `http://localhost:5000/api/${role}/${id}`,config)

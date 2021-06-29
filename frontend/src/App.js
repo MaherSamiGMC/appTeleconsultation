@@ -14,6 +14,7 @@ import MainDocPortal from './Screens/DocPortal/MainDocPortal';
 import ScrollToTop from "react-scroll-to-top";
 import ListOfPatients from './Screens/Dashboard/ListOfPatients';
 import NewPatient from './Screens/Dashboard/NewPatient';
+import Calendar from './Screens/Dashboard/Calendar';
 
 const App=withRouter(({location}) =>{
   return (
@@ -22,14 +23,15 @@ const App=withRouter(({location}) =>{
     <Route path='/Portail' component={MainDocPortal}/>
     <Route path='/Dashboard/list-of-patients' component={ListOfPatients}/>
     <Route path='/Dashboard/new-patient' component={NewPatient}/>
+    <Route path='/Dashboard/Calendar' component={Calendar}/>
     <Fragment>
       <ScrollToTop smooth/>
-      {location.pathname !== '/Dashboard' && location.pathname !=='/Portail'&& location.pathname !=='/Dashboard/list-of-patients' && location.pathname !=='/Dashboard/new-patient'  && <Header />}
+      {location.pathname !== '/Dashboard' && location.pathname !=='/Portail'&& location.pathname !=='/Dashboard/list-of-patients' && location.pathname !=='/Dashboard/new-patient' && location.pathname !=='/Dashboard/Calendar' && <Header />}
         <Route path='/' component={AccueilScreen} exact/>
         <Route path='/Actualités/:id' component={ArticleScreen}/>
         <Route path='/inscription' component={InscriScreen} exact/>
         <Route path='/connexion' component={LoginScreen} exact/>
-      {location.pathname !== '/Dashboard' && location.pathname !=='/Portail' && location.pathname !=='/Dashboard/list-of-patients' && location.pathname !=='/Dashboard/new-patient' && <Footer />}
+      {location.pathname !== '/Dashboard' && location.pathname !=='/Portail' && location.pathname !=='/Dashboard/list-of-patients' && location.pathname !=='/Dashboard/new-patient' && location.pathname !=='/Dashboard/Calendar' && <Footer />}
     </Fragment>
     </>
   );

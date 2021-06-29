@@ -9,9 +9,13 @@ import DateRangePicker from 'react-bootstrap-daterangepicker';
 import 'bootstrap-daterangepicker/daterangepicker.css';
 import { Register } from '../../Redux/Actions/userActions';
 import {useDispatch,useSelector} from 'react-redux'
+import Message from '../../Components/LandingPage/Message'
+import Loader from '../../Components/LandingPage/Loader'
 
 
 function AppNewPatient({userdetails}) {
+    const userRegister = useSelector(state => state.userRegister)
+    const {Loading,error,userInfo}=userRegister
     const dispatch = useDispatch()
     const [nom, setNom] = useState('')
     const [prenom, setPrenom] = useState('')
@@ -23,7 +27,7 @@ function AppNewPatient({userdetails}) {
     const submitHandler=(e)=>{
         e.preventDefault()
         const newpatient={firstName:prenom,lastName:nom,phoneNumber:tel,email,dateOfBirth:date,gender:sexe,password:"123456",affiliateDoctor:userdetails._id}
-        //DISPATSH REGISTER
+        //DISPATCH REGISTER
 
         dispatch(Register('patient','newpatient',newpatient))
 
@@ -70,7 +74,9 @@ function AppNewPatient({userdetails}) {
                   <Row >
                     <Col  md={{ size: 9, offset: 1 }}>
                         <p className="mb-5"><strong>Rensigner ci-dessous les informations du nouveau patient à ajouter : </strong></p>
-                        
+                        {error && <Message variant='danger'>"Merci de renseigner tous les champs correctement"</Message>}
+                        {!error && userInfo && <Message variant='success'>"Patient ajouté avec succès"</Message>}
+                        {Loading && <Loader/>}
                         <Form >
                             <Row>
                                 <Col>

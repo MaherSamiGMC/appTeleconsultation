@@ -21,7 +21,7 @@ const MainDocPortal = ({ history }) => {
         if (!userInfo){
             history.push('/connexion')
         } else {
-          dispatch(Getuserdetails('portail',userInfo.authPatient._id))
+          dispatch(Getuserdetails('patient',userInfo.authPatient._id,'authPatient'))
         }
     },[dispatch,userInfo,history])
 
