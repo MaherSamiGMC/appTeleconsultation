@@ -26,8 +26,27 @@ const PortailPatient = ({userdetails}) => {
                 </Container>
                 <section className="outils">
                     <Container>
+                        <Card className="rdv pb-4">
+                            <Card.Header>Vos prochains rendez-vous</Card.Header>
+                            <Row className="mx-2">
+                                <Col sm={8}>
+                                    <Card.Body>
+                                        <Card.Title>Consultation vidéo avec <strong>Nom docteur</strong></Card.Title>
+                                        <Card.Text>
+                                        With supporting text below as a natural lead-in to additional content.
+                                        </Card.Text>
+                                    </Card.Body>
+                                </Col>
+                                <Col sm={4} className="text-right">
+                                    <Card.Body>
+                                        <Card.Text className="text-left" style={{display:"inline-block"}}>29 juin 2021<br/><strong>Dans 1 heure</strong></Card.Text>
+                                    </Card.Body>
+                                </Col>
+                            </Row>
+                        </Card>
+                        
                         <Row>
-                            <Col md={4} >
+                            <Col md={4} className="box">
                                 <Card>
                                 <Card.Img variant="top" src="holder.js/100px180" />
                                     <Card.Body>
@@ -41,7 +60,7 @@ const PortailPatient = ({userdetails}) => {
                                 </Card>
                             </Col>
 
-                            <Col md={4} >
+                            <Col md={4} className="box">
                                 <Card>
                                 <Card.Img variant="top" src="holder.js/100px180" />
                                     <Card.Body>
@@ -54,7 +73,7 @@ const PortailPatient = ({userdetails}) => {
                                     </Card.Body>
                                 </Card>
                             </Col>
-                            <Col md={4} >
+                            <Col md={4} className="box">
                                 <Card>
                                 <Card.Img variant="top" src="holder.js/100px180" />
                                     <Card.Body>
