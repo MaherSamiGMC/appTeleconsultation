@@ -10,7 +10,7 @@ const Footer = () => {
                     <h3 className="mb-4">Contactez-nous</h3>
                     <p className="card-text"><i className="fas fa-building pr-3"></i>3755 Commercial, Coin avec Sunny Boulevard, Tunis</p>
                     <p className="card-text"><i className="fas fa-phone pr-3"></i><a href="tel:%28305%29+555-4446"><font>(305) 555-4446</font></a></p>
-                    <p className="card-text"><i className="far fa-envelope pr-3"></i><a href='mailto:neardedoctor@gmail.com'>neardedoctor@gmail.com</a></p>
+                    <p className="card-text"><i className="far fa-envelope pr-3"></i><a href='mailto:neardoctor@gmail.com'>neardoctor@gmail.com</a></p>
                     </Col>
                     <Col sm={6} className='same mt-4'>
                         <p className="card-text"> <a href="/" target="_blank">À propos</a></p>

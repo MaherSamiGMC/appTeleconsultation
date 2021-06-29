@@ -19,8 +19,7 @@ body {
 .contenu h2,
 .contenu h3,
 .contenu h4,
-.contenu h5,
-.card-title {
+.contenu h5 {
   color: #343443;
   font-size: 22px;
   font-family: 'robotobold';
@@ -311,11 +310,27 @@ select.form-select-lg {
 .profile .outils {
   padding: 50px 0;
 }
+
 .profile .outils .card {
-  background-color: #f4f3f2;
-  box-shadow: 0 0 4px rgb(34 34 102 / 10%);
-  border-radius: 8px 8px 64px 8px;
+  background-color: #f7f7f7;
+  /* box-shadow: 0 0 4px rgb(34 34 102 / 10%); */
+  /* border-radius: 8px 8px 64px 8px; */
   min-height: 100%;
+  box-shadow: none;
+}
+.profile .outils .rdv {
+  background: #f8f9fc;
+  border: none;
+}
+.profile .outils .rdv .card-header {
+  background: transparent;
+  font-weight: 600;
+}
+.profile .outils .rdv .card-title {
+  font-size: 16px;
+}
+.profile .outils .rdv .card-body {
+  padding: 1rem 0;
 }
 .block__picture::before {
   content: '';
@@ -352,6 +367,6 @@ select.form-select-lg {
   position: relative;
   padding-top: 30px;
   margin: 0;
-  background: #fbfbfb;
+  background: #f8f9fc;
   padding-bottom: 30px;
 }
