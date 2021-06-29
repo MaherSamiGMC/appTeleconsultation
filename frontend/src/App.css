@@ -229,6 +229,27 @@ footer.bottom .same {
 .list-patients {
   font-family: 'robotoregular';
 }
+.list-patients .MuiButton-outlinedSizeLarge {
+  padding: 6px 10px;
+}
+.MuiTableCell-body {
+  color: #3c4b64 !important;
+}
+.list-patients .table thead th {
+  border-bottom: none;
+}
+.list-patients .table > :not(caption) > * > * {
+  padding: 1.2rem 0.5rem;
+}
+.list-patients .table thead th:last-child {
+  text-align: center;
+}
+.list-patients .table tr td:last-child {
+  text-align: center;
+}
+.list-patients .table > tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
 .sidebar-dash .nav-item .nav-link {
   font-size: 16px;
   font-family: 'robotoregular';
