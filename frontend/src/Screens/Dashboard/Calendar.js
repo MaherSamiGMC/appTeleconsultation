@@ -2,11 +2,11 @@ import React,{useState,useEffect} from 'react'
 import {useDispatch,useSelector} from 'react-redux'
 import AppSidebar from '../../Components/Dashboard/AppSidebar'
 import AppHeader from '../../Components/Dashboard/AppHeader'
-import AppListsOfPatients from '../../Components/Dashboard/AppListsOfPatients'
+import AppCalendar from '../../Components/Dashboard/AppCalendar'
 import AppFooter from '../../Components/Dashboard/AppFooter'
 import { Getuserdetails } from '../../Redux/Actions/userActions'
 
-const ListOfPatients = ({history}) => {
+const Calendar = ({history}) => {
   const dispatch = useDispatch()
   const userLogin = useSelector(state => state.userLogin)
   const {userInfo}=userLogin
@@ -26,7 +26,7 @@ const ListOfPatients = ({history}) => {
         <div  className="wrapper" > 
                 <AppHeader/>
                 <AppSidebar userdetails={user.getDoctor} />
-                <AppListsOfPatients userdetails={user.getDoctor} />
+                <AppCalendar userdetails={user.getDoctor} />
                 <AppFooter/>
 
         </div>
@@ -34,4 +34,4 @@ const ListOfPatients = ({history}) => {
   )
 }
 
-export default ListOfPatients
+export default Calendar

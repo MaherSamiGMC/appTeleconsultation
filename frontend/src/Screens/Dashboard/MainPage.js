@@ -17,7 +17,7 @@ const MainPage = ({history}) => {
     if (!userInfo){
         history.push('/connexion')
     } else {
-      dispatch(Getuserdetails('doctor',userInfo.authDoctor._id))
+      dispatch(Getuserdetails('doctor',userInfo.authDoctor._id,'authDoctor'))
     }
 },[dispatch,userInfo,history])
 
