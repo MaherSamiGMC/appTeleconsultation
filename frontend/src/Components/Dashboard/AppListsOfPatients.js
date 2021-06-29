@@ -74,7 +74,7 @@ function AppListsOfPatients({userdetails}) {
     );
   }
     return (
-        <div className="content-wrapper">
+        <div className="content-wrapper list-patients">
         {/* Content Header (Page header) */}
         <div className="content-header">
           <div className="container-fluid">

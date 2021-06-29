@@ -35,6 +35,7 @@ header.top .navbar-light .navbar-nav .btn {
   background: #ff3a65;
   border-radius: 0.25rem;
   color: #fff;
+  border-color: transparent;
 }
 .adbtn {
   background: #ff3a65;
@@ -222,4 +223,114 @@ footer.bottom .same {
   background-image: url('https://image.freepik.com/vecteurs-libre/concept-medecin-ligne_52683-37585.jpg');
   /* background-size: cover; */
   background-position: center center;
+}
+
+/**** style page Dashbord ****/
+.list-patients {
+  font-family: 'robotoregular';
+}
+.sidebar-dash .nav-item .nav-link {
+  font-size: 16px;
+  font-family: 'robotoregular';
+}
+.sidebar-dash .nav-sidebar .nav-item .nav-icon {
+  color: #0147ff;
+}
+.list-patients .content-header h1 {
+  font-family: 'robotomedium';
+  color: #0147ff;
+}
+.list-patients .card {
+  padding: 20px;
+}
+.sidebar-dash .nav-header,
+.sidebar-dash .user-panel .info {
+  font-weight: 600;
+}
+
+.list-patients .card .card-body {
+  padding-left: 0;
+  padding-right: 0;
+}
+select.form-select-lg {
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+}
+/**** style page Dashbord ****/
+
+/**** style page Portail ****/
+.profile {
+}
+.block__picture {
+  background-color: white;
+  margin: 13px;
+  overflow: hidden;
+}
+.block_family_member {
+  position: relative;
+  transform: translateY(-5px) scale(1);
+  transition: transform 0.3s;
+}
+.block_family_member .block_dropzone {
+  background-color: white;
+  position: relative;
+  z-index: 1;
+  border: 2px solid #353342;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: inline-block;
+  margin: 0 15px;
+}
+.profile .outils {
+  padding: 50px 0;
+}
+.profile .outils .card {
+  background-color: #f4f3f2;
+  box-shadow: 0 0 4px rgb(34 34 102 / 10%);
+  border-radius: 8px 8px 64px 8px;
+  min-height: 100%;
+}
+.block__picture::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: #1bbab9;
+}
+.block_name_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.block_dropzone .form-control {
+  position: absolute;
+  inset: 0px;
+  opacity: 1e-5;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+.block_name_container img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #fff;
+}
+.profile .block__picture {
+  position: relative;
+  padding-top: 30px;
+  margin: 0;
+  background: #fbfbfb;
+  padding-bottom: 30px;
 }

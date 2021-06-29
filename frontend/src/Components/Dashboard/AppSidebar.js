@@ -17,7 +17,7 @@ import {
           {/* <span className="brand-text font-weight-light"> - </span> */}
         </a>
         {/* Sidebar */}
-        <div className="sidebar">
+        <div className="sidebar sidebar-dash">
           {/* Sidebar user panel (optional) */}
           <div className="user-panel mt-3 pb-3 mb-3 d-flex">
             <div className="image">

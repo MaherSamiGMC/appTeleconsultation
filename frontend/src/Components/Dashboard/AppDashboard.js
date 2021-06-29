@@ -43,7 +43,7 @@ function AppDashboard({userdetails}) {
     `
   }
     return (
-        <div className="content-wrapper">
+        <div className="content-wrapper list-patients">
         {/* Content Header (Page header) */}
         <div className="content-header">
           <div className="container-fluid">
@@ -200,9 +200,9 @@ function AppDashboard({userdetails}) {
               </section>
               {/* /.Left col */}
               {/* right col (We are only adding the ID to make the widgets sortable)*/}
-              <div className="col-lg-3 col-6">
+              <div className="col-lg-4 col-6">
                 {/* small box */}
-                <div className="small-box ">
+                <div>
                   <div className="inner">
                   <Calendar
                   onChange={onChange}
