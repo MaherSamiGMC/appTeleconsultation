@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react'
 import {useDispatch,useSelector} from 'react-redux'
-import { Container } from 'react-bootstrap'
 import Loader from '../../Components/LandingPage/Loader'
 import Header from '../../Components/LandingPage/Header'
 import Footer from '../../Components/LandingPage/Footer'
@@ -29,8 +28,8 @@ const MainDocPortal = ({ history }) => {
         <>  
             <Header />
             {Loader}
-            {/* <PortailPatient userdetails={user.getDoctor} /> */}
-            <PortailPatient/>
+            <PortailPatient userdetails={user.getPatient} />
+            {/* <PortailPatient/> */}
             <Footer />
         </>
     )

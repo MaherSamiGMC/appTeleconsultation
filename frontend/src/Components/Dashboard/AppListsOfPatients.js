@@ -33,7 +33,7 @@ function AppListsOfPatients({userdetails}) {
     { title: 'Date de naissance', prop: 'dateOfBirth' },
     { title: 'Email', prop: 'email'} ,
     { title: 'Afficher le profil', prop: '_id',
-      cell: row => <Link to={`Dashboard/list-of-patients/${row._id}`} > <i class="fas fa-external-link-alt"></i></Link>} ,
+      cell: row => <Link to={`Dashboard/list-of-patients/${row._id}`} target="_blank" className="link-profil"> <i class="fas fa-external-link-alt"></i> Voir Profil</Link>} ,
   ];
 
   const customLabels = {
