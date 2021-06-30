@@ -21,6 +21,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 
 function AppCalendar({userdetails}) {
+
     const [appointments, setAppointments] = useState([  {
         title: 'Website Re-Design Plan',
         startDate: new Date(2020, 5, 25, 9, 35),
@@ -36,7 +37,6 @@ function AppCalendar({userdetails}) {
 
           }
           if (changed) {
-              console.log('aaa')
             setAppointments(appointments.map(appointment => (
               changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment)))
 
@@ -46,7 +46,57 @@ function AppCalendar({userdetails}) {
           }
           console.log({ added, changed, deleted })
           return { appointments};
+    }
+    const BasicLayout = ({ onFieldChange, appointmentData, ...restProps }) => {
+      // if (userdetails){
+        const ListOfpatients=userdetails.patients.map(el=>{return{id:el._id,text:`${el.firstName} ${el.lastName}`}})
+      // }
+      const onCustomFieldChange = (nextValue) => {
+        onFieldChange({ patient: nextValue });
+      };
+    
+      return (
+        <AppointmentForm.BasicLayout
+          appointmentData={appointmentData}
+          onFieldChange={onFieldChange}
+          {...restProps}
+        >
+          <AppointmentForm.Label
+            text="Patient :"
+            type="title"
+          />
+          <AppointmentForm.Select
+            value={appointmentData.patient}
+            onValueChange={onCustomFieldChange}
+            availableOptions={[...ListOfpatients]}
+          />
+        </AppointmentForm.BasicLayout>
+      );
+    };
 
+    const appointmentContent=({data, ...restProps})=>{
+      console.log("data :",userdetails)
+      return (
+        <Appointments.AppointmentContent
+        data={data}
+        {...restProps}
+        >
+        <div >
+            <div >
+              {userdetails.patients.filter(el=>el._id===data.patient)[0].firstName} <br/>
+              {userdetails.patients.filter(el=>el._id===data.patient)[0].lastName}
+
+            </div>
+            {/* <div className={classNames(classes.text, classes.content)}>
+              {`Priority: ${priority}`}
+            </div>
+            <div className={classNames(classes.text, classes.content)}>
+              {`Location: ${data.location}`}
+            </div> */}
+        </div>
+        </Appointments.AppointmentContent>
+
+      )
     }
     const useStyles = makeStyles(theme => ({
         todayCell: {
@@ -155,12 +205,19 @@ function AppCalendar({userdetails}) {
                         timeTableCellComponent={TimeTableCell}
                         dayScaleCellComponent={DayScaleCell}
                     />
-                    <Appointments />
+                    <Appointments 
+                      appointmentContentComponent={appointmentContent}
+                    />
                     <AppointmentTooltip
                         showCloseButton
                         showOpenButton
+                        showDeleteButton
                     />
                     <AppointmentForm
+                        messages={{detailsLabel:'Objet de la téléconsultation :',
+                        titleLabel:'le sujet de la téléconsultation ',
+                        moreInformationLabel:"Plus d'informations sur la session de téléconsultation"}}
+                        basicLayoutComponent={BasicLayout}
 
                     />
                     <Toolbar />
