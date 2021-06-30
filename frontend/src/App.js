@@ -15,6 +15,9 @@ import ScrollToTop from "react-scroll-to-top";
 import ListOfPatients from './Screens/Dashboard/ListOfPatients';
 import NewPatient from './Screens/Dashboard/NewPatient';
 import Calendar from './Screens/Dashboard/Calendar';
+import DossierMedScreen from './Screens/DocPortal/DossierMedScreen';
+import InformationPas from './Screens/DocPortal/InformationPas';
+import ContactDoc from './Screens/DocPortal/ContactDoc';
 
 const App=withRouter(({location}) =>{
   return (
@@ -31,6 +34,10 @@ const App=withRouter(({location}) =>{
         <Route path='/Actualités/:id' component={ArticleScreen}/>
         <Route path='/inscription' component={InscriScreen} exact/>
         <Route path='/connexion' component={LoginScreen} exact/>
+        <Route path='/dossierMed' component={DossierMedScreen} exact/>
+        <Route path='/informationPas' component={InformationPas} exact/>
+        <Route path='/contactDoc' component={ContactDoc} exact/>
+
       {location.pathname !== '/Dashboard' && location.pathname !=='/Portail' && location.pathname !=='/Dashboard/list-of-patients' && location.pathname !=='/Dashboard/new-patient' && location.pathname !=='/Dashboard/Calendar' && <Footer />}
     </Fragment>
     </>

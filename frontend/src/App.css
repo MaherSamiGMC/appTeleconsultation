@@ -228,6 +228,20 @@ footer.bottom .same {
 .list-patients {
   font-family: 'robotoregular';
 }
+.link-profil {
+  padding: 8px 10px;
+  background: #ff3a65;
+  color: #fff;
+  border-radius: 5px;
+  transition: all 0.4s;
+}
+.link-profil:hover {
+  background: #0a58ca;
+  color: #fff;
+}
+.link-profil i {
+  margin-right: 5px;
+}
 .list-patients .MuiButton-outlinedSizeLarge {
   padding: 6px 10px;
 }
@@ -317,6 +331,14 @@ select.form-select-lg {
   /* border-radius: 8px 8px 64px 8px; */
   min-height: 100%;
   box-shadow: none;
+}
+.profile .outils .box .card {
+  box-shadow: 0 0 4px rgb(34 34 102 / 10%);
+  border: none;
+  background: #f7f7f7;
+}
+.profile .outils .box .card .card-title {
+  color: #0147ff;
 }
 .profile .outils .rdv {
   background: #f8f9fc;
