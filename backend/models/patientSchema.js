@@ -2,6 +2,14 @@ const mongoose=require('mongoose')
 const {Schema}=mongoose
 const bcrypt = require('bcryptjs');
 
+const appointmentSchema=new Schema({
+    allDay:Boolean,
+    endDate:{ type: Date},
+    startDate:{ type: Date},
+    notes:String,
+    title:String
+})
+
 const patientSchema=new Schema({
     affiliateDoctor:{
         type:mongoose.Schema.Types.ObjectId,
@@ -39,7 +47,8 @@ const patientSchema=new Schema({
         type:String,
         required:true
     },
-    role: { type: String, default: 'patient' }
+    role: { type: String, default: 'patient' },
+    appointments:[appointmentSchema]
 },
 { timestamps: true })
 
