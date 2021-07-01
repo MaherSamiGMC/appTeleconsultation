@@ -1,12 +1,10 @@
 import React from 'react'
 import {Row, Col} from 'react-bootstrap'
-import CardPatient from './CardPatient'
-import { Accordion } from 'react-bootstrap'
 
 const AppTelmess = ({userdetails}) => {
     return (
-        <div className="content-wrapper list-patients">
-            <h1>{ `Bonjour ${userdetails.firstName}`}</h1>
+        <div className="content-wrapper list-patients pt-5 pl-2">
+            <h4 >{ `Bonjour ${userdetails&& userdetails.firstName}`}</h4>
             {/* <Row>
                 <Accordion defaultActiveKey="0">
                     {userdetails.patients.map( x => 
