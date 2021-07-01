@@ -3,7 +3,10 @@ body {
   color: #343443;
   font-family: 'open_sansregular';
 }
-
+body:not(.layout-fixed) .main-sidebar {
+  min-height: 100vh !important;
+  bottom: 0;
+}
 /**** style page accueil ****/
 
 .contenu h1 {
@@ -67,9 +70,20 @@ a {
 .slider {
   position: relative;
 }
+.slider::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url('ImagesBG/afterslide.png');
+  min-height: 150px;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+}
 .slider .slogan {
   position: absolute;
-  bottom: 24vh;
+  bottom: 30vh;
   left: 0;
   font-size: 40px;
   text-transform: uppercase;
@@ -100,11 +114,45 @@ a {
 .articles .card {
   background-color: #f4f3f2;
   box-shadow: 0 0 4px rgb(34 34 102 / 10%);
-  border-radius: 8px 8px 64px 8px;
+  border-radius: none;
   min-height: 100%;
+
+  margin: 0;
+}
+.articles .card a .effect-apollo {
+  background: #1f1f1f;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.6s;
+}
+.articles .card a .effect-apollo::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  content: '';
+  -webkit-transition: -webkit-transform 0.6s;
+  transition: transform 0.6s;
+  -webkit-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg)
+    translate3d(0, -100%, 0);
+  transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg)
+    translate3d(0, -110%, 0);
+}
+.articles .card a:hover .effect-apollo::before {
+  -webkit-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg)
+    translate3d(0, 100%, 0);
+  transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg)
+    translate3d(0, 100%, 0);
+}
+.articles .card a:hover .effect-apollo .card-img-top {
+  opacity: 0.6;
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
 }
 .articles .card a .card-body {
-  color: #282835;
+  color: #1f1f1f;
 }
 .articles .card a .card-body .card-title {
   color: #0147ff;
@@ -249,7 +297,13 @@ footer.bottom .same {
   color: #3c4b64 !important;
 }
 .list-patients .table thead th {
-  border-bottom: none;
+  border: none;
+}
+.table > thead {
+  background: #f1f5f7;
+}
+.list-patients .table td {
+  border: none;
 }
 .list-patients .table > :not(caption) > * > * {
   padding: 1.2rem 0.5rem;
@@ -260,8 +314,11 @@ footer.bottom .same {
 .list-patients .table tr td:last-child {
   text-align: center;
 }
-.list-patients .table > tbody tr:nth-child(odd) {
+/* .list-patients .table > tbody tr:nth-child(odd) {
   background: #f5f5f5;
+} */
+.list-patients .table > tbody tr td {
+  border-bottom: 1px solid #f1f5f7;
 }
 .sidebar-dash .nav-item .nav-link {
   font-size: 16px;
@@ -269,6 +326,20 @@ footer.bottom .same {
 }
 .sidebar-dash .nav-sidebar .nav-item .nav-icon {
   color: #0147ff;
+}
+.list-patients .small-box .inner-in {
+  background: #fff;
+  border-radius: 0.25rem;
+}
+.list-patients .content .bg-warning {
+  background-color: #ff3a65 !important;
+  color: #fff !important;
+}
+.list-patients .content .bg-success {
+  background: #0147ff !important;
+}
+.list-patients .content .small-box-footer {
+  color: #fff !important;
 }
 .list-patients .content-header h1 {
   font-family: 'robotomedium';
@@ -285,6 +356,14 @@ footer.bottom .same {
 .list-patients .card .card-body {
   padding-left: 0;
   padding-right: 0;
+}
+.list-patients .MuiInputBase-root .MuiOutlinedInput-input {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.list-patients .MuiInputBase-root .MuiIconButton-root {
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 select.form-select-lg {
   padding: 0.375rem 0.75rem;
@@ -392,3 +471,22 @@ select.form-select-lg {
   background: #f8f9fc;
   padding-bottom: 30px;
 }
+
+/******** Calender ********/
+.MuiInputBase-root {
+  background: transparent !important;
+}
+.MuiInputBase-root .MuiInputBase-input::placeholder {
+  font-weight: normal !important;
+  font-size: 16px !important;
+}
+.MuiInputBase-root .MuiFilledInput-inputHiddenLabel {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+.memo-titleLabel-513 {
+  font-weight: normal !important;
+  color: #0147ff;
+  font-size: 16px !important;
+}
+/******** Calender ********/
