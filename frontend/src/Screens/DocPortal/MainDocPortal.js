@@ -29,7 +29,6 @@ const MainDocPortal = ({ history }) => {
             <Header />
             {Loader}
             <PortailPatient userdetails={user.getPatient} />
-            {/* <PortailPatient/> */}
             <Footer />
         </>
     )

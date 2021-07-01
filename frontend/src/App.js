@@ -17,12 +17,6 @@ import NewPatient from './Screens/Dashboard/NewPatient';
 import Calendar from './Screens/Dashboard/Calendar';
 import TeleConsultation from './Screens/Dashboard/TeleConsultation'
 
-/*** Link to File patient***/
-
-import DossierMedScreen from './Screens/DocPortal/DossierMedScreen';
-import InformationPas from './Screens/DocPortal/InformationPas';
-import ContactDoc from './Screens/DocPortal/ContactDoc';
-
 const App=withRouter(({location}) =>{
   return (
     <>
@@ -39,9 +33,7 @@ const App=withRouter(({location}) =>{
         <Route path='/Actualités/:id' component={ArticleScreen}/>
         <Route path='/inscription' component={InscriScreen} exact/>
         <Route path='/connexion' component={LoginScreen} exact/>
-        <Route path='/dossierMed' component={DossierMedScreen} exact/>
-        <Route path='/informationPas' component={InformationPas} exact/>
-        <Route path='/contactDoc' component={ContactDoc} exact/>
+        
 
       {location.pathname !== '/Dashboard' && location.pathname !=='/Portail' && location.pathname !=='/Dashboard/list-of-patients' && location.pathname !=='/Dashboard/new-patient' && location.pathname !=='/Dashboard/Calendar' && location.pathname !=='/Dashboard/Message' && <Footer />}
     </Fragment>

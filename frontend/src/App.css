@@ -387,11 +387,14 @@ select.form-select-lg {
   transform: translateY(-5px) scale(1);
   transition: transform 0.3s;
 }
+.block_family_member .row {
+  align-items: center;
+}
 .block_family_member .block_dropzone {
   background-color: white;
   position: relative;
   z-index: 1;
-  border: 2px solid #353342;
+  border: 1px solid #dee2e6;
   width: 100px;
   height: 100px;
   cursor: pointer;
@@ -403,8 +406,11 @@ select.form-select-lg {
 .profile .outils {
   padding: 50px 0;
 }
-
 .profile .outils .card {
+  border-radius: 0;
+  box-shadow: none;
+}
+.profile .outils .card .rdv {
   background-color: #f7f7f7;
   /* box-shadow: 0 0 4px rgb(34 34 102 / 10%); */
   /* border-radius: 8px 8px 64px 8px; */
@@ -423,6 +429,9 @@ select.form-select-lg {
   background: #f8f9fc;
   border: none;
 }
+.profile .outils .card {
+  min-height: 100%;
+}
 .profile .outils .rdv .card-header {
   background: transparent;
   font-weight: 600;
@@ -433,6 +442,7 @@ select.form-select-lg {
 .profile .outils .rdv .card-body {
   padding: 1rem 0;
 }
+
 .block__picture::before {
   content: '';
   position: absolute;
@@ -440,7 +450,7 @@ select.form-select-lg {
   top: 0;
   left: 0;
   right: 0;
-  height: 80px;
+  height: 20px;
   background-color: #1bbab9;
 }
 .block_name_container {
