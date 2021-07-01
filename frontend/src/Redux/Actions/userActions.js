@@ -49,7 +49,12 @@ export const Register =(role,newRole,newuser)=> async(dispatch)=>{
             type:USER_REGISTER_SUCCESS,
             payload:data
         })
-        // localStorage.setItem('userInfo',JSON.stringify(data))
+        if (role==='doctor') {
+            const {data}=await axios.post(`http://localhost:5000/api/${role}/login`,{email:newuser.email,password:newuser.password},config)
+            dispatch({type:USER_LOGIN_SUCCESS,payload:data})
+            localStorage.setItem('userInfo',JSON.stringify(data))
+        }
+
     } catch (error) {
         dispatch({
             type:USER_REGISTER_FAIL,

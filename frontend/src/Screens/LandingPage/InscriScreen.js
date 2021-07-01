@@ -3,12 +3,12 @@ import { Container, Col, Row, Form, Button } from 'react-bootstrap'
 // import {Link} from 'react-router-dom'
 
 import {useDispatch,useSelector} from 'react-redux'
-import { Register } from '../../Redux/Actions/userActions'
+import { Login, Register } from '../../Redux/Actions/userActions'
 import Message from '../../Components/LandingPage/Message'
 import Loader from '../../Components/LandingPage/Loader'
 
 
-const InscriScreen = () => {
+const InscriScreen = ({history}) => {
 
     const [nom, setNom] = useState('')
     const [prenom, setPrenom] = useState('')
@@ -28,7 +28,7 @@ const InscriScreen = () => {
 
     useEffect(()=>{
         if (userInfo){
-            // history.push('/Dashboard')
+            history.push('/Dashboard')
         }
     },[userInfo])
 
@@ -36,10 +36,10 @@ const InscriScreen = () => {
         e.preventDefault()
         //DISPATSH REGISTER
         if(password !== confirmpassword){
-            setMessage('mot passe inccorret')
+            setMessage('Les mots de passe que vous avez entrés ne sont pas identiques.')
         }
         else{
-            dispatch(Register(nom,prenom,email,special,tel,adresse,password))
+            dispatch(Register('doctor','newDoctor',{lastName:nom,firstName:prenom,email:email,medicalSpeciality:special,phoneNumber:tel,address:adresse,password:password}))
         }
         
     }
