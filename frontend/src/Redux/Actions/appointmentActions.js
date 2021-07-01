@@ -1,4 +1,5 @@
-import { APPOINTMENT_ADD_REQUEST, APPOINTMENT_ADD_SUCCESS } from "../Constants/appointmentsConstants"
+import { APPOINTMENT_ADD_FAIL, APPOINTMENT_ADD_REQUEST, APPOINTMENT_ADD_SUCCESS } from "../Constants/appointmentsConstants"
+import axios from 'axios'
 
 
 export const addAppointment=(id,appointment)=>async(dispatch)=>{
@@ -11,8 +12,8 @@ export const addAppointment=(id,appointment)=>async(dispatch)=>{
             type:APPOINTMENT_ADD_SUCCESS,
             payload:data
         })
-    } catch {
-        dispatch({type:USER_DETAILS_FAIL,
+    } catch (error) {
+        dispatch({type:APPOINTMENT_ADD_FAIL,
             payload:error.response && error.response.data.message ? error.response.data.message: error.message})
     }
 }
