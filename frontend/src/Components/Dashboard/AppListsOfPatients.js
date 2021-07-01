@@ -51,7 +51,7 @@ function AppListsOfPatients({userdetails}) {
       <TextField
         fullWidth
         id="outlined-filter"
-        label="Search text"
+        label= ""
         className={classes.textField}
         value={filterText}
         onChange={onChangeFilter}
@@ -100,7 +100,7 @@ function AppListsOfPatients({userdetails}) {
               <div className="col-lg-12 col-6">
                 {/* small box */}
                 <div className="small-box ">
-                  <div className="inner">
+                  <div className="inner inner-in">
                     <h3>{userdetails && userdetails.patients.length}</h3>
                     <p>Nombre de patients</p>
                   </div>

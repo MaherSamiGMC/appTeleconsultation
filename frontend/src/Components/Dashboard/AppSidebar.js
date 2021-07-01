@@ -64,7 +64,7 @@ import {
                 </Link>
               </li>
               <li className="nav-item">
-                <a href="pages/calendar.html" className="nav-link">
+                <a href="/Dashboard/Teleconsultation" className="nav-link">
                   <i className="nav-icon fas fa-video" />
                   <p>
                      Téléconsultation
@@ -73,7 +73,7 @@ import {
                 </a>
               </li>
               <li className="nav-item">
-                <a href="pages/calendar.html" className="nav-link">
+                <a href="/Dashboard/Message" className="nav-link">
                   <i className="nav-icon far fa-file-alt" />
                   <p>
                      Consultation textuelle
