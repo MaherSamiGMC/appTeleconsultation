@@ -16,22 +16,27 @@ import {
   } from '@devexpress/dx-react-scheduler-material-ui';
 import { makeStyles } from '@material-ui/core/styles';
 import { fade } from '@material-ui/core/styles/colorManipulator';
+import { addAppointment } from '../../Redux/Actions/appointmentActions';
 
 function AppCalendar({userdetails}) {
+
     const dispatch = useDispatch()
     const state = useSelector(state => state)
     const [appointments, setAppointments] = useState([  {
         title: 'Website Re-Design Plan',
-        startDate: new Date(2020, 5, 25, 9, 35),
-        endDate: new Date(2020, 5, 25, 11, 30),
+        startDate: new Date(2021, 5, 25, 9, 35),
+        endDate: new Date(2021, 5, 25, 11, 30),
         id: 0,
         location: 'Room 1',
       }])
 
+        // const listOfappointments= userdetails.patients.map(el=>el.appointments).flat()
+      
     const commitChanges=({ added, changed, deleted })=>{
         if (added) {
-            const startingAddedId = appointments.length > 0 ? appointments[appointments.length - 1].id + 1 : 0;
-            setAppointments([...appointments, { id: startingAddedId, ...added }])
+            // const startingAddedId = appointments.length > 0 ? appointments[appointments.length - 1].id + 1 : 0;
+            // setAppointments([...appointments, { id: startingAddedId, ...added }])
+            dispatch(addAppointment(added.patient,added))
 
           }
           if (changed) {
@@ -73,7 +78,7 @@ function AppCalendar({userdetails}) {
     };
 
     const appointmentContent=({data, ...restProps})=>{
-      console.log("data :",userdetails)
+      console.log("data :",data)
       return (
         <Appointments.AppointmentContent
         data={data}
@@ -81,8 +86,8 @@ function AppCalendar({userdetails}) {
         >
         <div >
             <div >
-              {userdetails.patients.filter(el=>el._id===data.patient)[0].firstName} <br/>
-              {userdetails.patients.filter(el=>el._id===data.patient)[0].lastName}
+              {userdetails && userdetails.patients.filter(el=>el._id===data.patient)[0].firstName} <br/>
+              {userdetails && userdetails.patients.filter(el=>el._id===data.patient)[0].lastName}
 
             </div>
             {/* <div className={classNames(classes.text, classes.content)}>
@@ -188,7 +193,7 @@ function AppCalendar({userdetails}) {
                
                   <Paper>
                     <Scheduler
-                    data={appointments}
+                    data={userdetails && userdetails.patients.map(el=>el.appointments).flat()}
                     locale="fr-FR"
                     height={660}
                     >

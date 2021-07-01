@@ -7,7 +7,9 @@ const appointmentSchema=new Schema({
     endDate:{ type: Date},
     startDate:{ type: Date},
     notes:String,
-    title:String
+    title:String,
+    patient:String,
+
 })
 
 const patientSchema=new Schema({

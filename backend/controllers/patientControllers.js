@@ -68,5 +68,11 @@ const addNewAppointment=asyncHandler((async(req,res)=>{
     res.json({message:'appointent added successfully',updatePatient})
 }))
 
+const updateAppointment=asyncHandler((async(req,res)=>{
+    console.log(req.body.patient)
+    const updatePatient=await patient.findByIdAndUpdate({"_id":req.params.id,"appointments._id":req.body._id},{ $set: {"appointments":req.body}})
+    res.json({message:'appointent added successfully',updatePatient})
+}))
 
-module.exports={getPatients,addNewPatient,updatePatient,deletePatient,getPatient,authPatient,addNewAppointment}
+
+module.exports={getPatients,addNewPatient,updatePatient,deletePatient,getPatient,authPatient,addNewAppointment,updateAppointment}
