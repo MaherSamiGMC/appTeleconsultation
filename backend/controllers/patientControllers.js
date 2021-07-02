@@ -63,16 +63,21 @@ const authPatient=asyncHandler((async(req,res)=>{
 }))
 
 const addNewAppointment=asyncHandler((async(req,res)=>{
-    console.log(req.body.patient)
+    // console.log(req.body.patient)
     const updatePatient=await patient.findByIdAndUpdate(req.params.id,{ $push: {"appointments":req.body}})
-    res.json({message:'appointent added successfully',updatePatient})
+    res.json({message:'appointment added successfully',updatePatient})
 }))
 
 const updateAppointment=asyncHandler((async(req,res)=>{
-    console.log(req.body.patient)
+    // console.log(req.body)
     const updatePatient=await patient.findByIdAndUpdate({"_id":req.params.id,"appointments._id":req.body._id},{ $set: {"appointments":req.body}})
-    res.json({message:'appointent added successfully',updatePatient})
+    res.json({message:'appointment updated successfully',updatePatient})
 }))
 
+const deleteAppointment=asyncHandler((async(req,res)=>{
+    // console.log(req.body)
+    const deletedPatient=await patient.findByIdAndUpdate({"_id":req.params.id},{ $pull: {"appointments":{"id":req.body.deleted}}})
+    res.json({message:'appointment deleted successfully',deletedPatient})
+}))
 
-module.exports={getPatients,addNewPatient,updatePatient,deletePatient,getPatient,authPatient,addNewAppointment,updateAppointment}
+module.exports={getPatients,addNewPatient,updatePatient,deletePatient,getPatient,authPatient,addNewAppointment,updateAppointment,deleteAppointment}

@@ -16,39 +16,36 @@ import {
   } from '@devexpress/dx-react-scheduler-material-ui';
 import { makeStyles } from '@material-ui/core/styles';
 import { fade } from '@material-ui/core/styles/colorManipulator';
-import { addAppointment } from '../../Redux/Actions/appointmentActions';
+import { addAppointment, deleteAppointment, updateAppointment } from '../../Redux/Actions/appointmentActions';
 
 function AppCalendar({userdetails}) {
 
     const dispatch = useDispatch()
-    const state = useSelector(state => state)
-    const [appointments, setAppointments] = useState([  {
-        title: 'Website Re-Design Plan',
-        startDate: new Date(2021, 5, 25, 9, 35),
-        endDate: new Date(2021, 5, 25, 11, 30),
-        id: 0,
-        location: 'Room 1',
-      }])
-
-        // const listOfappointments= userdetails.patients.map(el=>el.appointments).flat()
+    // const state = useSelector(state =>state.userdetails && state.userdetails.patients && state.userdetails.patients.map(el=>el.appointments).flat())
+    // console.log('state:',state)
+        const listOfappointments=userdetails && userdetails.patients.map(el=>el.appointments).flat()
       
     const commitChanges=({ added, changed, deleted })=>{
         if (added) {
             // const startingAddedId = appointments.length > 0 ? appointments[appointments.length - 1].id + 1 : 0;
             // setAppointments([...appointments, { id: startingAddedId, ...added }])
-            dispatch(addAppointment(added.patient,added))
+            dispatch(addAppointment(added.patient,{...added,id:Date.now()}))
 
           }
           if (changed) {
-            setAppointments(appointments.map(appointment => (
-              changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment)))
+            // setAppointments(appointments.map(appointment => (
+            //   changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment)))
+            const updatedAppoitment={...listOfappointments.filter(el=>el.id===Object.keys(changed)[0])[0],...changed[Object.keys(changed)]}
+            console.log('updatedAppoitment : ',updatedAppoitment)
+            dispatch(updateAppointment(updatedAppoitment.patient,updatedAppoitment))
 
           }
           if (deleted !== undefined) {
-            setAppointments(appointments.filter(appointment => appointment.id !== deleted))
+            // setAppointments(appointments.filter(appointment => appointment.id !== deleted))
+            const deleteappointment=listOfappointments.filter(el=>el.id===deleted)[0]
+            dispatch(deleteAppointment(deleteappointment.patient,{deleted}))
           }
           console.log({ added, changed, deleted })
-          return { appointments};
     }
     const BasicLayout = ({ onFieldChange, appointmentData, ...restProps }) => {
       // if (userdetails){
@@ -78,7 +75,7 @@ function AppCalendar({userdetails}) {
     };
 
     const appointmentContent=({data, ...restProps})=>{
-      console.log("data :",data)
+      // console.log("data :",data)
       return (
         <Appointments.AppointmentContent
         data={data}
@@ -191,6 +188,7 @@ function AppCalendar({userdetails}) {
                   </div>{/* /.card-header */}
                   <div className="card-body">
                
+                  {userdetails &&
                   <Paper>
                     <Scheduler
                     data={userdetails && userdetails.patients.map(el=>el.appointments).flat()}
@@ -227,7 +225,7 @@ function AppCalendar({userdetails}) {
                     <TodayButton messages={{today:'Aujourdhui'}} />
                     <DateNavigator />
                     </Scheduler>
-                </Paper>
+                </Paper>}
                   </div>{/* /.card-body */}
                 </div>
 
