@@ -9,6 +9,7 @@ const appointmentSchema=new Schema({
     notes:String,
     title:String,
     patient:String,
+    id:String
 
 })
 

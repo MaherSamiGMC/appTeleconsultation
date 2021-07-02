@@ -2,7 +2,7 @@ import {createStore,combineReducers,applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import { userDetailsReducer, userLoginReducer, userRegisterReducer, userUpdateProfileReducer } from './Reducers/userReducers'
-import { appointmentAddReducer } from './Reducers/appointmentReducers'
+import { appointmentAddReducer, appointmentDeleteReducer, appointmentUpdateReducer } from './Reducers/appointmentReducers'
 
 
 
@@ -13,7 +13,9 @@ const reducer=combineReducers({
     userDetails:userDetailsReducer,
     userUpdateProfile:userUpdateProfileReducer,
     //appointmens
-    appointmentAdd:appointmentAddReducer
+    appointmentAdd:appointmentAddReducer,
+    appointmentUpdate:appointmentUpdateReducer,
+    appointmentDelete:appointmentDeleteReducer
 })
 
 const userInfoFromStorage=localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null

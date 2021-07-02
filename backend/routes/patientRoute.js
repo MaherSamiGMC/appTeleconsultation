@@ -1,6 +1,6 @@
 const express=require('express')
 const router=express.Router()
-const {getPatients,addNewPatient,updatePatient,deletePatient,getPatient,authPatient, addNewAppointment, updateAppointment} = require('../controllers/patientControllers')
+const {getPatients,addNewPatient,updatePatient,deletePatient,getPatient,authPatient, addNewAppointment, updateAppointment, deleteAppointment} = require('../controllers/patientControllers')
 const protectPatient=require('../middlewares/authPatMiddleware')
 // URL : /api/patient/ 
 // GET Method 
@@ -30,6 +30,10 @@ router.put('/:id/newAppointment',addNewAppointment)
 // PUT Method 
 // Private route
 router.put('/:id/updateAppointment',updateAppointment)
+// URL : /api/patient/:id/deleteAppointment
+// PUT Method 
+// Private route
+router.put('/:id/deleteAppointment',deleteAppointment)
 // URL : /api/patient/login
 // POST Method 
 // public route
