@@ -30,7 +30,7 @@ function AppCalendar({userdetails}) {
             // const startingAddedId = appointments.length > 0 ? appointments[appointments.length - 1].id + 1 : 0;
             // setAppointments([...appointments, { id: startingAddedId, ...added }])
             dispatch(addAppointment(added.patient,{...added,id:Date.now()}))
-
+            window.location.reload()
           }
           if (changed) {
             // setAppointments(appointments.map(appointment => (
@@ -38,12 +38,14 @@ function AppCalendar({userdetails}) {
             const updatedAppoitment={...listOfappointments.filter(el=>el.id===Object.keys(changed)[0])[0],...changed[Object.keys(changed)]}
             console.log('updatedAppoitment : ',updatedAppoitment)
             dispatch(updateAppointment(updatedAppoitment.patient,updatedAppoitment))
-
+            window.location.reload()
           }
           if (deleted !== undefined) {
             // setAppointments(appointments.filter(appointment => appointment.id !== deleted))
             const deleteappointment=listOfappointments.filter(el=>el.id===deleted)[0]
             dispatch(deleteAppointment(deleteappointment.patient,{deleted}))
+            window.location.reload()
+
           }
           console.log({ added, changed, deleted })
     }
@@ -57,6 +59,7 @@ function AppCalendar({userdetails}) {
     
       return (
         <AppointmentForm.BasicLayout
+          readOnly={true}
           appointmentData={appointmentData}
           onFieldChange={onFieldChange}
           {...restProps}
@@ -217,9 +220,17 @@ function AppCalendar({userdetails}) {
                     <AppointmentForm
                         messages={{detailsLabel:'Objet de la téléconsultation :',
                         titleLabel:'le sujet de la téléconsultation ',
-                        moreInformationLabel:"Plus d'informations sur la session de téléconsultation"}}
+                        moreInformationLabel:"Plus d'informations sur la session de téléconsultation",
+                        commitCommand:"Enregistrer",
+                        allDayLabel:'journée entière',
+                        repeatLabel:'Répéter'}}
                         basicLayoutComponent={BasicLayout}
+                        booleanEditorComponent={
 
+                          props => {
+                            return <AppointmentForm.BooleanEditor {...props} readOnly />
+                        }
+                      }
                     />
                     <Toolbar />
                     <TodayButton messages={{today:'Aujourdhui'}} />
