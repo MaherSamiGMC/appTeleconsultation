@@ -2,11 +2,13 @@ import React from 'react'
 import { useState } from 'react';
 import { Col, Card, Container,Button, Row, Form} from 'react-bootstrap'
 import {useDispatch,useSelector} from 'react-redux'
+import Loader from '../LandingPage/Loader'
 
 const PortailPatient = ({userdetails}) => {
     const dispatch = useDispatch()
     const [email, setEmail] = useState('')
     const[message,setMessage] = useState('')
+    const[image,setImage] = useState('')
     const submitHandler=(e)=>{
         e.preventDefault()
         
@@ -15,6 +17,7 @@ const PortailPatient = ({userdetails}) => {
 
     return (
         <>
+        { userdetails == null ? <Loader /> : 
             <div className="profile mt-5">
             <Container>
                 <div className="block__picture mb-5 px-3">
@@ -24,22 +27,22 @@ const PortailPatient = ({userdetails}) => {
                                 <Col sm={3} className="block_dropzone" aria-disabled="false" style={{position:'relative'}}>
                                 <div className="block_name_container" data-testid="select-profile-patient">
                                 <div className="block_name_initial"><span className="block_name_initial__text">
-                                    {userdetails && userdetails.firstName.charAt(0).toUpperCase()}{userdetails && userdetails.lastName.charAt(0).toUpperCase()}</span></div>
+                                    { userdetails.firstName.charAt(0).toUpperCase()}{ userdetails.lastName.charAt(0).toUpperCase()}</span></div>
                                 </div>
                                 <input className="form-control" accept="image/jpeg, image/jpeg, image/gif, image/png, image/tif, image/tiff, image/bmp, image/webp , image/hdr, image/cr2" type="file" multiple="" autocomplete="off"/>
                             </Col>
                                 <Col sm={9}>
                                 <h4 class="block_name">
-                                {userdetails && userdetails.firstName}<br/>{userdetails && userdetails.lastName}
+                                { userdetails.firstName.toUpperCase()}<br/>{ userdetails.lastName.toUpperCase()}
                                 </h4>
                             </Col>
                             </Row>
                         </Col>
                         
                         <Col sm={6}>
-                            <p className="mb-1"><i class="fas fa-phone-square-alt"></i> {userdetails && userdetails.phoneNumber}</p>
-                            <p className="mb-1"><i class="fas fa-envelope-square"></i> {userdetails && userdetails.email}</p>
-                            <p>date de naissance : {userdetails && userdetails.dateOfBirth}</p>
+                            <p className="mb-1 line-icon" style={{display:'flex'}}><i class="fas fa-phone-square-alt"></i> { userdetails.phoneNumber}</p>
+                            <p className="mb-1 line-icon" style={{display:'flex'}}><i class="fas fa-envelope-square"></i> { userdetails.email}</p>
+                            <p className="mb-1 line-icon" style={{display:'flex'}}><i class="fas fa-calendar-alt"></i>{ userdetails.dateOfBirth}</p>
                         </Col>
                     </Row>
 
@@ -66,7 +69,7 @@ const PortailPatient = ({userdetails}) => {
                             </Row>
                         </Card>
                         
-                        <Card className="rdv pb-4">
+                        <Card className="rdv pb-4 message-doctor">
                             <Card.Header className="py-4 text-uppercase">Dossier médical</Card.Header>
                             <Row className="mx-2">
                                 <Card.Body>
@@ -74,22 +77,28 @@ const PortailPatient = ({userdetails}) => {
                                         Partagez des documents médicaux
                                     </Card.Text>
                                 </Card.Body>
+                                <Card.Body>
+                                    <Form>
+                                    <Form.Group controlId="exampleForm.ControlTextarea1">
+                                        <input type="file" class="form-control" id="customFile"  value={image} onChange={(e)=>setImage(e.target.value)}/>
+                                    </Form.Group>
+                                        <Button variant="primary" type="submit"  onClick={submitHandler}>Envoyer</Button>
+                                    </Form>
+                                </Card.Body>
                             </Row>
                         </Card>
 
-                        <Card className="rdv pb-4">
+                        <Card className="rdv pb-4 message-doctor">
                             <Row className="mx-2">
                                 <Card.Header className="py-4 text-uppercase">contacter Votre Docteur</Card.Header>
-
                                 <Card.Body>
                                     <Card.Text>
                                         <Form>
-                                        
-                                        <Form.Group controlId="formBasicNom">
-                                            <Form.Control 
-                                            value={email} onChange={(e)=>setEmail(e.target.value)}
-                                            type="email" placeholder="Email du patient" required/>
-                                        </Form.Group>
+                                            <Form.Group controlId="formBasicNom">
+                                                <Form.Control 
+                                                value={email} onChange={(e)=>setEmail(e.target.value)}
+                                                type="email" placeholder="Votre Email" required/>
+                                            </Form.Group>
                                             <Form.Group controlId="exampleForm.ControlTextarea1">
                                                 
                                                 <Form.Control as="textarea" rows={3} placeholder="Message"
@@ -104,6 +113,7 @@ const PortailPatient = ({userdetails}) => {
                     </Container>
                 </section>
             </div>
+        }
         </>
     )
 }

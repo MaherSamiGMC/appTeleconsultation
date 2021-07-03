@@ -212,7 +212,9 @@ function AppDashboard({userdetails}) {
                   </div>
                 </div>
               </div>
-              
+              <div className="col-lg-4 col-6">
+                yosri
+              </div>
             </div>
             {/* /.row (main row) */}
           </div>{/* /.container-fluid */}

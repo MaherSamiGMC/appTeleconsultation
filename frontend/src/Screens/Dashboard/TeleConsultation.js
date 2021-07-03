@@ -10,25 +10,25 @@ import { Getuserdetails } from '../../Redux/Actions/userActions'
 
 const TeleConsultation = ({history}) => {
     const dispatch = useDispatch()
-  const userLogin = useSelector(state => state.userLogin)
-  const {userInfo}=userLogin
-  const userDetails = useSelector(state => state.userDetails)
-  const {Loading,error,user}=userDetails
-  useEffect(()=>{
+    const userLogin = useSelector(state => state.userLogin)
+    const {userInfo}=userLogin
+    const userDetails = useSelector(state => state.userDetails)
+    const {Loading,error,user}=userDetails
+    useEffect(()=>{
 
-    if (!userInfo){
-        history.push('/connexion')
-    } else {
-      dispatch(Getuserdetails('doctor',userInfo.authDoctor._id,"authDoctor"))
-    }
-},[dispatch,userInfo,history])
+      if (!userInfo){
+          history.push('/connexion')
+      } else {
+        dispatch(Getuserdetails('doctor',userInfo.authDoctor._id,"authDoctor"))
+      }
+  },[dispatch,userInfo,history])
 
 
     return (
         <div className="skin-blue sidebar-mini">
         <div  className="wrapper" > 
                 <AppHeader/>
-                <AppSidebar/>
+                <AppSidebar userdetails={user.getDoctor}/>
                 <AppTelmess userdetails={user.getDoctor}/>
                 <AppFooter/>
         </div>
