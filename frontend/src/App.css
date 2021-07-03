@@ -387,6 +387,14 @@ select.form-select-lg {
   transform: translateY(-5px) scale(1);
   transition: transform 0.3s;
 }
+.profile .block__picture p.line-icon .fas {
+  font-size: 25px;
+  color: #0147ff;
+  margin-right: 10px;
+}
+.profile .block__picture p.line-icon {
+  align-items: center;
+}
 .block_family_member .row {
   align-items: center;
 }
@@ -476,12 +484,25 @@ select.form-select-lg {
 }
 .profile .block__picture {
   position: relative;
-  padding-top: 30px;
+  padding-top: 50px;
   margin: 0;
   background: #f8f9fc;
   padding-bottom: 30px;
 }
-
+.profile .block__picture .row {
+  align-items: center;
+}
+.message-doctor form .btn {
+  background: #ff3a65;
+  border-radius: 0.25rem;
+  color: #fff;
+  border-color: transparent;
+}
+.message-doctor form .btn:hover,
+.message-doctor form .btn:focus {
+  color: #fff;
+  background: #0147ff;
+}
 /******** Calender ********/
 .MuiInputBase-root {
   background: transparent !important;
@@ -500,3 +521,41 @@ select.form-select-lg {
   font-size: 16px !important;
 }
 /******** Calender ********/
+
+/******** Consultation textuelle ********/
+
+.consultation-textuelle .user-panel img {
+  width: 80px;
+  height: auto;
+}
+.consultation-textuelle .toggle-arrow {
+  border: none;
+  background: transparent;
+  transition: all 0.4s;
+}
+
+.consultation-textuelle .toggle-arrow i {
+  color: #ff3a65;
+  transition: all 0.4s;
+}
+.consultation-textuelle .user-panel .info {
+  padding: 0;
+}
+.consultation-textuelle .user-panel .info p {
+  margin: 0;
+}
+.consultation-textuelle .user-panel .image {
+  padding: 0;
+}
+.consultation-textuelle .btn {
+  background: #ff3a65;
+  border-radius: 0.25rem;
+  color: #fff;
+  border-color: transparent;
+}
+.consultation-textuelle .btn:hover,
+.consultation-textuelle .btn:focus {
+  color: #fff;
+  background: #0147ff;
+}
+/******** Consultation textuelle ********/
