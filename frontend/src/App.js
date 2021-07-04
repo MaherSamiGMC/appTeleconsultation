@@ -16,6 +16,7 @@ import ListOfPatients from './Screens/Dashboard/ListOfPatients';
 import NewPatient from './Screens/Dashboard/NewPatient';
 import Calendar from './Screens/Dashboard/Calendar';
 import TeleConsultation from './Screens/Dashboard/TeleConsultation'
+import VideoConsultation from './Screens/Dashboard/VideoConsultation';
 
 const App=withRouter(({location}) =>{
   return (
@@ -26,16 +27,17 @@ const App=withRouter(({location}) =>{
     <Route path='/Dashboard/new-patient' component={NewPatient}/>
     <Route path='/Dashboard/Calendar' component={Calendar}/>
     <Route path='/Dashboard/Message' component={TeleConsultation}/>
+    <Route path='/Dashboard/Teleconsultation' component={VideoConsultation} />
     <Fragment>
       <ScrollToTop smooth/>
-      {location.pathname !== '/Dashboard' && location.pathname !=='/Portail'&& location.pathname !=='/Dashboard/list-of-patients' && location.pathname !=='/Dashboard/new-patient' && location.pathname !=='/Dashboard/Calendar' && location.pathname !=='/Dashboard/Message' &&<Header />}
+      {location.pathname !== '/Dashboard' && location.pathname !=='/Portail'&& location.pathname !=='/Dashboard/list-of-patients' && location.pathname !=='/Dashboard/new-patient' && location.pathname !=='/Dashboard/Calendar' && location.pathname !=='/Dashboard/Message' && location.pathname !=='/Dashboard/Teleconsultation' && <Header />}
         <Route path='/' component={AccueilScreen} exact/>
         <Route path='/Actualités/:id' component={ArticleScreen}/>
         <Route path='/inscription' component={InscriScreen} exact/>
         <Route path='/connexion' component={LoginScreen} exact/>
         
 
-      {location.pathname !== '/Dashboard' && location.pathname !=='/Portail' && location.pathname !=='/Dashboard/list-of-patients' && location.pathname !=='/Dashboard/new-patient' && location.pathname !=='/Dashboard/Calendar' && location.pathname !=='/Dashboard/Message' && <Footer />}
+      {location.pathname !== '/Dashboard' && location.pathname !=='/Portail' && location.pathname !=='/Dashboard/list-of-patients' && location.pathname !=='/Dashboard/new-patient' && location.pathname !=='/Dashboard/Calendar' && location.pathname !=='/Dashboard/Message' && location.pathname !=='/Dashboard/Teleconsultation' && <Footer />}
     </Fragment>
     </>
   );

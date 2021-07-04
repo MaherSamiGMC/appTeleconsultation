@@ -21,6 +21,7 @@ const TeleConsultation = ({history}) => {
       } else {
         dispatch(Getuserdetails('doctor',userInfo.authDoctor._id,"authDoctor"))
       }
+      window.location.reload()
   },[dispatch,userInfo,history])
 
 
