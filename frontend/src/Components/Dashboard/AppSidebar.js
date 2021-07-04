@@ -64,13 +64,13 @@ import {
                 </Link>
               </li>
               <li className="nav-item">
-                <a href="/Dashboard/Teleconsultation" className="nav-link">
+                <Link to="/Dashboard/Teleconsultation" className="nav-link">
                   <i className="nav-icon fas fa-video" />
                   <p>
                      Téléconsultation
                     {/* <span className="badge badge-info right">2</span> */}
                   </p>
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <a href="/Dashboard/Message" className="nav-link">

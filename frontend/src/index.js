@@ -6,14 +6,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
 import { BrowserRouter as Router} from 'react-router-dom'
-
+import {ContextProvider} from './SocketContext'
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
-    <App />
-    </Router>
-  </Provider>,
+  <ContextProvider>
+    <Provider store={store}>
+      <Router>
+      <App />
+      </Router>
+    </Provider>
+  </ContextProvider>
+,
   document.getElementById('root')
 );
 
