@@ -18,7 +18,7 @@ const ContextProvider = ({ children }) => {
     const connectionRef = useRef();
   
     useEffect(() => {
-        if (window.location.pathname==='/Dashboard/Teleconsultation'){
+        if (window.location.pathname==='/Dashboard/Teleconsultation' || window.location.pathname==='/Portail' ){
             navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             .then((currentStream) => {
               setStream(currentStream);
@@ -33,8 +33,12 @@ const ContextProvider = ({ children }) => {
         }
 
     }, []);
-  
+
+
     const answerCall = () => {
+
+
+
       setCallAccepted(true);
   
       const peer = new Peer({ initiator: false, trickle: false, stream });
@@ -50,6 +54,7 @@ const ContextProvider = ({ children }) => {
       peer.signal(call.signal);
   
       connectionRef.current = peer;
+
     };
   
     const callUser = (id) => {
