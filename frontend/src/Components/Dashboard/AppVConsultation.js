@@ -78,7 +78,7 @@ function AppVConsultation({userdetails}) {
                         {' '}session de téléconsultation :
                     </h3>
                     <div className={classes.wrapper}>
-                    <VideoPlayer/>
+                    <VideoPlayer caller={true}/>
                     <Options>
                         <Notifications/>
                     </Options>
