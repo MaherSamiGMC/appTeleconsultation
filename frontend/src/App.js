@@ -18,7 +18,7 @@ import Calendar from './Screens/Dashboard/Calendar';
 import TeleConsultation from './Screens/Dashboard/TeleConsultation'
 import VideoConsultation from './Screens/Dashboard/VideoConsultation';
 import NewAssistant from './Screens/Dashboard/NewAssistant';
-
+import UpdateAssistant from './Screens/Dashboard/UpdateAssistant';
 
 const App=withRouter(({location}) =>{
   return (
@@ -31,16 +31,17 @@ const App=withRouter(({location}) =>{
     <Route path='/Dashboard/Message' component={TeleConsultation}/>
     <Route path='/Dashboard/Teleconsultation' component={VideoConsultation} />
     <Route path='/Dashboard/new-assistant' component={NewAssistant} />
+    <Route path='/Dashboard/modif-assistant' component={UpdateAssistant} />
     <Fragment>
       <ScrollToTop smooth/>
-      {location.pathname !== '/Dashboard' && location.pathname !=='/Portail'&& location.pathname !=='/Dashboard/list-of-patients' && location.pathname !=='/Dashboard/new-patient' && location.pathname !=='/Dashboard/Calendar' && location.pathname !=='/Dashboard/Message' && location.pathname !=='/Dashboard/Teleconsultation' && location.pathname !=='/Dashboard/new-assistant' && <Header />}
+      {location.pathname !== '/Dashboard' && location.pathname !=='/Portail'&& location.pathname !=='/Dashboard/list-of-patients' && location.pathname !=='/Dashboard/new-patient' && location.pathname !=='/Dashboard/Calendar' && location.pathname !=='/Dashboard/Message' && location.pathname !=='/Dashboard/Teleconsultation' && location.pathname !=='/Dashboard/new-assistant' && location.pathname !=='/Dashboard/modif-assistant' && <Header />}
         <Route path='/' component={AccueilScreen} exact/>
         <Route path='/Actualités/:id' component={ArticleScreen}/>
         <Route path='/inscription' component={InscriScreen} exact/>
         <Route path='/connexion' component={LoginScreen} exact/>
         
 
-      {location.pathname !== '/Dashboard' && location.pathname !=='/Portail' && location.pathname !=='/Dashboard/list-of-patients' && location.pathname !=='/Dashboard/new-patient' && location.pathname !=='/Dashboard/Calendar' && location.pathname !=='/Dashboard/Message' && location.pathname !=='/Dashboard/Teleconsultation' && location.pathname !=='/Dashboard/new-assistant' && <Footer />}
+      {location.pathname !== '/Dashboard' && location.pathname !=='/Portail' && location.pathname !=='/Dashboard/list-of-patients' && location.pathname !=='/Dashboard/new-patient' && location.pathname !=='/Dashboard/Calendar' && location.pathname !=='/Dashboard/Message' && location.pathname !=='/Dashboard/Teleconsultation' && location.pathname !=='/Dashboard/new-assistant' && location.pathname !=='/Dashboard/modif-assistant' && <Footer />}
     </Fragment>
     </>
   );

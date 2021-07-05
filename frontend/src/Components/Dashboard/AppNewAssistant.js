@@ -42,12 +42,12 @@ function AppNewAssistant({userdetails}) {
           <div className="container-fluid">
             <div className="row mb-2">
               <div className="col-sm-6">
-                <h1 className="m-0">Liste des patients :</h1>
+                <h1 className="m-0">Nouveau Assistant :</h1>
               </div>{/* /.col */}
               <div className="col-sm-6">
                 <ol className="breadcrumb float-sm-right">
                   <li className="breadcrumb-item"><a href="/">Accueil</a></li>
-                  <li className="breadcrumb-item active">Liste des patients</li>
+                  <li className="breadcrumb-item active">Nouveau Assistant</li>
                 </ol>
               </div>{/* /.col */}
             </div>{/* /.row */}

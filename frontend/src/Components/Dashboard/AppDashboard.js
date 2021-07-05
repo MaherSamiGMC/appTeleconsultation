@@ -5,6 +5,7 @@ import Calendar from 'react-calendar';
 import { useState } from 'react';
 import 'react-calendar/dist/Calendar.css';
 
+import Loader from '../LandingPage/Loader'
 import {
   Table,
   TableBody,
@@ -43,6 +44,11 @@ function AppDashboard({userdetails}) {
     `
   }
     return (
+      <>
+      { userdetails == null ? 
+        <Loader /> :
+
+
         <div className="content-wrapper list-patients">
         {/* Content Header (Page header) */}
         <div className="content-header">
@@ -70,7 +76,7 @@ function AppDashboard({userdetails}) {
                 {/* small box */}
                 <div className="small-box bg-info">
                   <div className="inner">
-                    <h3>{userdetails && userdetails.patients.length}</h3>
+                    <h3>{userdetails.patients.length}</h3>
                     <p>Nombre de patients</p>
                   </div>
                   <div className="icon">
@@ -85,7 +91,10 @@ function AppDashboard({userdetails}) {
                 <div className="small-box bg-success">
                   <div className="inner">
                     <h5>L'assistant(e) :</h5>
-                    <p><br/> {userdetails && userdetails.assistant && `${ userdetails.assistant.firstName} ${ userdetails.assistant.lastName}`}</p>
+                    <p><br/> {`${ userdetails.assistant.firstName} ${ userdetails.assistant.lastName}`}</p>
+
+                   
+
                   </div>
                   <div className="icon">
                     <i className="fas fa-user-clock" />
@@ -124,7 +133,7 @@ function AppDashboard({userdetails}) {
 
                   </div>{/* /.card-header */}
                   <div className="card-body">
-                  {userdetails && 
+                  
                   <Datatable 
                   tableHeaders={header} 
                   tableBody={userdetails.patients}  
@@ -193,7 +202,7 @@ function AppDashboard({userdetails}) {
                       );
                     }
                   }}
-                  />}
+                  />
                   </div>{/* /.card-body */}
                 </div>
 
@@ -221,6 +230,8 @@ function AppDashboard({userdetails}) {
         </section>
         {/* /.content */}
       </div>
+      }
+      </>
     )
 }
 

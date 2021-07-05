@@ -91,7 +91,7 @@ import {
                 </a>
               </li>
               <li className="nav-item">
-                <a href="iframe.html" className="nav-link">
+                <a href="/Dashboard/modif-assistant" className="nav-link">
                   <i className="nav-icon fas fa-users-cog" />
                   <p>Modifier données de l'assistant</p>
                 </a>
