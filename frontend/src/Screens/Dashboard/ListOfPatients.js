@@ -22,7 +22,7 @@ const ListOfPatients = ({history}) => {
 },[dispatch,userInfo,history])
 
   return (
-      <div className="skin-blue sidebar-mini">
+    <div className="skin-blue sidebar-mini">
         <div  className="wrapper" > 
                 <AppHeader/>
                 <AppSidebar userdetails={user.getDoctor} />
