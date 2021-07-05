@@ -85,7 +85,7 @@ import {
 
               <li className="nav-header">ASSISTANT</li>
               <li className="nav-item">
-                <a href="iframe.html" className="nav-link">
+                <a href="/Dashboard/new-assistant" className="nav-link">
                   <i className="nav-icon fas fa-user-plus" />
                   <p>Ajouter un assistant</p>
                 </a>
