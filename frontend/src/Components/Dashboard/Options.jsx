@@ -37,11 +37,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Options = ({ children }) => {
+const Options = ({ children,thecaller }) => {
   const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } = useContext(SocketContext);
   const [idToCall, setIdToCall] = useState('');
   const classes = useStyles();
-
   return (
     <Container className={classes.container}>
       <Paper elevation={10} className={classes.paper}>
@@ -57,14 +56,14 @@ const Options = ({ children }) => {
               </CopyToClipboard>
             </Grid> */}
             <Grid item xs={12} md={12} className={classes.padding}>
-              <Typography gutterBottom variant="h6">Demarrer la téléconsultation </Typography>
-              <TextField label="ID to call" value={idToCall} onChange={(e) => setIdToCall(e.target.value)} fullWidth />
+              <Typography gutterBottom variant="h6">Session de téléconsultation </Typography>
+              {thecaller && <TextField label="ID to call" value={idToCall} onChange={(e) => setIdToCall(e.target.value)} fullWidth />}
               {callAccepted && !callEnded ? (
                 <Button variant="contained" color="secondary" startIcon={<PhoneDisabled fontSize="large" />} fullWidth onClick={leaveCall} className={classes.margin}>
                   Terminer l'appel
                 </Button>
-              ) : (
-                <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => callUser(idToCall)} className={classes.margin}>
+              ) : ( 
+                thecaller && <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => callUser(idToCall)} className={classes.margin}>
                   Commencer l'appel
                 </Button>
               )}

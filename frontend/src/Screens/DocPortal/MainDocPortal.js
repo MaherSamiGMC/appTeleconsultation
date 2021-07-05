@@ -59,8 +59,8 @@ const MainDocPortal = ({ history }) => {
             {Loader}
             <div className={classes.wrapper}>
             <PortailPatient userdetails={user.getPatient} />
-            <VideoPlayer caller={false}/>
-                    <Options>
+            <VideoPlayer nameId={user && user.getPatient && `${user.getPatient.firstName} ${user.getPatient.lastName}`} />
+                    <Options thecaller={false}>
                         <Notifications/>
                     </Options>
             </div>
