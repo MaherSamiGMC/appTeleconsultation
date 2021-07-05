@@ -5,10 +5,39 @@ import Header from '../../Components/LandingPage/Header'
 import Footer from '../../Components/LandingPage/Footer'
 import { Getuserdetails } from '../../Redux/Actions/userActions'
 import PortailPatient from '../../Components/DocPortal/PortailPatient'
+import VideoPlayer from '../../Components/Dashboard/VideoPlayer';
+import Options from '../../Components/Dashboard/Options';
+import Notifications from '../../Components/Dashboard/Notifications';
+import {makeStyles} from '@material-ui/core/styles'
 
+const useStyles = makeStyles((theme) => ({
+    appBar: {
+      borderRadius: 15,
+      margin: '30px 100px',
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '600px',
+      border: '2px solid black',
+  
+      [theme.breakpoints.down('xs')]: {
+        width: '90%',
+      },
+    },
+    image: {
+      marginLeft: '15px',
+    },
+    wrapper: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      width: '100%',
+    },
+  }));
 
 const MainDocPortal = ({ history }) => {
-
+    const classes=useStyles()
     const dispatch = useDispatch()
     const userLogin = useSelector(state => state.userLogin)
     const {userInfo}=userLogin
@@ -28,7 +57,13 @@ const MainDocPortal = ({ history }) => {
         <>  
             <Header />
             {Loader}
+            <div className={classes.wrapper}>
             <PortailPatient userdetails={user.getPatient} />
+            <VideoPlayer caller={false}/>
+                    <Options>
+                        <Notifications/>
+                    </Options>
+            </div>
             <Footer />
         </>
     )
