@@ -83,21 +83,21 @@ function AppNewAssistant({userdetails}) {
                                     <Form.Group controlId="formBasicNom">
                                         <Form.Control 
                                         value={nom} onChange={(e)=>setNom(e.target.value)}
-                                        type="text" placeholder="Nom du assistant" required/>
+                                        type="text" placeholder="Nom l'assistant" required/>
                                     </Form.Group>
                                 </Col>
                                 <Col>
                                     <Form.Group controlId="formBasicPrenom">
                                         <Form.Control 
                                         value={prenom} onChange={(e)=>setPrenom(e.target.value)}
-                                        type="text" placeholder="Prenom du assistant" />
+                                        type="text" placeholder="Prenom de l'assistant" />
                                     </Form.Group>
                                 </Col>
                             </Row>
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Control 
                                 value={email} onChange={(e)=>setEmail(e.target.value)}
-                                type="email" placeholder="Adresse Email" />
+                                type="email" placeholder="Adresse Email de l'assistant" />
                             </Form.Group>
                             <Row>
                                 <Col>
@@ -118,12 +118,12 @@ function AppNewAssistant({userdetails}) {
                                     <Form.Group controlId="formBasicTel">
                                         <Form.Control 
                                         value={tel} onChange={(e)=>setTel(e.target.value)}
-                                        type="text" placeholder="Votre Télephone" />
+                                        type="text" placeholder="Numero Télephonique" />
                                     </Form.Group>
                                 </Col>
                                 <Col>
                                 <select  onChange={(e)=>setSexe(e.target.value)} className="form-select form-select-lg mb-2" value={sexe} aria-label="Default select example">
-                                                <option selected>Le sexe du patient : </option>
+                                                <option selected>Assistant : </option>
                                                 <option  value="Homme">Homme</option>
                                                 <option  value="Femme">Femme</option>
  

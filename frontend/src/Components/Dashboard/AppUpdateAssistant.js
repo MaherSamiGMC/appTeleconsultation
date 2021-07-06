@@ -15,15 +15,16 @@ import Loader from '../../Components/LandingPage/Loader'
 
 const AppUpdateAssistant = ({userdetails}) => {
 
+    const dispatch = useDispatch()
     const userRegister = useSelector(state => state.userRegister)
     const {Loading,error,userInfo}=userRegister
-    const dispatch = useDispatch()
-    const [nom, setNom] = useState('')
-    const [prenom, setPrenom] = useState('')
-    const [email, setEmail] = useState('')
-    const [date, setDate] = useState('')
-    const [tel, setTel] = useState('')
-    const [sexe, setSexe] = useState('')
+
+    const [nom, setNom] = useState(userdetails && userdetails.assistant.lastName)
+    const [prenom, setPrenom] = useState(userdetails && userdetails.assistant.firstName)
+    const [email, setEmail] = useState(userdetails && userdetails.assistant.email)
+    const [date, setDate] = useState(userdetails && userdetails.assistant.dateOfBirth)
+    const [tel, setTel] = useState(userdetails && userdetails.assistant.phoneNumber)
+    const [sexe, setSexe] = useState(userdetails && userdetails.assistant.gender)
 
     const submitHandler=(e)=>{
         e.preventDefault()
@@ -44,12 +45,12 @@ const AppUpdateAssistant = ({userdetails}) => {
                         <div className="container-fluid">
                             <div className="row mb-2">
                                 <div className="col-sm-6">
-                                    <h1 className="m-0">Modifier l'assistant :</h1>
+                                    <h1 className="m-0">Modifier les données de l'assistant :</h1>
                                 </div>{/* /.col */}
                                 <div className="col-sm-6">
                                     <ol className="breadcrumb float-sm-right">
                                     <li className="breadcrumb-item"><a href="/">Accueil</a></li>
-                                    <li className="breadcrumb-item active">Modifier Assistant</li>
+                                    <li className="breadcrumb-item active">Modifier les données de l'assistant</li>
                                     </ol>
                                 </div>{/* /.col */}
                             </div>{/* /.row */}
@@ -81,21 +82,21 @@ const AppUpdateAssistant = ({userdetails}) => {
                                                         <Col>
                                                             <Form.Group controlId="formBasicNom">
                                                                 <Form.Control 
-                                                                value={userdetails.assistant.firstName} onChange={(e)=>setNom(e.target.value)}
-                                                                type="text" placeholder="Nom du assistant" required/>
+                                                                value={nom} onChange={(e)=>setNom(e.target.value)}
+                                                                type="text" placeholder="Nom de l'assistant" required/>
                                                             </Form.Group>
                                                         </Col>
                                                         <Col>
                                                             <Form.Group controlId="formBasicPrenom">
                                                                 <Form.Control 
-                                                                value={userdetails.assistant.lastName} onChange={(e)=>setPrenom(e.target.value)}
-                                                                type="text" placeholder="Prenom du assistant" />
+                                                                value={prenom} onChange={(e)=>setPrenom(e.target.value)}
+                                                                type="text" placeholder="Prenom de l'assistant" />
                                                             </Form.Group>
                                                         </Col>
                                                     </Row>
                                                     <Form.Group controlId="formBasicEmail">
                                                         <Form.Control 
-                                                        value={userdetails.assistant.email} onChange={(e)=>setEmail(e.target.value)}
+                                                        value={email} onChange={(e)=>setEmail(e.target.value)}
                                                         type="email" placeholder="Adresse Email" />
                                                     </Form.Group>
                                                     <Row>
@@ -108,7 +109,7 @@ const AppUpdateAssistant = ({userdetails}) => {
                                                             minYear: 1901,
                                                             }}
                                                             onApply={(e)=>setDate(e.target.value)}
-                                                            value={userdetails.assistant.dateOfBirth}
+                                                            value={date}
                                                         >
                                                             <input type="text"  className="form-control col-9" />
                                                         </DateRangePicker>
@@ -116,13 +117,13 @@ const AppUpdateAssistant = ({userdetails}) => {
                                                         <Col>
                                                             <Form.Group controlId="formBasicTel">
                                                                 <Form.Control 
-                                                                value={userdetails.assistant.phoneNumber} onChange={(e)=>setTel(e.target.value)}
-                                                                type="text" placeholder="Votre Télephone" />
+                                                                value={tel} onChange={(e)=>setTel(e.target.value)}
+                                                                type="text" placeholder="Numero télephonique" />
                                                             </Form.Group>
                                                         </Col>
                                                         <Col>
-                                                        <select  onChange={(e)=>setSexe(e.target.value)} className="form-select form-select-lg mb-2" value={userdetails.assistant.gender} aria-label="Default select example">
-                                                                        <option selected>Le sexe du patient : </option>
+                                                        <select  onChange={(e)=>setSexe(e.target.value)} className="form-select form-select-lg mb-2" value={sexe} aria-label="Default select example">
+                                                                        <option selected>Assistant : </option>
                                                                         <option  value="Homme">Homme</option>
                                                                         <option  value="Femme">Femme</option>
                         
@@ -132,7 +133,7 @@ const AppUpdateAssistant = ({userdetails}) => {
 
                                                     
                                                     <Button variant="primary" type="submit" className="adbtn" onClick={submitHandler}>
-                                                        Ajouter un assistant
+                                                        Modifier les données de l'assistant
                                                     </Button>
                                                 </Form>
 
