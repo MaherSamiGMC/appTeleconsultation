@@ -9,6 +9,7 @@ import VideoPlayer from './VideoPlayer';
 import Options from './Options';
 import Notifications from './Notifications';
 import {makeStyles} from '@material-ui/core/styles'
+import { CAlert } from '@coreui/react';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -39,8 +40,8 @@ const useStyles = makeStyles((theme) => ({
 function AppVConsultation({userdetails}) {
 
     const classes=useStyles()
-
-
+    const VCallAppointments=userdetails && userdetails.patients.map(el=>el.socketId===undefined ? {...el,socketId:''} : el).filter(el=>el.socketId.length>3)
+    console.log(VCallAppointments)
     return (
         <div className="content-wrapper list-patients">
         {/* Content Header (Page header) */}
@@ -83,7 +84,18 @@ function AppVConsultation({userdetails}) {
                         <Notifications/>
                     </Options>
                     </div>     
+                    <div> {
+                      userdetails && VCallAppointments.length===0 ? 
+                      <CAlert color="primary">Aucun patient en ligne actuellement </CAlert>
+                      :
+                      <>
+                      <CAlert color="success">Patient(s) actuellement en ligne :</CAlert>
+                      {
+                        userdetails && VCallAppointments.map(el=><p>{el.firstName} {el.lastName} iddentifiant de l'appel : {el.socketId}</p>)
+                      }
+                      </>
 
+                      }</div>
                   </div>{/* /.card-header */}
                   <div className="card-body">
                   

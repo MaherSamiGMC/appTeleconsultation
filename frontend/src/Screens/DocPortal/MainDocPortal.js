@@ -1,14 +1,17 @@
-import React,{useState,useEffect} from 'react'
+import React,{useContext,useEffect} from 'react'
 import {useDispatch,useSelector} from 'react-redux'
 import Loader from '../../Components/LandingPage/Loader'
 import Header from '../../Components/LandingPage/Header'
 import Footer from '../../Components/LandingPage/Footer'
-import { Getuserdetails } from '../../Redux/Actions/userActions'
+import { Getuserdetails, updateUserProfile } from '../../Redux/Actions/userActions'
 import PortailPatient from '../../Components/DocPortal/PortailPatient'
 import VideoPlayer from '../../Components/Dashboard/VideoPlayer';
 import Options from '../../Components/Dashboard/Options';
 import Notifications from '../../Components/Dashboard/Notifications';
 import {makeStyles} from '@material-ui/core/styles'
+import { SocketContext } from '../../SocketContext';
+import { Button } from '@material-ui/core';
+import { Phone } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -43,13 +46,14 @@ const MainDocPortal = ({ history }) => {
     const {userInfo}=userLogin
     const userDetails = useSelector(state => state.userDetails)
     const {Loading,error,user}=userDetails
+    const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } = useContext(SocketContext);
 
     useEffect(()=>{
-
         if (!userInfo){
             history.push('/connexion')
         } else {
           dispatch(Getuserdetails('patient',userInfo.authPatient._id,'authPatient'))
+        
         }
     },[dispatch,userInfo,history])
 
@@ -60,7 +64,14 @@ const MainDocPortal = ({ history }) => {
             <div className={classes.wrapper}>
             <PortailPatient userdetails={user.getPatient} />
             <VideoPlayer nameId={user && user.getPatient && `${user.getPatient.firstName} ${user.getPatient.lastName}`} />
-                    <Options thecaller={false}>
+                    <Options thecaller={false} userInfo={userInfo}>
+                        <Button variant="contained" 
+                                color="#00e676" 
+                                startIcon={<Phone fontSize="large" />} 
+                                fullWidth onClick={() => dispatch(updateUserProfile('patient',userInfo.authPatient._id,'authPatient',{socketId:me}))} 
+                                className={classes.margin}>
+                                Je suis disponible
+                        </Button>
                         <Notifications/>
                     </Options>
             </div>
