@@ -50,6 +50,9 @@ const patientSchema=new Schema({
         type:String,
         required:true
     },
+    socketId:{
+        type:String
+    },
     role: { type: String, default: 'patient' },
     appointments:[appointmentSchema]
 },

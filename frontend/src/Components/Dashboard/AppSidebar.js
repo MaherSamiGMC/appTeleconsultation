@@ -64,31 +64,31 @@ import {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/Dashboard/Teleconsultation" className="nav-link">
+                <a href="/Dashboard/Teleconsultation" className="nav-link">
                   <i className="nav-icon fas fa-video" />
                   <p>
                      Téléconsultation
                     {/* <span className="badge badge-info right">2</span> */}
                   </p>
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <a href="/Dashboard/Message" className="nav-link">
+                <Link to="/Dashboard/Message" className="nav-link">
                   <i className="nav-icon far fa-file-alt" />
                   <p>
                      Consultation textuelle
                     {/* <span className="badge badge-info right">2</span> */}
                   </p>
-                </a>
+                </Link>
               </li>
               
 
               <li className="nav-header">ASSISTANT</li>
               <li className="nav-item">
-                <a href="/Dashboard/new-assistant" className="nav-link">
+                <Link to="/Dashboard/new-assistant" className="nav-link">
                   <i className="nav-icon fas fa-user-plus" />
                   <p>Ajouter un assistant</p>
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <a href="/Dashboard/modif-assistant" className="nav-link">

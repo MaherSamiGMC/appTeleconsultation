@@ -22,6 +22,7 @@ function LoginScreen({history}) {
                 history.push('/Dashboard')
             }else if ( userInfo.authPatient && userInfo.authPatient.role==='patient'){
                 history.push('/Portail')
+                window.location.reload()
             }
         }
 

@@ -3,8 +3,9 @@ import { Button, TextField, Grid, Typography, Container, Paper } from '@material
 // import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Assignment, Phone, PhoneDisabled } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
-
+import {useDispatch,useSelector} from 'react-redux'
 import { SocketContext } from '../../SocketContext';
+import { Getuserdetails, updateUserProfile } from '../../Redux/Actions/userActions'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,10 +38,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Options = ({ children,thecaller }) => {
+const Options = ({ children,thecaller,userInfo }) => {
+  const dispatch = useDispatch()
+
   const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } = useContext(SocketContext);
   const [idToCall, setIdToCall] = useState('');
   const classes = useStyles();
+  const deleteId=()=>{
+    ! thecaller && dispatch(updateUserProfile('patient',userInfo.authPatient._id,'authPatient',{socketId:''}))
+  }
   return (
     <Container className={classes.container}>
       <Paper elevation={10} className={classes.paper}>
@@ -59,7 +65,7 @@ const Options = ({ children,thecaller }) => {
               <Typography gutterBottom variant="h6">Session de téléconsultation </Typography>
               {thecaller && <TextField label="ID to call" value={idToCall} onChange={(e) => setIdToCall(e.target.value)} fullWidth />}
               {callAccepted && !callEnded ? (
-                <Button variant="contained" color="secondary" startIcon={<PhoneDisabled fontSize="large" />} fullWidth onClick={leaveCall} className={classes.margin}>
+                <Button variant="contained" color="secondary" startIcon={<PhoneDisabled fontSize="large" />} fullWidth onClick={()=>{leaveCall(); deleteId()} } className={classes.margin}>
                   Terminer l'appel
                 </Button>
               ) : ( 
@@ -67,6 +73,8 @@ const Options = ({ children,thecaller }) => {
                   Commencer l'appel
                 </Button>
               )}
+              {
+              }
             </Grid>
           </Grid>
         </form>

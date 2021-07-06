@@ -84,7 +84,7 @@ export const Getuserdetails =(role,id,auth)=> async(dispatch,getState)=>{
     }
 }
 
-export const updateUserProfile =(user)=> async(dispatch,getState)=>{
+export const updateUserProfile =(role,id,auth,user)=> async(dispatch,getState)=>{
     try {
         dispatch({
             type:USER_UPDATE_PROFILE_REQUEST
@@ -93,10 +93,10 @@ export const updateUserProfile =(user)=> async(dispatch,getState)=>{
         const config={
             headers:{
                 'Content-Type':'application/json',
-                Authorization:`Bearer ${userInfo.token}`
+                Authorization:userInfo[auth].token
             }
         }
-        const {data}=await axios.put( `http://localhost:5000/api/users/profile`,user,config)
+        const {data}=await axios.put( `http://localhost:5000/api/${role}/${id}`,user,config)
         dispatch({type:USER_UPDATE_PROFILE_SUCCESS,payload:data})
 
     } catch (error) {
