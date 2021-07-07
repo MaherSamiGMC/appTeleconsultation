@@ -86,13 +86,30 @@ function AppVConsultation({userdetails}) {
                     </div>     
                     <div> {
                       userdetails && VCallAppointments.length===0 ? 
-                      <CAlert color="primary">Aucun patient en ligne actuellement </CAlert>
+                      <CAlert color="secondary">Aucun patient en ligne actuellement </CAlert>
                       :
                       <>
                       <CAlert color="success">Patient(s) actuellement en ligne :</CAlert>
-                      {
-                        userdetails && VCallAppointments.map(el=><p>{el.firstName} {el.lastName} iddentifiant de l'appel : {el.socketId}</p>)
-                      }
+                      <div className="table100 ver1 m-b-110">
+                        <table className="table-datatable__root table">
+                          <thead className="MuiTableHead-root thead">
+                            <tr className="MuiTableRow-root thead-tr MuiTableRow-head">
+                              <th>Nom </th>
+                              <th>Prénom </th>
+                              <th>ID Patient </th>
+                              <th>Status </th>
+                            </tr>
+                          </thead>
+                          <tbody className="MuiTableBody-root tbody">
+                        {
+                          userdetails && VCallAppointments.map(el => <tr className="MuiTableRow-root tbody-tr">
+                          <td className="MuiTableCell-root MuiTableCell-body tbody-td">{el.firstName}</td>
+                          <td className="MuiTableCell-root MuiTableCell-body tbody-td">{el.lastName}</td>
+                          <td className="MuiTableCell-root MuiTableCell-body tbody-td">{el.socketId}</td> <td><i class="fas fa-check-circle"></i></td></tr>)
+                        }
+                        </tbody>
+                        </table>
+                      </div>
                       </>
 
                       }</div>
