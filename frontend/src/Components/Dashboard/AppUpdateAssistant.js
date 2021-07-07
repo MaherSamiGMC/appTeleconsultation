@@ -40,9 +40,10 @@ const AppUpdateAssistant = ({userdetails,history}) => {
 
         dispatch(updateUserProfile('assistant',userdetails.assistant._id,'authDoctor',updateAssistant))  
     }
-    const deleteAssistant=()=>{
+    const deleteAssistant=(e)=>{
+        e.preventDefault()
         dispatch(deleteUser('assistant',userdetails.assistant._id))
-        history.push("/Dashboard/new-assistant")
+        // history.push("/Dashboard/new-assistant")
     }
     return (
         <>
