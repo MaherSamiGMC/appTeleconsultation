@@ -569,3 +569,8 @@ select.form-select-lg {
   background: #0147ff;
 }
 /******** Consultation textuelle ********/
+/******** Modal profile ********/
+.modal-profile img {
+  width: 100%;
+}
+/******** Modal profile ********/

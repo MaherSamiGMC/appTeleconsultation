@@ -3,6 +3,9 @@ import Datatable from 'react-bs-datatable';
 import { useState } from 'react';
 import 'react-calendar/dist/Calendar.css';
 import ClearIcon from '@material-ui/icons/Clear';
+import AppModal from './AppModal'
+
+
 import {
     Link
   } from "react-router-dom";
@@ -26,6 +29,13 @@ import {
 } from '@material-ui/core';
 function AppListsOfPatients({userdetails}) {
 
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+
+
   const header = [
     { title: 'Nom', prop: 'firstName',sortable:true,filterable: true },
     { title: 'Prenom', prop: 'lastName',filterable: true },
@@ -33,8 +43,10 @@ function AppListsOfPatients({userdetails}) {
     { title: 'Date de naissance', prop: 'dateOfBirth' },
     { title: 'Email', prop: 'email'} ,
     { title: 'Afficher le profil', prop: '_id',
-      cell: row => <Link to={`Dashboard/list-of-patients/${row._id}`} target="_blank" className="link-profil"> <i class="fas fa-external-link-alt"></i> Voir Profil</Link>} ,
-  ];
+      // cell: row => <Link to={`Dashboard/list-of-patients/${row._id}`} target="_blank" className="link-profil"> <i class="fas fa-external-link-alt"></i> Voir Profil</Link>} ,
+      cell: row =>  <AppModal Profil ={row}> </AppModal>} ,
+
+    ];
 
   const customLabels = {
     first: '<<',
@@ -46,6 +58,9 @@ function AppListsOfPatients({userdetails}) {
     noResults: 'Pas de patients à afficher ',
     filterPlaceholder:"aa"
   };
+
+
+
   function FilterGroup({ classes, filterText, onChangeFilter, onClearFilter }) {
     return (
       <TextField
