@@ -376,6 +376,7 @@ select.form-select-lg {
 
 /**** style page Portail ****/
 .profile {
+  width: 100%;
 }
 .block__picture {
   background-color: white;
@@ -519,6 +520,15 @@ select.form-select-lg {
   font-weight: normal !important;
   color: #0147ff;
   font-size: 16px !important;
+}
+.daterangepicker {
+  margin: 0 !important;
+}
+.daterangepicker .drp-buttons {
+  padding: 2px !important;
+}
+.daterangepicker .drp-calendar.left {
+  padding: 0 !important;
 }
 /******** Calender ********/
 
