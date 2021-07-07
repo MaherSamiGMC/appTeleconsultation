@@ -45,7 +45,7 @@ const updateAssistant=asyncHandler((async(req,res)=>{
 const deleteAssistant=asyncHandler((async(req,res)=>{
     let deletedAssistant=await assistant.findByIdAndRemove(req.params.id).select('-password')
     // the Assistant will be deleted from the object Assistant in doctor's document
-    await doctor.findByIdAndUpdate(deletedAssistant.affiliateDoctor,{ $unset : {"assistant":deletedAssistant._id}})
+    // await doctor.findByIdAndUpdate(deletedAssistant.affiliateDoctor,{ $unset : {"assistant":deletedAssistant._id}})
     res.json({message:'Assistant deleted successfully',deletedAssistant})
 }))
 

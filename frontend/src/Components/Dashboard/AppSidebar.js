@@ -84,7 +84,7 @@ import {
               
 
               <li className="nav-header">ASSISTANT</li>
-              {userdetails && typeof(userdetails.assistant) !=='object' && 
+              {userdetails && userdetails.assistant===null  && 
               <li className="nav-item">
                 <Link to="/Dashboard/new-assistant" className="nav-link">
                   <i className="nav-icon fas fa-user-plus" />
@@ -92,7 +92,7 @@ import {
                 </Link>
               </li>}
 
-              {userdetails && typeof(userdetails.assistant) ==='object' && 
+              {userdetails && userdetails.assistant!==null && 
                 <li className="nav-item">
                 <Link to="/Dashboard/modif-assistant" className="nav-link">
                   <i className="nav-icon fas fa-users-cog" />

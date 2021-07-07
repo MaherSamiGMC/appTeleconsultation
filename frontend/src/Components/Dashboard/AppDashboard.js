@@ -107,7 +107,8 @@ function AppDashboard({userdetails}) {
                 {/* small box */}
                 <div className="small-box bg-warning">
                   <div className="inner">
-                    <h3>44</h3>
+                    <h3>{userdetails && userdetails.patients.map(el=>el.appointments).flat().length}</h3>
+                    {console.log(userdetails.patients.map(el=>el.appointments).flat())}
                     <p>Nombre de rendez-vous</p>
                   </div>
                   <div className="icon">
