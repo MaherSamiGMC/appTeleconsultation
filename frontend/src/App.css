@@ -282,6 +282,7 @@ footer.bottom .same {
   color: #fff;
   border-radius: 5px;
   transition: all 0.4s;
+  border: none;
 }
 .link-profil:hover {
   background: #0a58ca;
@@ -572,5 +573,40 @@ select.form-select-lg {
 /******** Modal profile ********/
 .modal-profile img {
   width: 100%;
+}
+.modal-profile .thumb-lg {
+  height: 88px;
+  width: 88px;
+}
+.modal-profile .img-thumbnail {
+  padding: 0.25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  max-width: 100%;
+  height: auto;
+}
+
+.modal-profile .btn-rounded {
+  border-radius: 2em;
+}
+.modal-profile .text-muted {
+  color: #98a6ad !important;
+}
+.modal-profile .text-muted i {
+  color: #0147ff;
+  margin-right: 10px;
+}
+.modal-profile h4 {
+  line-height: 22px;
+  font-size: 20px;
+  font-family: 'robotomedium';
+}
+.modal-profile .modal-body {
+  align-items: center;
+}
+.modal-profile .modal-body .col {
+  margin: 0 auto;
+  justify-content: center;
 }
 /******** Modal profile ********/
