@@ -84,19 +84,21 @@ import {
               
 
               <li className="nav-header">ASSISTANT</li>
-              {userdetails && typeof(userdetails.assistant) ==='object' && 
+              {userdetails && typeof(userdetails.assistant) !=='object' && 
               <li className="nav-item">
                 <Link to="/Dashboard/new-assistant" className="nav-link">
                   <i className="nav-icon fas fa-user-plus" />
                   <p>Ajouter un assistant</p>
                 </Link>
               </li>}
-              <li className="nav-item">
+
+              {userdetails && typeof(userdetails.assistant) ==='object' && 
+                <li className="nav-item">
                 <Link to="/Dashboard/modif-assistant" className="nav-link">
                   <i className="nav-icon fas fa-users-cog" />
                   <p>Modifier données de l'assistant</p>
                 </Link>
-              </li>
+              </li>}
               
 
               <li className="nav-header">GESTION CABINET</li>
