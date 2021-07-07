@@ -11,9 +11,10 @@ import { Register } from '../../Redux/Actions/userActions';
 import {useDispatch,useSelector} from 'react-redux'
 import Message from '../../Components/LandingPage/Message'
 import Loader from '../../Components/LandingPage/Loader'
+import { withRouter} from 'react-router-dom'
 
 
-function AppNewAssistant({userdetails,history}) {
+const AppNewAssistant=withRouter(({userdetails,history}) => {
     const userRegister = useSelector(state => state.userRegister)
     const {Loading,error,userInfo}=userRegister
     const dispatch = useDispatch()
@@ -30,8 +31,8 @@ function AppNewAssistant({userdetails,history}) {
         //DISPATCH REGISTER
 
         dispatch(Register('assistant','newAssistant',newassistant))
-        // history.push('/Dashboard')
-        
+        history.push('/Dashboard')
+         window.location.reload()  
     }
 
 
@@ -151,6 +152,6 @@ function AppNewAssistant({userdetails,history}) {
         {/* /.content */}
       </div>
     )
-}
+})
 
 export default AppNewAssistant

@@ -11,9 +11,10 @@ import { updateUserProfile,deleteUser } from '../../Redux/Actions/userActions';
 import {useDispatch,useSelector} from 'react-redux'
 import Message from '../../Components/LandingPage/Message'
 import Loader from '../../Components/LandingPage/Loader'
+import { withRouter} from 'react-router-dom'
 
 
-const AppUpdateAssistant = ({userdetails,history}) => {
+const AppUpdateAssistant = withRouter(({userdetails,history}) => {
 
     const dispatch = useDispatch()
     const userRegister = useSelector(state => state.userUpdateProfile)
@@ -43,7 +44,9 @@ const AppUpdateAssistant = ({userdetails,history}) => {
     const deleteAssistant=(e)=>{
         e.preventDefault()
         dispatch(deleteUser('assistant',userdetails.assistant._id))
-        // history.push("/Dashboard/new-assistant")
+        history.push("/Dashboard/new-assistant")
+        window.location.reload()  
+
     }
     return (
         <>
@@ -168,6 +171,6 @@ const AppUpdateAssistant = ({userdetails,history}) => {
             }
         </>
     )
-}
+})
 
 export default AppUpdateAssistant
