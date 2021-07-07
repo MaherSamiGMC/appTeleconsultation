@@ -91,7 +91,7 @@ function AppDashboard({userdetails}) {
                 <div className="small-box bg-success">
                   <div className="inner">
                     <h5>L'assistant(e) :</h5>
-                    <p><br/> {`${ userdetails.assistant.firstName} ${ userdetails.assistant.lastName}`}</p>
+                    <p><br/> {userdetails && userdetails.assistant && `${ userdetails.assistant.firstName} ${ userdetails.assistant.lastName}`}</p>
 
                    
 

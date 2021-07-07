@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import 'react-calendar/dist/Calendar.css';
 import {
     Link
@@ -7,33 +7,42 @@ import {
 import { Container, Col, Row, Form, Button } from 'react-bootstrap'
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 import 'bootstrap-daterangepicker/daterangepicker.css';
-import { Register } from '../../Redux/Actions/userActions';
+import { updateUserProfile,deleteUser } from '../../Redux/Actions/userActions';
 import {useDispatch,useSelector} from 'react-redux'
 import Message from '../../Components/LandingPage/Message'
 import Loader from '../../Components/LandingPage/Loader'
 
 
-const AppUpdateAssistant = ({userdetails}) => {
+const AppUpdateAssistant = ({userdetails,history}) => {
 
     const dispatch = useDispatch()
-    const userRegister = useSelector(state => state.userRegister)
+    const userRegister = useSelector(state => state.userUpdateProfile)
     const {Loading,error,userInfo}=userRegister
 
-    const [nom, setNom] = useState(userdetails && userdetails.assistant.lastName)
-    const [prenom, setPrenom] = useState(userdetails && userdetails.assistant.firstName)
-    const [email, setEmail] = useState(userdetails && userdetails.assistant.email)
-    const [date, setDate] = useState(userdetails && userdetails.assistant.dateOfBirth)
-    const [tel, setTel] = useState(userdetails && userdetails.assistant.phoneNumber)
-    const [sexe, setSexe] = useState(userdetails && userdetails.assistant.gender)
-
+    const [nom, setNom] = useState('')
+    const [prenom, setPrenom] = useState('')
+    const [email, setEmail] = useState('')
+    const [date, setDate] = useState('')
+    const [tel, setTel] = useState('')
+    const [sexe, setSexe] = useState('')
+    useEffect(() => {
+        setNom(userdetails && userdetails.assistant.lastName)
+        setPrenom(userdetails && userdetails.assistant.firstName)
+        setEmail(userdetails && userdetails.assistant.email)
+        setDate(userdetails && userdetails.assistant.dateOfBirth)
+        setTel(userdetails && userdetails.assistant.phoneNumber)
+        setSexe(userdetails && userdetails.assistant.gender)
+    }, [userdetails])
     const submitHandler=(e)=>{
         e.preventDefault()
         const updateAssistant={firstName:prenom,lastName:nom,phoneNumber:tel,email,dateOfBirth:date,gender:sexe,password:"123456",affiliateDoctor:userdetails._id}
-        //DISPATCH REGISTER
+        //DISPATCH UPDATE
 
-        dispatch(Register('assistant','updateAssistant',updateAssistant))
-
-        
+        dispatch(updateUserProfile('assistant',userdetails.assistant._id,'authDoctor',updateAssistant))  
+    }
+    const deleteAssistant=()=>{
+        dispatch(deleteUser('assistant',userdetails.assistant._id))
+        history.push("/Dashboard/new-assistant")
     }
     return (
         <>
@@ -76,7 +85,8 @@ const AppUpdateAssistant = ({userdetails}) => {
                                         <div className="card-body">
                                         <Row >
                                             <Col  md={{ size: 9, offset: 1 }}>
-                                                
+                                            {error && <Message variant='danger'>"Merci de renseigner tous les champs correctement"</Message>}
+                                            {!error && userInfo && <Message variant='success'>"Données modifiées avec succès"</Message>}
                                                 <Form >
                                                     <Row>
                                                         <Col>
@@ -135,6 +145,12 @@ const AppUpdateAssistant = ({userdetails}) => {
                                                     <Button variant="primary" type="submit" className="adbtn" onClick={submitHandler}>
                                                         Modifier les données de l'assistant
                                                     </Button>
+                                                    {'  '}
+                                                    <Button variant="primary" type="submit" className="adbtn" onClick={deleteAssistant}>
+                                                        Supprimer les données de l'assistant
+                                                    </Button>
+                                          
+
                                                 </Form>
 
 
