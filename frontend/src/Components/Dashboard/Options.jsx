@@ -63,7 +63,7 @@ const Options = ({ children,thecaller,userInfo }) => {
             </Grid> */}
             <Grid item xs={12} md={12} className={classes.padding}>
               <Typography gutterBottom variant="h6">Session de téléconsultation </Typography>
-              {thecaller && <TextField label="ID to call" value={idToCall} onChange={(e) => setIdToCall(e.target.value)} fullWidth />}
+              {thecaller && <TextField label="Ajouter ID pour conmmencer l'appel " value={idToCall} onChange={(e) => setIdToCall(e.target.value)} fullWidth />}
               {callAccepted && !callEnded ? (
                 <Button variant="contained" color="secondary" startIcon={<PhoneDisabled fontSize="large" />} fullWidth onClick={()=>{leaveCall(); deleteId()} } className={classes.margin}>
                   Terminer l'appel

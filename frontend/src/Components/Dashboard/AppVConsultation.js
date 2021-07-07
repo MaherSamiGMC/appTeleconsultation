@@ -11,6 +11,11 @@ import Notifications from './Notifications';
 import {makeStyles} from '@material-ui/core/styles'
 import { CAlert } from '@coreui/react';
 
+import {Overlay} from 'react-bootstrap'
+
+import CopyToClipboard from 'react-copy-to-clipboard';
+
+
 const useStyles = makeStyles((theme) => ({
     appBar: {
       borderRadius: 15,
@@ -38,6 +43,13 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 function AppVConsultation({userdetails}) {
+
+
+  const [state,setState] = useState(false)
+    const onCopy = () => {
+      setState(true);
+    };
+
 
     const classes=useStyles()
     const VCallAppointments=userdetails && userdetails.patients.map(el=>el.socketId===undefined ? {...el,socketId:''} : el).filter(el=>el.socketId.length>3)
@@ -101,12 +113,23 @@ function AppVConsultation({userdetails}) {
                             </tr>
                           </thead>
                           <tbody className="MuiTableBody-root tbody">
+                          
                         {
-                          userdetails && VCallAppointments.map(el => <tr className="MuiTableRow-root tbody-tr">
-                          <td className="MuiTableCell-root MuiTableCell-body tbody-td">{el.firstName}</td>
-                          <td className="MuiTableCell-root MuiTableCell-body tbody-td">{el.lastName}</td>
-                          <td className="MuiTableCell-root MuiTableCell-body tbody-td">{el.socketId}</td> <td><i class="fas fa-check-circle"></i></td></tr>)
+                          
+                          userdetails && VCallAppointments.map(el => 
+                          <tr className="MuiTableRow-root tbody-tr">
+                            <td className="MuiTableCell-root MuiTableCell-body tbody-td">{el.firstName}</td>
+                            <td className="MuiTableCell-root MuiTableCell-body tbody-td">{el.lastName}</td>
+                            <CopyToClipboard onCopy={onCopy} text={el.socketId} >
+                              <td className="MuiTableCell-root MuiTableCell-body tbody-td id-click">
+                              {el.socketId}
+                              </td>
+                            </CopyToClipboard>
+                            <td>{state == true ? <i class="fas fa-check-circle" style={{color: 'green'}}>Copied</i> : <i class="fas fa-check-circle"></i>}</td>
+                          </tr>
+                          )
                         }
+                        
                         </tbody>
                         </table>
                       </div>
