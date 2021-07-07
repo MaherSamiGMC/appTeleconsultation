@@ -23,17 +23,10 @@ function AppNewAssistant({userdetails,history}) {
     const [date, setDate] = useState('')
     const [tel, setTel] = useState('')
     const [sexe, setSexe] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmpassword, setConfirmPassword] = useState('')
-    const [message, setMessage] = useState(null)
 
     const submitHandler=(e)=>{
         e.preventDefault()
-        if(password !== confirmpassword){
-          setMessage('Les mots de passe que vous avez entrés ne sont pas identiques.')
-        }
-        else{
-        const newassistant={firstName:prenom,lastName:nom,phoneNumber:tel,email,dateOfBirth:date,gender:sexe,password:password,affiliateDoctor:userdetails._id}
+        const newassistant={firstName:prenom,lastName:nom,phoneNumber:tel,email,dateOfBirth:date,gender:sexe,password:"123456",affiliateDoctor:userdetails._id}
         //DISPATCH REGISTER
 
         dispatch(Register('assistant','newAssistant',newassistant))
@@ -137,23 +130,7 @@ function AppNewAssistant({userdetails,history}) {
                                 </select>
                                 </Col>
                             </Row>
-                            <Row>
-                                <Col>
-                                <Form.Group controlId="formBasicPassword">
-                                  <Form.Control 
-                                  value={password} onChange={(e)=>setPassword(e.target.value)}
-                                  type="password" placeholder="Mot de passe" />
-                                </Form.Group>
-                                </Col>
-                                <Col>
-                                <Form.Group controlId="formBasicPassword">
-                                  <Form.Control 
-                                  value={confirmpassword} onChange={(e)=>setConfirmPassword(e.target.value)}
-                                  type="password" placeholder="Confirmer Mot de passe" />
-                                </Form.Group>
-                                </Col>
-                                {message && <Message variant='danger'>{message}</Message>}
-                            </Row>
+
                             
                             <Button variant="primary" type="submit" className="adbtn" onClick={submitHandler}>
                                 Ajouter un assistant
