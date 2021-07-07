@@ -13,7 +13,7 @@ import Message from '../../Components/LandingPage/Message'
 import Loader from '../../Components/LandingPage/Loader'
 
 
-function AppNewAssistant({userdetails}) {
+function AppNewAssistant({userdetails,history}) {
     const userRegister = useSelector(state => state.userRegister)
     const {Loading,error,userInfo}=userRegister
     const dispatch = useDispatch()
@@ -36,8 +36,8 @@ function AppNewAssistant({userdetails}) {
         const newassistant={firstName:prenom,lastName:nom,phoneNumber:tel,email,dateOfBirth:date,gender:sexe,password:password,affiliateDoctor:userdetails._id}
         //DISPATCH REGISTER
 
-        dispatch(Register('assistant','newassistant',newassistant))
-        }
+        dispatch(Register('assistant','newAssistant',newassistant))
+        // history.push('/Dashboard')
         
     }
 
