@@ -63,13 +63,11 @@ const authPatient=asyncHandler((async(req,res)=>{
 }))
 
 const addNewAppointment=asyncHandler((async(req,res)=>{
-    // console.log(req.body.patient)
     const updatePatient=await patient.findByIdAndUpdate(req.params.id,{ $push: {"appointments":req.body}})
     res.json({message:'appointment added successfully',updatePatient})
 }))
 
 const updateAppointment=asyncHandler((async(req,res)=>{
-    // console.log(req.body)
     const updatePatient=await patient.findByIdAndUpdate({"_id":req.params.id,"appointments._id":req.body._id},{ $set: {"appointments":req.body}})
     res.json({message:'appointment updated successfully',updatePatient})
 }))
@@ -80,4 +78,12 @@ const deleteAppointment=asyncHandler((async(req,res)=>{
     res.json({message:'appointment deleted successfully',deletedPatient})
 }))
 
-module.exports={getPatients,addNewPatient,updatePatient,deletePatient,getPatient,authPatient,addNewAppointment,updateAppointment,deleteAppointment}
+const addNewMessage=asyncHandler((async(req,res)=>{
+    const addNewMessage=await patient.findByIdAndUpdate(req.params.id,{ $push: {"messages":req.body}})
+    res.json({message:'New Message added successfully',addNewMessage})
+}))
+const updateMessage=asyncHandler((async(req,res)=>{
+    const updateMessage=await patient.findByIdAndUpdate({"_id":req.params.id,"messages._id":req.body._id},{ $set: {"messages":req.body}})
+    res.json({message:'Message updated successfully',updateMessage})
+}))
+module.exports={getPatients,addNewPatient,updatePatient,deletePatient,getPatient,authPatient,addNewAppointment,updateAppointment,deleteAppointment,addNewMessage,updateMessage}
