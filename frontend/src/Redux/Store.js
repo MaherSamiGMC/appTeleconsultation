@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import { deleteUserReducer, userDetailsReducer, userLoginReducer, userRegisterReducer, userUpdateProfileReducer } from './Reducers/userReducers'
 import { appointmentAddReducer, appointmentDeleteReducer, appointmentUpdateReducer } from './Reducers/appointmentReducers'
+import { messageAddReducer, MessageUpdateReducer } from './Reducers/messageReducers'
 
 
 
@@ -16,7 +17,9 @@ const reducer=combineReducers({
     appointmentAdd:appointmentAddReducer,
     appointmentUpdate:appointmentUpdateReducer,
     appointmentDelete:appointmentDeleteReducer,
-    deleteUser:deleteUserReducer
+    deleteUser:deleteUserReducer,
+    messageAdd:messageAddReducer,
+    MessageUpdate:MessageUpdateReducer
 })
 
 const userInfoFromStorage=localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null

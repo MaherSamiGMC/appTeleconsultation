@@ -2,6 +2,15 @@ const mongoose=require('mongoose')
 const {Schema}=mongoose
 const bcrypt = require('bcryptjs');
 
+const messageSchema=new Schema({
+    question:String,
+    response:String,
+    questionDate:{ type: Date},
+    ResponseDate:{ type: Date},
+
+
+})
+
 const appointmentSchema=new Schema({
     allDay:Boolean,
     endDate:{ type: Date},
@@ -54,7 +63,8 @@ const patientSchema=new Schema({
         type:String
     },
     role: { type: String, default: 'patient' },
-    appointments:[appointmentSchema]
+    appointments:[appointmentSchema],
+    messages:[messageSchema]
 },
 { timestamps: true })
 
