@@ -616,4 +616,7 @@ select.form-select-lg {
 .id-click {
   cursor: pointer;
 }
+.makeStyles-paper-12 {
+  border: 1px solid #0147ff !important;
+}
 /******** Video consultation ********/

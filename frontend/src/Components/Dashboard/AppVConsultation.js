@@ -101,7 +101,7 @@ function AppVConsultation({userdetails}) {
                       <CAlert color="secondary">Aucun patient en ligne actuellement </CAlert>
                       :
                       <>
-                      <CAlert color="success">Patient(s) actuellement en ligne :</CAlert>
+                      <CAlert >Patient(s) actuellement en ligne :</CAlert>
                       <div className="table100 ver1 m-b-110">
                         <table className="table-datatable__root table">
                           <thead className="MuiTableHead-root thead">
