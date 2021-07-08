@@ -325,6 +325,9 @@ footer.bottom .same {
   font-size: 16px;
   font-family: 'robotoregular';
 }
+.sidebar-dash .nav-item .badge-info {
+  background: #ff3a65 !important;
+}
 .sidebar-dash .nav-sidebar .nav-item .nav-icon {
   color: #0147ff;
 }
@@ -569,8 +572,67 @@ select.form-select-lg {
   color: #fff;
   background: #0147ff;
 }
+
+.consultation-textuelle .ques {
+  background: rgb(233 234 237 / 40%);
+  padding: 10px 15px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  color: #848484;
+  display: flex;
+  justify-content: space-between;
+}
+
+.consultation-textuelle .repDate {
+  color: #ff3a65;
+  font-size: 14px;
+}
+.consultation-textuelle .rep {
+  border: none;
+  border-bottom: 1px solid #ff3a65;
+  border-radius: 0;
+}
+.consultation-textuelle .rep:focus {
+  box-shadow: 0 0 0.5rem hsl(347deg 100% 61% / 20%) !important;
+}
+
 /******** Consultation textuelle ********/
 /******** Modal profile ********/
+.modal-profile .modal-dialog {
+  width: 50%;
+  max-width: initial !important;
+}
+.block-profile ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+.modal-profile .ques,
+.modal-profile .rep {
+  background: rgb(233 234 237 / 40%);
+  padding: 5px 15px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  color: #848484;
+}
+.modal-profile .rep {
+  background: rgb(1 71 255 / 40%);
+  color: #ffffff;
+}
+.modal-profile .rdv strong {
+  font-weight: normal;
+  color: #ff3a65;
+}
+.modal-profile .nothing {
+  font-size: 14px;
+}
+.modal-profile .block-profile {
+  background: #f9f9f9;
+}
+.modal-profile h5 {
+  font-size: 14px !important;
+  font-weight: 600;
+}
 .modal-profile img {
   width: 100%;
 }
