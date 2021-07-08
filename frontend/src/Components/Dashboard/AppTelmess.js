@@ -7,11 +7,10 @@ import Loader from '../LandingPage/Loader'
 
 const AppTelmess = ({userdetails}) => {
     const dispatch = useDispatch()
-    const questions= userdetails && userdetails.patients.map(el=>el.messages.map(x=>{return {...x,firstName:el.firstName,lastName:el.lastName,email:el.email,phoneNumber:el.phoneNumber,_id:el._id}})).flat().filter(el=>el.response==='')
-
+    const questions= userdetails && userdetails.patients.map(el=>el.messages.map(x=>{return {...x,firstName:el.firstName,lastName:el.lastName,email:el.email,phoneNumber:el.phoneNumber,id:el._id}})).flat().filter(el=>el.response==='')
     const[message,setMessage] = useState('')
     const submitHandler=(x)=>{
-        // dispatch(updateMessage(x))
+        dispatch(updateMessage(x.id,{...x,response:message,ResponseDate:new Date()}))
     }
     const [isOn, setIsOn] = useState(false);
     const Toggle =() =>{
@@ -67,7 +66,7 @@ const AppTelmess = ({userdetails}) => {
                                                         <Form.Control as="textarea" rows={3} placeholder="Message"
                                                         value={message} onChange={(e)=>setMessage(e.target.value)}/>
                                                     </Form.Group>
-                                                    <Button variant="primary" type="submit"  onClick={()=>submitHandler(p._id)}>Repondre </Button>
+                                                    <Button variant="primary" type="submit"  onClick={()=>submitHandler(p)}>Repondre </Button>
                                             </Form>
                                         </Card.Text>
                                     </Card.Body>

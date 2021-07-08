@@ -76,8 +76,8 @@ import {
                 <Link to="/Dashboard/Message" className="nav-link">
                   <i className="nav-icon far fa-file-alt" />
                   <p>
-                     Consultation textuelle
-                    {/* <span className="badge badge-info right">2</span> */}
+                     Consul. textuelle
+                    <span className="badge badge-info right">{userdetails && userdetails.patients.map(el=>el.messages.map(x=>{return {...x,firstName:el.firstName,lastName:el.lastName,email:el.email,phoneNumber:el.phoneNumber,id:el._id}})).flat().filter(el=>el.response==='').length}</span> 
                   </p>
                 </Link>
               </li>
