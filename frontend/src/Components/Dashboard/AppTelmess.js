@@ -5,6 +5,9 @@ import { updateMessage } from '../../Redux/Actions/messageActions';
 import { useDispatch } from 'react-redux';
 import Loader from '../LandingPage/Loader'
 
+import moment from 'moment'
+
+
 const AppTelmess = ({userdetails}) => {
     const dispatch = useDispatch()
     const questions= userdetails && userdetails.patients.map(el=>el.messages.map(x=>{return {...x,firstName:el.firstName,lastName:el.lastName,email:el.email,phoneNumber:el.phoneNumber,id:el._id}})).flat().filter(el=>el.response==='')
@@ -29,7 +32,6 @@ const AppTelmess = ({userdetails}) => {
             </div>
             <section className="content">
                 <div className="container-fluid"> 
-
                     {questions.map( p =>
                         <Accordion defaultActiveKey="0">
                             <Card>
@@ -58,23 +60,23 @@ const AppTelmess = ({userdetails}) => {
                                 </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="1">
                                     <Card.Body className="px-3">
-                                        <Card.Text>{p.question}</Card.Text>
-                                        <Card.Text className="text-right">{p.questionDate.toString()}</Card.Text>
+                                        <Card.Text className="ques">{p.question} <span className="text-right repDate">{moment(p.questionDate).format("MMM Do YYYY")}</span></Card.Text>
+                                        
                                         <Card.Text>
                                             <Form>
                                                     <Form.Group controlId="exampleForm.ControlTextarea1">
                                                         <Form.Control as="textarea" rows={3} placeholder="Message"
-                                                        value={message} onChange={(e)=>setMessage(e.target.value)}/>
+                                                        value={message} onChange={(e)=>setMessage(e.target.value)} className="rep"/>
                                                     </Form.Group>
-                                                    <Button variant="primary" type="submit"  onClick={()=>submitHandler(p)}>Repondre </Button>
+                                                    <Button variant="primary" type="submit"  onClick={()=>submitHandler(p)}>répondre </Button>
                                             </Form>
                                         </Card.Text>
                                     </Card.Body>
                                 </Accordion.Collapse>
                             </Card>
                         </Accordion>
-                    )}
-
+                    )
+}
                 </div>
             </section>    
         </div>
