@@ -1,14 +1,16 @@
 import React from 'react'
 import { useState } from 'react';
 import {Accordion, Form, Button, Card, Row, Col} from 'react-bootstrap'
+import { updateMessage } from '../../Redux/Actions/messageActions';
+import { useDispatch } from 'react-redux';
 import Loader from '../LandingPage/Loader'
 
 const AppTelmess = ({userdetails}) => {
-    const [email, setEmail] = useState('')
+    const dispatch = useDispatch()
+    const questions= userdetails && userdetails.patients.map(el=>el.messages.map(x=>{return {...x,firstName:el.firstName,lastName:el.lastName,email:el.email,phoneNumber:el.phoneNumber,id:el._id}})).flat().filter(el=>el.response==='')
     const[message,setMessage] = useState('')
-    const submitHandler=(e)=>{
-        e.preventDefault()
-        //DISPATCH REGISTER
+    const submitHandler=(x)=>{
+        dispatch(updateMessage(x.id,{...x,response:message,ResponseDate:new Date()}))
     }
     const [isOn, setIsOn] = useState(false);
     const Toggle =() =>{
@@ -28,7 +30,7 @@ const AppTelmess = ({userdetails}) => {
             <section className="content">
                 <div className="container-fluid"> 
 
-                    {userdetails.patients.map( p =>
+                    {questions.map( p =>
                         <Accordion defaultActiveKey="0">
                             <Card>
                                 <Accordion.Toggle eventKey="1" onClick={Toggle} className="toggle-arrow text-left">
@@ -56,20 +58,15 @@ const AppTelmess = ({userdetails}) => {
                                 </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="1">
                                     <Card.Body className="px-3">
-                                        <Card.Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at arcu sapien. Donec laoreet, nisl quis tempor hendrerit, libero augue blandit turpis, in dignissim odio mauris eu tortor. Ut hendrerit ipsum elit, a elementum nulla ultrices eu. In posuere mollis efficitur. Maecenas justo turpis, tristique sit amet ultricies quis, molestie eget ex. Nam vestibulum consequat tincidunt. Morbi vitae placerat sapien. Phasellus quis mi tincidunt sem scelerisque tincidunt. Ut viverra porttitor sagittis. Phasellus aliquam auctor purus, id sollicitudin mauris pulvinar ac.</Card.Text>
-                                        <Card.Text className="text-right">Date de message</Card.Text>
+                                        <Card.Text>{p.question}</Card.Text>
+                                        <Card.Text className="text-right">{p.questionDate.toString()}</Card.Text>
                                         <Card.Text>
                                             <Form>
-                                            <Form.Group controlId="formBasicNom">
-                                                    <Form.Control 
-                                                    value={email} onChange={(e)=>setEmail(e.target.value)}
-                                                    type="email" placeholder="Email patient" required/>
-                                                    </Form.Group>
                                                     <Form.Group controlId="exampleForm.ControlTextarea1">
                                                         <Form.Control as="textarea" rows={3} placeholder="Message"
                                                         value={message} onChange={(e)=>setMessage(e.target.value)}/>
                                                     </Form.Group>
-                                                    <Button variant="primary" type="submit"  onClick={submitHandler}>Envoyer</Button>
+                                                    <Button variant="primary" type="submit"  onClick={()=>submitHandler(p)}>Repondre </Button>
                                             </Form>
                                         </Card.Text>
                                     </Card.Body>

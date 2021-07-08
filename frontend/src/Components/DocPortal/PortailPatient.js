@@ -2,17 +2,20 @@ import React from 'react'
 import { useState } from 'react';
 import { Col, Card, Container,Button, Row, Form} from 'react-bootstrap'
 import {useDispatch,useSelector} from 'react-redux'
+import { addMessage } from '../../Redux/Actions/messageActions';
 import Loader from '../LandingPage/Loader'
+import Message from '../LandingPage/Message';
 
 const PortailPatient = ({userdetails}) => {
+    const state = useSelector(state => state.messageAdd)
+    const {loading,error,messagetInfo}=state
     const dispatch = useDispatch()
-    const [email, setEmail] = useState('')
     const[message,setMessage] = useState('')
     const[image,setImage] = useState('')
     const submitHandler=(e)=>{
         e.preventDefault()
-        
-        //DISPATCH REGISTER
+        dispatch(addMessage(userdetails._id,{question:message,response:"",questionDate:new Date()}))
+        setMessage('')
     }
 
     return (
@@ -94,18 +97,27 @@ const PortailPatient = ({userdetails}) => {
                                 <Card.Body>
                                     <Card.Text>
                                         <Form>
-                                            <Form.Group controlId="formBasicNom">
-                                                <Form.Control 
-                                                value={email} onChange={(e)=>setEmail(e.target.value)}
-                                                type="email" placeholder="Votre Email" required/>
-                                            </Form.Group>
-                                            <Form.Group controlId="exampleForm.ControlTextarea1">
-                                                
+                                            <Form.Group controlId="exampleForm.ControlTextarea1">      
                                                 <Form.Control as="textarea" rows={3} placeholder="Message"
                                                 value={message} onChange={(e)=>setMessage(e.target.value)}/>
                                             </Form.Group>
                                             <Button variant="primary" type="submit"  onClick={submitHandler}>Envoyer</Button>
+                                            {!error && messagetInfo && <Message variant="success" > Message envoyé avec succes </Message>}
                                         </Form>
+                                    </Card.Text>
+                                </Card.Body>
+                            </Row>
+                        </Card>
+                        <Card className="rdv pb-4 message-doctor">
+                            <Row className="mx-2">
+                                <Card.Header className="py-4 text-uppercase">Historique des questions :</Card.Header>
+                                <Card.Body>
+                                    <Card.Text>
+                                        <h5>Question(s) en attente de reponse :</h5>
+                                            {userdetails && userdetails.messages.filter(el=>el.response==="").map(el=><p>{el.question}</p>)}
+                                        <h5>Reponses du medecin :</h5>
+                                            {userdetails && userdetails.messages.filter(el=>el.response !=="").map(el=><div><p>question : {el.question}</p> <p>Reponse : {el.response}</p></div>)}
+                                        
                                     </Card.Text>
                                 </Card.Body>
                             </Row>
