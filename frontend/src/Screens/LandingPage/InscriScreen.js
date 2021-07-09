@@ -39,7 +39,7 @@ const InscriScreen = ({history}) => {
             setMessage('Les mots de passe que vous avez entrés ne sont pas identiques.')
         }
         else{
-            dispatch(Register('doctor','newDoctor',{lastName:nom,firstName:prenom,email:email,medicalSpeciality:special,phoneNumber:tel,address:adresse,password:password}))
+            dispatch(Register('doctor','newDoctor',{lastName:nom,firstName:prenom,email:email,medicalSpeciality:special,phoneNumber:tel,address:adresse,password:password,assistant:null}))
         }
         
     }
