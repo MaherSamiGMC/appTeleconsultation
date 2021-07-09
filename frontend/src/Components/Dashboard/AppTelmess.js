@@ -34,6 +34,7 @@ const AppTelmess = ({userdetails}) => {
                 <div className="container-fluid"> 
                     {questions.map( p =>
                         <Accordion defaultActiveKey="0">
+                            {console.log("p",p)}
                             <Card>
                                 <Accordion.Toggle eventKey="1" onClick={Toggle} className="toggle-arrow text-left">
                                     <Card.Header>

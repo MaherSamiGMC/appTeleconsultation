@@ -68,7 +68,7 @@ const addNewAppointment=asyncHandler((async(req,res)=>{
 }))
 
 const updateAppointment=asyncHandler((async(req,res)=>{
-    const updatePatient=await patient.findByIdAndUpdate({"_id":req.params.id,"appointments._id":req.body._id},{ $set: {"appointments":req.body}})
+    const updatePatient=await patient.findOneAndUpdate({_id:req.params.id,"appointments._id":req.body._id},{ $set: {"appointments.$":req.body}})
     res.json({message:'appointment updated successfully',updatePatient})
 }))
 
@@ -83,7 +83,9 @@ const addNewMessage=asyncHandler((async(req,res)=>{
     res.json({message:'New Message added successfully',addNewMessage})
 }))
 const updateMessage=asyncHandler((async(req,res)=>{
-    const updateMessage=await patient.findByIdAndUpdate({"_id":req.params.id,"messages._id":req.body._id},{ $set: {"messages":req.body}})
+    console.log(req.params.id)
+    const updateMessage=await patient.findOneAndUpdate({_id:req.params.id,"messages._id":req.body._id},{ $set: {"messages.$":req.body}})
+    // console.log('updateMessage',updateMessage)
     res.json({message:'Message updated successfully',updateMessage})
 }))
 module.exports={getPatients,addNewPatient,updatePatient,deletePatient,getPatient,authPatient,addNewAppointment,updateAppointment,deleteAppointment,addNewMessage,updateMessage}
