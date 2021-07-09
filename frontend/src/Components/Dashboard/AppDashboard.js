@@ -5,7 +5,9 @@ import Calendar from 'react-calendar';
 import { useState } from 'react';
 import 'react-calendar/dist/Calendar.css';
 import { Bar } from 'react-chartjs-2';
-
+import {
+  Link
+} from "react-router-dom";
 import Loader from '../LandingPage/Loader'
 import {
   Table,
@@ -120,7 +122,7 @@ function AppDashboard({userdetails}) {
                   <div className="icon">
                     <i className="fas fa-hospital-user" />
                   </div>
-                  <a href="#" className="small-box-footer">Plus d'info <i className="fas fa-arrow-circle-right" /></a>
+                  <Link to="/Dashboard/list-of-patients" className="small-box-footer">Plus d'info <i className="fas fa-arrow-circle-right" /></Link>
                 </div>
               </div>
               {/* ./col */}
@@ -137,7 +139,7 @@ function AppDashboard({userdetails}) {
                   <div className="icon">
                     <i className="fas fa-user-clock" />
                   </div>
-                  <a href="#" className="small-box-footer">Plus d'info <i className="fas fa-arrow-circle-right" /></a>
+                  <Link to="Dashboard/modif-assistant" className="small-box-footer">Plus d'info <i className="fas fa-arrow-circle-right" /></Link>
                 </div>
               </div>
               {/* ./col */}
@@ -152,7 +154,7 @@ function AppDashboard({userdetails}) {
                   <div className="icon">
                     <i className="fas fa-calendar-day" />
                   </div>
-                  <a href="#" className="small-box-footer">Plus info <i className="fas fa-arrow-circle-right" /></a>
+                  <Link to="/Dashboard/Calendar" className="small-box-footer">Plus info <i className="fas fa-arrow-circle-right" /></Link>
                 </div>
               </div>
 
@@ -260,7 +262,7 @@ function AppDashboard({userdetails}) {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-7 col-6">
+              <div className="col-lg-5 col-6">
               <Bar data={data} options={options} />
 
               </div>

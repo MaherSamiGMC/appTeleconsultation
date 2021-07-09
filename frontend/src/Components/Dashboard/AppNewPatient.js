@@ -24,12 +24,6 @@ function AppNewPatient({userdetails}) {
     const [tel, setTel] = useState('')
     const [sexe, setSexe] = useState('')
     
-
-    useEffect(() => {
-
-
-    }, [])
-
     const submitHandler=async(e)=>{
         e.preventDefault()
         const newpatient={firstName:prenom,lastName:nom,phoneNumber:tel,email,dateOfBirth:date,gender:sexe,password:"123456",affiliateDoctor:userdetails._id}

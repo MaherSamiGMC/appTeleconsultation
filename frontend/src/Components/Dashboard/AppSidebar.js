@@ -59,7 +59,7 @@ import {
                   <i className="nav-icon far fa-calendar-alt" />
                   <p>
                      Calendrier
-                    {/* <span className="badge badge-info right">2</span> */}
+                    <span className="badge badge-info right">{userdetails && userdetails.patients.map(el=>el.appointments).flat().length}</span>
                   </p>
                 </Link>
               </li>
