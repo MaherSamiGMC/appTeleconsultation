@@ -4,6 +4,7 @@ import { css } from '@emotion/react';
 import Calendar from 'react-calendar';
 import { useState } from 'react';
 import 'react-calendar/dist/Calendar.css';
+import { Bar } from 'react-chartjs-2';
 
 import Loader from '../LandingPage/Loader'
 import {
@@ -25,6 +26,43 @@ import {
   ButtonGroup
 } from '@material-ui/core';
 function AppDashboard({userdetails}) {
+  const listOfappointments=userdetails && userdetails.
+  patients.map(el=>el.appointments).flat()
+  .map(el=>`${new Date(el.startDate).getMonth() + 1}/${new Date(el.startDate).getUTCDate()}`).reduce(function (acc, curr) {
+    if (typeof acc[curr] == 'undefined') {
+      acc[curr] = 1;
+    } else {
+      acc[curr] += 1;
+    }
+  
+    return acc;
+  }, {});
+  console.log(listOfappointments)
+
+  const data = {
+    labels: userdetails && Object.keys(listOfappointments).sort(),
+    datasets: [
+      {
+        label: '# de rendez-vous par jour',
+        data: userdetails && Object.keys(listOfappointments).sort().map(el=>listOfappointments[el]),
+        fill: false,
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgba(255, 99, 132, 0.2)',
+      },
+    ],
+  };
+  
+  const options = {
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+      ],
+    },
+  };
   const [value, onChange] = useState(new Date());
 
   const header = [
@@ -44,7 +82,7 @@ function AppDashboard({userdetails}) {
     `
   }
     return (
-      <>
+      <div>
       { userdetails == null ? 
         <Loader /> :
 
@@ -222,8 +260,9 @@ function AppDashboard({userdetails}) {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-4 col-6">
-                yosri
+              <div className="col-lg-7 col-6">
+              <Bar data={data} options={options} />
+
               </div>
             </div>
             {/* /.row (main row) */}
@@ -232,7 +271,7 @@ function AppDashboard({userdetails}) {
         {/* /.content */}
       </div>
       }
-      </>
+      </div>
     )
 }
 
