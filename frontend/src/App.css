@@ -419,10 +419,7 @@ select.form-select-lg {
 .profile .outils {
   padding: 50px 0;
 }
-.profile .outils .card {
-  border-radius: 0;
-  box-shadow: none;
-}
+
 .profile .outils .card .rdv {
   background-color: #f7f7f7;
   /* box-shadow: 0 0 4px rgb(34 34 102 / 10%); */
@@ -441,6 +438,30 @@ select.form-select-lg {
 .profile .outils .rdv {
   background: #f8f9fc;
   border: none;
+  border-left: 5px solid #1bbab9;
+}
+.profile .outils .rdv h5 {
+  font-size: 16px;
+  font-family: 'robotomedium';
+}
+.profile .outils .rdv .ques {
+  background: #ffffff;
+  padding: 10px 15px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  color: #333;
+  text-align: right;
+}
+.profile .outils .rdv .rep {
+  color: #000;
+  background: #dedede;
+  padding: 10px 15px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.profile .outils .rdv .repDate {
+  color: #ff3a65;
+  font-size: 14px;
 }
 .profile .outils .card {
   min-height: 100%;
@@ -680,5 +701,21 @@ select.form-select-lg {
 }
 .makeStyles-paper-12 {
   border: 1px solid #0147ff !important;
+}
+.makeStyles-paper-12 h5.MuiTypography-h5 {
+  font-size: 20px !important;
+  text-transform: uppercase;
+  font-family: 'robotomedium' !important;
+  padding: 15px 0;
+}
+.makeStyles-paper-12 > div {
+  justify-content: center !important;
+}
+.makeStyles-paper-12 > div > h1 {
+  display: none;
+}
+.makeStyles-paper-12 > div > .MuiButton-containedPrimary {
+  width: 100%;
+  margin-top: 20px;
 }
 /******** Video consultation ********/

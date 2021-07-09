@@ -6,6 +6,8 @@ import { addMessage } from '../../Redux/Actions/messageActions';
 import Loader from '../LandingPage/Loader'
 import Message from '../LandingPage/Message';
 
+import moment from 'moment'
+
 const PortailPatient = ({userdetails}) => {
     const state = useSelector(state => state.messageAdd)
     const {loading,error,messagetInfo}=state
@@ -45,7 +47,7 @@ const PortailPatient = ({userdetails}) => {
                         <Col sm={6}>
                             <p className="mb-1 line-icon" style={{display:'flex'}}><i class="fas fa-phone-square-alt"></i> { userdetails.phoneNumber}</p>
                             <p className="mb-1 line-icon" style={{display:'flex'}}><i class="fas fa-envelope-square"></i> { userdetails.email}</p>
-                            <p className="mb-1 line-icon" style={{display:'flex'}}><i class="fas fa-calendar-alt"></i>{ userdetails.dateOfBirth}</p>
+                            <p className="mb-1 line-icon" style={{display:'flex'}}><i class="fas fa-calendar-alt"></i>{moment(userdetails.dateOfBirth).format("MMM Do YYYY")}</p>
                         </Col>
                     </Row>
 
@@ -60,13 +62,14 @@ const PortailPatient = ({userdetails}) => {
                                     <Card.Body>
                                     <Card.Title>Consultation vidéo avec <strong>DR</strong></Card.Title>
                                         <Card.Text>
-                                        Pour changer votre rendez-vous contacter l'assistant
+                                            Pour changer votre rendez-vous contacter l'assistant<br/>
+                                            <strong>Sujet : </strong>{userdetails.appointments.map(x => x.title)}
                                         </Card.Text>
                                     </Card.Body>
                                 </Col>
                                 <Col sm={4} className="text-right">
                                     <Card.Body>
-                                        <Card.Text className="text-left" style={{display:"inline-block"}}>29 juin 2021<br/><strong>Dans 1 heure</strong></Card.Text>
+                                        <Card.Text className="text-left" style={{display:"inline-block"}}>{userdetails.appointments.map(x => moment(x.endDate).format("MMM Do YYYY"))} </Card.Text>
                                     </Card.Body>
                                 </Col>
                             </Row>
@@ -98,7 +101,7 @@ const PortailPatient = ({userdetails}) => {
                                     <Card.Text>
                                         <Form>
                                             <Form.Group controlId="exampleForm.ControlTextarea1">      
-                                                <Form.Control as="textarea" rows={3} placeholder="Message"
+                                                <Form.Control as="textarea" rows={3} placeholder="Vous avez des questions contactez votre docteur"
                                                 value={message} onChange={(e)=>setMessage(e.target.value)}/>
                                             </Form.Group>
                                             <Button variant="primary" type="submit"  onClick={submitHandler}>Envoyer</Button>
@@ -110,17 +113,33 @@ const PortailPatient = ({userdetails}) => {
                         </Card>
                         <Card className="rdv pb-4 message-doctor">
                             <Row className="mx-2">
-                                <Card.Header className="py-4 text-uppercase">Historique des questions :</Card.Header>
+                                <Card.Header className="py-4 text-uppercase">Question(s) en attente de reponse</Card.Header>
                                 <Card.Body>
                                     <Card.Text>
-                                        <h5>Question(s) en attente de reponse :</h5>
-                                            {userdetails && userdetails.messages.filter(el=>el.response==="").map(el=><p>{el.question}</p>)}
-                                        <h5>Reponses du medecin :</h5>
-                                            {userdetails && userdetails.messages.filter(el=>el.response !=="").map(el=><div><p>question : {el.question}</p> <p>Reponse : {el.response}</p></div>)}
+                                        {userdetails && userdetails.messages.filter(el=>el.response ==="").map(el=>
+                                        <div>
+                                            {/* <h5>Question(s) en attente de reponse :</h5> */}
+                                            <p className="ques">{el.question}<br/><span className="repDate">{moment(el.questionDate).format("MMM Do YYYY")}</span></p>
+                                        </div>
+                                        )}
+                                    </Card.Text>
+                                </Card.Body>
+                            </Row>
+
+                            <Row className="mx-2">
+                                <Card.Header className="py-4 text-uppercase">Historique de vos questions :</Card.Header>
+                                <Card.Body>
+                                    <Card.Text>
+                                            {userdetails && userdetails.messages.filter(el=>el.response !==null).map(el=>
+                                            <div>
+                                                <p className="ques">{el.question}<br/> <span className="repDate">{moment(el.questionDate).format("MMM Do YYYY")}</span></p>
+                                                <p className="rep">{el.response} <br/> <span className="repDate">{moment(el.ResponseDate).format("MMM Do YYYY")}</span></p>
+                                            </div>)}
                                         
                                     </Card.Text>
                                 </Card.Body>
                             </Row>
+
                         </Card>
                     </Container>
                 </section>
