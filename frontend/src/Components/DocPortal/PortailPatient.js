@@ -57,22 +57,30 @@ const PortailPatient = ({userdetails}) => {
                     <Container>
                         <Card className="rdv pb-4">
                             <Card.Header className="py-4 text-uppercase">Vos prochains rendez-vous</Card.Header>
-                            <Row className="mx-2">
-                                <Col sm={8}>
+                            
                                     <Card.Body>
                                     <Card.Title>Consultation vidéo avec <strong>DR</strong></Card.Title>
                                         <Card.Text>
                                             Pour changer votre rendez-vous contacter l'assistant<br/>
-                                            <strong>Sujet : </strong>{userdetails.appointments.map(x => x.title)}
+                                            
                                         </Card.Text>
+                                        
+                                        {userdetails.appointments.map(x => 
+                                            <Row className="mx-2">
+                                                <Col sm={8}>
+                                                    <Card.Text>
+                                                        <strong>Sujet : </strong> {x.title} 
+                                                    </Card.Text>
+                                                </Col>
+                                                <Col sm={4} className="text-right">
+                                                    <Card.Body>
+                                                        <Card.Text className="text-left" style={{display:"inline-block"}}>{ moment(x.endDate).format("MMM Do YYYY, h:mm:ss a")} </Card.Text>
+                                                    </Card.Body>
+                                                </Col>
+                                            </Row>
+                                        )}
+                                        
                                     </Card.Body>
-                                </Col>
-                                <Col sm={4} className="text-right">
-                                    <Card.Body>
-                                        <Card.Text className="text-left" style={{display:"inline-block"}}>{userdetails.appointments.map(x => moment(x.endDate).format("MMM Do YYYY, h:mm:ss a").endOf('day').fromNow())} </Card.Text>
-                                    </Card.Body>
-                                </Col>
-                            </Row>
                         </Card>
                         
                         <Card className="rdv pb-4 message-doctor">
