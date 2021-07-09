@@ -32,7 +32,7 @@ const AppModal = ({Profil}) => {
                               <h4 className="text-uppercase">{Profil && Profil.firstName} {Profil && Profil.lastName}</h4>
                               <ul>
                                 <li className="text-muted mb-0"><i class="fas fa-envelope-square"></i> {Profil && Profil.email}</li>
-                                <li className="text-muted mb-0"><i class="fas fa-phone-square-alt"></i> {Profil && Profil.phoneNumber}</li>
+                                <li className="text-muted mb-0"><i class="fas fa-phone-square-alt"></i> <a href={`tel:${Profil && Profil.phoneNumber}`}>{Profil && Profil.phoneNumber}</a></li>
                                 <li className="text-muted "><i class="fas fa-calendar-alt"></i> {Profil && Profil.dateOfBirth}</li>
                               </ul>
                           </div>
@@ -49,7 +49,7 @@ const AppModal = ({Profil}) => {
                   <p className="ques mb-1">{x.question}</p> 
                   <p className="text-right rep mb-1">{x.response}</p>
                 </div>
-                  ) : <p className="nothing">aucune message</p>}
+                  ) : <p className="nothing">aucun message</p>}
               </div>
             </div>
 
@@ -59,7 +59,7 @@ const AppModal = ({Profil}) => {
               <div>{Profil && Profil.appointments.map(x =>
                 <div>
                   <p className="mb-0">Sujet : {x.title}</p> 
-                  <p className="mb-1">vous avez un rendez vous au <strong>{moment(x.endDate).format("MMM Do YYYY")}</strong></p>
+                  <p className="mb-1">vous avez un rendez vous au <br/><strong>{moment(x.endDate).format("MMM Do YYYY,h:mm:ss a")}</strong></p>
                 </div>
                   )  
                   // : <p className="nothing">aucun rendez vous</p>
