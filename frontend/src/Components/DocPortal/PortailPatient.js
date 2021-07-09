@@ -130,7 +130,7 @@ const PortailPatient = ({userdetails}) => {
                                 <Card.Header className="py-4 text-uppercase">Historique de vos questions :</Card.Header>
                                 <Card.Body>
                                     <Card.Text>
-                                            {userdetails && userdetails.messages.filter(el=>el.response !==null).map(el=>
+                                            {userdetails && userdetails.messages.filter(el=>el.response !=="").map(el=>
                                             <div>
                                                 <p className="ques">{el.question}<br/> <span className="repDate">{moment(el.questionDate).format("MMM Do YYYY")}</span></p>
                                                 <p className="rep">{el.response} <br/> <span className="repDate">{moment(el.ResponseDate).format("MMM Do YYYY")}</span></p>

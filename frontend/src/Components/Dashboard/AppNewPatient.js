@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import 'react-calendar/dist/Calendar.css';
 import {
     Link
@@ -11,7 +11,7 @@ import { Register } from '../../Redux/Actions/userActions';
 import {useDispatch,useSelector} from 'react-redux'
 import Message from '../../Components/LandingPage/Message'
 import Loader from '../../Components/LandingPage/Loader'
-
+import axios from 'axios'
 
 function AppNewPatient({userdetails}) {
     const userRegister = useSelector(state => state.userRegister)
@@ -23,10 +23,17 @@ function AppNewPatient({userdetails}) {
     const [date, setDate] = useState('')
     const [tel, setTel] = useState('')
     const [sexe, setSexe] = useState('')
+    
 
-    const submitHandler=(e)=>{
+    useEffect(() => {
+
+
+    }, [])
+
+    const submitHandler=async(e)=>{
         e.preventDefault()
         const newpatient={firstName:prenom,lastName:nom,phoneNumber:tel,email,dateOfBirth:date,gender:sexe,password:"123456",affiliateDoctor:userdetails._id}
+        await axios.post('http://localhost:5000/api/mail',{sender:newpatient.email,password:newpatient.password})
         //DISPATCH REGISTER
 
         dispatch(Register('patient','newpatient',newpatient))
