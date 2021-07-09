@@ -69,7 +69,7 @@ const PortailPatient = ({userdetails}) => {
                                 </Col>
                                 <Col sm={4} className="text-right">
                                     <Card.Body>
-                                        <Card.Text className="text-left" style={{display:"inline-block"}}>{userdetails.appointments.map(x => moment(x.endDate).format("MMM Do YYYY"))} </Card.Text>
+                                        <Card.Text className="text-left" style={{display:"inline-block"}}>{userdetails.appointments.map(x => moment(x.endDate).format("MMM Do YYYY, h:mm:ss a"))} </Card.Text>
                                     </Card.Body>
                                 </Col>
                             </Row>

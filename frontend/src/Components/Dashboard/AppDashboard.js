@@ -48,7 +48,7 @@ function AppDashboard({userdetails}) {
         label: '# de rendez-vous par jour',
         data: userdetails && Object.keys(listOfappointments).sort().map(el=>listOfappointments[el]),
         fill: false,
-        backgroundColor: 'rgb(255, 99, 132)',
+        backgroundColor: 'rgb(255, 58, 101)',
         borderColor: 'rgba(255, 99, 132, 0.2)',
       },
     ],
@@ -250,7 +250,7 @@ function AppDashboard({userdetails}) {
               </section>
               {/* /.Left col */}
               {/* right col (We are only adding the ID to make the widgets sortable)*/}
-              <div className="col-lg-4 col-6">
+              <div className="col-lg-4 col-6 mt-4">
                 {/* small box */}
                 <div>
                   <div className="inner">
@@ -262,7 +262,7 @@ function AppDashboard({userdetails}) {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-5 col-6">
+              <div className="col-lg-8 col-6">
               <Bar data={data} options={options} />
 
               </div>
