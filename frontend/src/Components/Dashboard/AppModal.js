@@ -69,10 +69,10 @@ const AppModal = ({Profil}) => {
               <div>{Profil && Profil.appointments.length > 0 ? Profil && Profil.appointments.map(x =>
                 <div>
                   <p className="mb-0">Sujet : {x.title}</p> 
-                  <p className="mb-1">vous avez un rendez vous au <strong>{moment(x.endDate).format("MMM Do YYYY")}</strong></p>
+                  <p className="mb-1">Vous avez un rendez vous le <strong>{moment(x.endDate).format("MMM Do YYYY")}</strong></p>
                 </div>
                   )  
-                  : <p className="nothing">aucun rendez vous</p>
+                  : <p className="nothing">Aucun rendez vous fixé</p>
                   }
               </div>
             </div>
@@ -83,7 +83,7 @@ const AppModal = ({Profil}) => {
 
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>Fermer fenêtre</Button>
-          <Button variant="danger" onClick={handleDelete}>Supprimer</Button>
+          <Button variant="danger" onClick={handleDelete}>Supprimer les données du patient</Button>
         </Modal.Footer>
       </Modal>
     </div>

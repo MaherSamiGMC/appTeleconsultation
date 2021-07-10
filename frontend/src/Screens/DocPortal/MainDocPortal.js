@@ -68,14 +68,14 @@ const MainDocPortal = ({ history }) => {
               <Container className="appel">
                 <Row>
                   <Col md={6}>
-                    <h2 className="mb-5">Guide pour démarrer la téléconsultation</h2>
-                    <p className="text-justify pr-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non ante ipsum. Ut in ultricies justo. Phasellus laoreet, arcu id efficitur facilisis, massa lacus rutrum eros, sit amet bibendum urna justo et urna.</p>
-                    <h3 className="mb-4">guide pour démarrer la téléconsultation :</h3>
+                    <h2 className="mb-5">Guide pour démarrer votre session de téléconsultation</h2>
+                    <p className="text-justify pr-5">Merci de suivre les étapes ci-dessous pour bien commencer votre session de teleconsultation avec votre medecin soignant</p>
+                    <h3 className="mb-4">Pour démarrer la téléconsultation :</h3>
                     <ol>
-                      <li>Lorem ipsum dolor sit amet</li>
-                      <li>Lorem ipsum dolor sit amet</li>
-                      <li>Lorem ipsum dolor sit amet</li>
-                      <li>Lorem ipsum dolor sit amet</li>
+                      <li>Cliquer sur le bouton <b>"Je suis Disponible"</b>  </li>
+                      <li>Attendre le lancement de la téléconsultation par votre medecin  </li>
+                      <li>Une fois la session est initiée, Appuyer sur le bouton <b>"Répondre"</b> </li>
+                      <li>A la fin de la session, Appuyer sur le bouton <b>"Terminer l'appel"</b> pour achever la session </li>
                     </ol>
                   </Col>
                   <Col md={6}>
