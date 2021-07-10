@@ -67,17 +67,21 @@ const PortailPatient = ({userdetails}) => {
                                         </Card.Text>
                                         
                                         {userdetails.appointments.map(x => 
-                                            <Row className="mx-2">
-                                                <Col sm={8}>
-                                                    <Card.Text>
-                                                        <strong>Sujet : </strong> {x.title} 
-                                                    </Card.Text>
+                                            <Row className="mx-2 mb-3 row-date" style={{alignItems:'center'}}>
+                                                <Col sm={1} className="text-center date-pro">
+                                                    <div>
+                                                        <Card.Text style={{display:"inline-block"}}>
+                                                            {moment(x.endDate).format("MMM Do YY")}
+                                                        </Card.Text>
+                                                    </div>
                                                 </Col>
-                                                <Col sm={4} className="text-right">
-                                                    <Card.Body>
-                                                        
-                                                        <Card.Text className="text-left date" style={{display:"inline-block"}}>{moment(x.endDate).format("MMM Do YY")}<br/>{moment(x.endDate).fromNow()}</Card.Text>
-                                                    </Card.Body>
+                                                <Col sm={11} className="p-0 sujet-profil">
+                                                    <Card.Text className="pl-4">
+                                                        <strong>Sujet : </strong> {x.title}<br/><span className="date">{moment(x.endDate).fromNow()}</span>
+                                                    </Card.Text>
+
+                                                    
+                                                    
                                                 </Col>
                                             </Row>
                                         )}
@@ -143,8 +147,6 @@ const PortailPatient = ({userdetails}) => {
 
                             <Row className="mx-2">
                                 <Card>
-
-                                
                                     <Card.Header className="py-4 text-uppercase">Historique de vos questions :</Card.Header>
                                     <Card.Body>
                                         <Card.Text className="scroll style-1">
@@ -166,7 +168,6 @@ const PortailPatient = ({userdetails}) => {
                                         </Card.Text>
                                     </Card.Body>
                                 </Card>
-
                             </Row>
 
                         </Card>

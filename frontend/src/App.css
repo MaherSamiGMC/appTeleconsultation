@@ -83,8 +83,8 @@ a {
 }
 .slider .slogan {
   position: absolute;
-  bottom: 30vh;
-  left: 0;
+  bottom: 50vh;
+  left: 5%;
   font-size: 40px;
   text-transform: uppercase;
   color: #fff;
@@ -381,6 +381,21 @@ select.form-select-lg {
 /**** style page Portail ****/
 .profile {
   width: 100%;
+}
+.profile .outils .rdv .row-date {
+  background-color: #ec5c42;
+  border-radius: 5px 8px 5px 0;
+}
+.profile .outils .rdv .date-pro {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile .outils .rdv .sujet-profil {
+  background-color: #e7eaeb;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 .profile .date {
   font-size: 13px;
