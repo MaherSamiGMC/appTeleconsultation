@@ -52,7 +52,7 @@ const AppModal = ({Profil}) => {
           <Col md={7} className="pt-4" >
             <div className="msg mb-3">
               <h5 className="mb-2">Messages :</h5>
-              <div>{ Profil && Profil.messages.length > 0 ? Profil && Profil.messages.map(x =>
+              <div className="scroll style-1">{ Profil && Profil.messages.length > 0 ? Profil && Profil.messages.map(x =>
                   <div>
                     <p className="ques mb-1">{x.question}</p> 
                     <p className="text-right rep mb-1">{x.response}</p>
