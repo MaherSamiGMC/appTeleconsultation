@@ -3,11 +3,16 @@ import 'react-pro-sidebar/dist/css/styles.css';
 import {
   Link
 } from "react-router-dom";
+import { CButton } from '@coreui/react';
+import {useDispatch} from 'react-redux'
+import { logout } from '../../Redux/Actions/userActions';
+
 
  function AppSidebar({userdetails}) {
-
-
-
+   const dispatch = useDispatch()
+  const logoutHandler=()=>{
+    dispatch(logout())
+}
     return (
       
 <aside className="main-sidebar sidebar-light-primary elevation-4">
@@ -24,7 +29,7 @@ import {
               <img src="https://images.emojiterra.com/google/android-oreo/512px/1f468-1f3fb-2695.png" className="img-circle elevation-2" alt="User Image" />
             </div>
             <div className="info">
-              <a href="/Dashboard" className="d-block">{userdetails && `Dr. ${ userdetails.firstName} ${ userdetails.lastName}`}</a>
+              <Link to="/Dashboard" className="d-block">{userdetails && `Dr. ${ userdetails.firstName} ${ userdetails.lastName}`} </Link>
             </div>
           </div>
 
@@ -109,6 +114,8 @@ import {
                   <p>Modifier les paramètres du compte</p>
                 </Link>
               </li>
+              <li className="nav-header"><center><CButton onClick={logoutHandler}  color="danger" shape="rounded-pill">Déconnexion</CButton></center></li>
+
             </ul>
           </nav>
           {/* /.sidebar-menu */}

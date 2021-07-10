@@ -123,7 +123,7 @@ const PortailPatient = ({userdetails}) => {
                         </Card>
                         <Card className="rdv pb-4 message-doctor">
                             <Row className="mx-2">
-                                <Card.Header className="py-4 text-uppercase">Question(s) en attente de reponse</Card.Header>
+                                <Card.Header className="py-4 text-uppercase">Question(s) en attente de reponse : </Card.Header>
                                 <Card.Body>
                                     <Card.Text>
                                         {userdetails && userdetails.messages.filter(el=>el.response ==="").map(el=>
@@ -146,7 +146,7 @@ const PortailPatient = ({userdetails}) => {
                                                 {userdetails && userdetails.messages.filter(el=>el.response !=="").map(el=>
                                                 <div>
                                                     <p className="ques">{el.question}<br/> <span className="repDate">{moment(el.questionDate).format("MMM Do YYYY")}</span></p>
-                                                    <p className="rep">{el.response} <br/> <span className="repDate">{moment(el.ResponseDate).format("MMM Do YYYY")}</span></p>
+                                                    <p className="rep">{` Réponse du docteur :${el.response}`} <br/> <span className="repDate">{moment(el.ResponseDate).format("MMM Do YYYY")}</span></p>
                                                 </div>)}
                                             
                                         </Card.Text>
