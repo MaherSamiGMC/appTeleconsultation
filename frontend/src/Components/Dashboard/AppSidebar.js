@@ -5,14 +5,12 @@ import {
 } from "react-router-dom";
 import { CButton } from '@coreui/react';
 import {useDispatch} from 'react-redux'
-import { logout } from '../../Redux/Actions/userActions';
+
 
 
  function AppSidebar({userdetails}) {
    const dispatch = useDispatch()
-  const logoutHandler=()=>{
-    dispatch(logout())
-}
+  
     return (
       
 <aside className="main-sidebar sidebar-light-primary elevation-4">
@@ -114,7 +112,6 @@ import { logout } from '../../Redux/Actions/userActions';
                   <p>Modifier les paramètres du compte</p>
                 </Link>
               </li>
-              <li className="nav-header"><center><CButton onClick={logoutHandler}  color="danger" shape="rounded-pill">Déconnexion</CButton></center></li>
 
             </ul>
           </nav>
