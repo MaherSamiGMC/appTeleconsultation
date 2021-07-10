@@ -4,6 +4,7 @@ import { css } from '@emotion/react';
 import Calendar from 'react-calendar';
 import { useState } from 'react';
 import 'react-calendar/dist/Calendar.css';
+
 import { Bar } from 'react-chartjs-2';
 import {
   Link
@@ -28,6 +29,7 @@ import {
   ButtonGroup
 } from '@material-ui/core';
 function AppDashboard({userdetails}) {
+  
   const listOfappointments=userdetails && userdetails.
   patients.map(el=>el.appointments).flat()
   .map(el=>`${new Date(el.startDate).getMonth() + 1}/${new Date(el.startDate).getUTCDate()}`).reduce(function (acc, curr) {
@@ -39,6 +41,10 @@ function AppDashboard({userdetails}) {
   
     return acc;
   }, {});
+
+  
+
+
   console.log(listOfappointments)
 
   const data = {
@@ -102,6 +108,7 @@ function AppDashboard({userdetails}) {
                 <ol className="breadcrumb float-sm-right">
                   <li className="breadcrumb-item"><a href="/">Accueil</a></li>
                   <li className="breadcrumb-item active">Tableau de bord</li>
+
                 </ol>
               </div>{/* /.col */}
             </div>{/* /.row */}
