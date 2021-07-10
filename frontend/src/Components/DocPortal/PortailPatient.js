@@ -7,6 +7,8 @@ import Loader from '../LandingPage/Loader'
 import Message from '../LandingPage/Message';
 
 import moment from 'moment'
+import 'moment/locale/fr';
+
 
 const PortailPatient = ({userdetails}) => {
     const state = useSelector(state => state.messageAdd)
@@ -19,7 +21,6 @@ const PortailPatient = ({userdetails}) => {
         dispatch(addMessage(userdetails._id,{question:message,response:"",questionDate:new Date()}))
         setMessage('')
     }
-
     return (
         <>
         { userdetails == null ? <Loader /> : 
@@ -47,7 +48,7 @@ const PortailPatient = ({userdetails}) => {
                         <Col sm={6}>
                             <p className="mb-1 line-icon" style={{display:'flex'}}><i class="fas fa-phone-square-alt"></i> { userdetails.phoneNumber}</p>
                             <p className="mb-1 line-icon" style={{display:'flex'}}><i class="fas fa-envelope-square"></i> { userdetails.email}</p>
-                            <p className="mb-1 line-icon" style={{display:'flex'}}><i class="fas fa-calendar-alt"></i>{moment(userdetails.dateOfBirth).format("MMM Do YYYY")}</p>
+                            <p className="mb-1 line-icon" style={{display:'flex'}}><i class="fas fa-calendar-alt"></i>{userdetails.dateOfBirth}</p>
                         </Col>
                     </Row>
 
@@ -59,8 +60,8 @@ const PortailPatient = ({userdetails}) => {
                             <Card.Header className="py-4 text-uppercase">Vos prochains rendez-vous</Card.Header>
                             
                                     <Card.Body>
-                                    <Card.Title>Consultation vidéo avec <strong>DR</strong></Card.Title>
-                                        <Card.Text>
+                                    <Card.Title className="pl-3">Consultation vidéo avec <strong>DR</strong></Card.Title>
+                                        <Card.Text className="pl-3">
                                             Pour changer votre rendez-vous contacter l'assistant<br/>
                                             
                                         </Card.Text>
@@ -74,7 +75,8 @@ const PortailPatient = ({userdetails}) => {
                                                 </Col>
                                                 <Col sm={4} className="text-right">
                                                     <Card.Body>
-                                                        <Card.Text className="text-left" style={{display:"inline-block"}}>{ moment(x.endDate).format("MMM Do YYYY, h:mm:ss a")} </Card.Text>
+                                                        
+                                                        <Card.Text className="text-left date" style={{display:"inline-block"}}>{moment(x.endDate).format("MMM Do YY")}<br/>{moment(x.endDate).fromNow()}</Card.Text>
                                                     </Card.Body>
                                                 </Col>
                                             </Row>
@@ -135,17 +137,22 @@ const PortailPatient = ({userdetails}) => {
                             </Row>
 
                             <Row className="mx-2">
-                                <Card.Header className="py-4 text-uppercase">Historique de vos questions :</Card.Header>
-                                <Card.Body>
-                                    <Card.Text>
-                                            {userdetails && userdetails.messages.filter(el=>el.response !=="").map(el=>
-                                            <div>
-                                                <p className="ques">{el.question}<br/> <span className="repDate">{moment(el.questionDate).format("MMM Do YYYY")}</span></p>
-                                                <p className="rep">{el.response} <br/> <span className="repDate">{moment(el.ResponseDate).format("MMM Do YYYY")}</span></p>
-                                            </div>)}
-                                        
-                                    </Card.Text>
-                                </Card.Body>
+                                <Card>
+
+                                
+                                    <Card.Header className="py-4 text-uppercase">Historique de vos questions :</Card.Header>
+                                    <Card.Body>
+                                        <Card.Text>
+                                                {userdetails && userdetails.messages.filter(el=>el.response !=="").map(el=>
+                                                <div>
+                                                    <p className="ques">{el.question}<br/> <span className="repDate">{moment(el.questionDate).format("MMM Do YYYY")}</span></p>
+                                                    <p className="rep">{el.response} <br/> <span className="repDate">{moment(el.ResponseDate).format("MMM Do YYYY")}</span></p>
+                                                </div>)}
+                                            
+                                        </Card.Text>
+                                    </Card.Body>
+                                </Card>
+
                             </Row>
 
                         </Card>

@@ -382,6 +382,9 @@ select.form-select-lg {
 .profile {
   width: 100%;
 }
+.profile .date {
+  font-size: 13px;
+}
 .block__picture {
   background-color: white;
   margin: 13px;
@@ -530,6 +533,16 @@ select.form-select-lg {
   background: #0147ff;
 }
 /******** Calender ********/
+.react-calendar {
+  width: 100% !important;
+  border: 1px solid rgba(0, 0, 0, 0.125) !important;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+}
+.react-calendar__tile {
+  padding: 0.48em 0.5em !important;
+}
+
 .MuiInputBase-root {
   background: transparent !important;
 }
@@ -687,6 +700,7 @@ select.form-select-lg {
 }
 .modal-profile .modal-body {
   align-items: center;
+  height: 100%;
 }
 .modal-profile .modal-body .col {
   margin: 0 auto;
@@ -718,6 +732,28 @@ select.form-select-lg {
   width: 100%;
   margin-top: 20px;
 }
+.appel .makeStyles-container-9 {
+  width: 100% !important;
+}
+.appel h2 {
+  text-transform: uppercase;
+  color: #ff3a65;
+  font-family: 'robotobold';
+}
+.makeStyles-wrapper-3 {
+  background: #f4f3f2;
+  padding: 50px 0;
+}
+.appel h3 {
+  color: #343443;
+  font-size: 22px;
+  font-family: 'robotomedium';
+}
+.makeStyles-wrapper-24 {
+  background: rgba(248, 248, 252, 1);
+  padding: 40px 0;
+}
+
 /******** Video consultation ********/
 
 .chartjs canvas {
