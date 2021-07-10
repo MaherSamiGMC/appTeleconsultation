@@ -129,7 +129,12 @@ const PortailPatient = ({userdetails}) => {
                                         {userdetails && userdetails.messages.filter(el=>el.response ==="").map(el=>
                                         <div>
                                             {/* <h5>Question(s) en attente de reponse :</h5> */}
-                                            <p className="ques">{el.question}<br/><span className="repDate">{moment(el.questionDate).format("MMM Do YYYY")}</span></p>
+                                            <div className="ques"><div>{el.question}<br/><span className="repDate">{moment(el.questionDate).format("MMM Do YYYY")}</span></div>
+
+                                            {userdetails.gender === 'F'?  <div className="doc-image"><img src="https://images.emojiterra.com/google/android-11/512px/1f467.png" class="img-circle elevation-2" alt="User Image" /></div>
+                                                        : <div className="doc-image"><img src="https://images.emojiterra.com/google/android-11/512px/1f9d1.png" class="img-circle elevation-2" alt="User Image" /></div>}
+                                            </div>
+                                            
                                         </div>
                                         )}
                                     </Card.Text>
@@ -142,11 +147,20 @@ const PortailPatient = ({userdetails}) => {
                                 
                                     <Card.Header className="py-4 text-uppercase">Historique de vos questions :</Card.Header>
                                     <Card.Body>
-                                        <Card.Text>
+                                        <Card.Text className="scroll style-1">
                                                 {userdetails && userdetails.messages.filter(el=>el.response !=="").map(el=>
                                                 <div>
-                                                    <p className="ques">{el.question}<br/> <span className="repDate">{moment(el.questionDate).format("MMM Do YYYY")}</span></p>
-                                                    <p className="rep">{` Réponse du docteur :${el.response}`} <br/> <span className="repDate">{moment(el.ResponseDate).format("MMM Do YYYY")}</span></p>
+                                                    {/* <p className="ques">{el.question}<br/> <span className="repDate">{moment(el.questionDate).format("MMM Do YYYY")}</span></p> */}
+                                                    
+                                                    
+                                                    
+                                                    <div className="ques">
+                                                        <div>{el.question} <br/> <span className="repDate">{moment(el.questionDate).format("MMM Do YYYY")}</span></div>
+                                                        {userdetails.gender === 'F'?  <div className="doc-image"><img src="https://images.emojiterra.com/google/android-11/512px/1f467.png" class="img-circle elevation-2" alt="User Image" /></div>
+                                                        : <div className="doc-image"><img src="https://images.emojiterra.com/google/android-11/512px/1f9d1.png" class="img-circle elevation-2" alt="User Image" /></div>}
+                                                    </div>
+
+                                                    <div className="rep"><div className="doc-image"><img src="https://images.emojiterra.com/google/android-oreo/512px/1f468-1f3fb-2695.png" class="img-circle elevation-2" alt="User Image" /></div> <div>{el.response} <br/> <span className="repDate">{moment(el.ResponseDate).format("MMM Do YYYY")}</span></div></div>
                                                 </div>)}
                                             
                                         </Card.Text>
