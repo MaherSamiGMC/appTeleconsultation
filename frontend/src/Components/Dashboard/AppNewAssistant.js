@@ -12,6 +12,8 @@ import {useDispatch,useSelector} from 'react-redux'
 import Message from '../../Components/LandingPage/Message'
 import Loader from '../../Components/LandingPage/Loader'
 import { withRouter} from 'react-router-dom'
+import generator from "generate-password";
+import axios from 'axios'
 
 
 const AppNewAssistant=withRouter(({userdetails,history}) => {
@@ -25,12 +27,17 @@ const AppNewAssistant=withRouter(({userdetails,history}) => {
     const [tel, setTel] = useState('')
     const [sexe, setSexe] = useState('')
 
-    const submitHandler=(e)=>{
+    const submitHandler=async(e)=>{
         e.preventDefault()
-        const newassistant={firstName:prenom,lastName:nom,phoneNumber:tel,email,dateOfBirth:date,gender:sexe,password:"123456",affiliateDoctor:userdetails._id}
+        const newassistant={firstName:prenom,lastName:nom,phoneNumber:tel,email,dateOfBirth:date,gender:sexe,password:generator.generate({
+          length: 10,
+          numbers: true
+      }),affiliateDoctor:userdetails._id}
         //DISPATCH REGISTER
 
         dispatch(Register('assistant','newAssistant',newassistant))
+        await axios.post('http://localhost:5000/api/mail',{sender:newassistant.email,password:newassistant.password})
+
         history.push('/Dashboard')
          window.location.reload()  
     }
@@ -106,8 +113,6 @@ const AppNewAssistant=withRouter(({userdetails,history}) => {
                                     initialSettings={{
                                     singleDatePicker: true,
                                     showDropdowns: true,
-                                    startDate: '10/18/1984',
-                                    minYear: 1901,
                                     }}
                                     onApply={(e)=>setDate(e.target.value)}
                                     value={date}

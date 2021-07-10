@@ -104,10 +104,10 @@ import {
               <li className="nav-header">GESTION CABINET</li>
 
               <li className="nav-item">
-                <a href="#" className="nav-link">
+                <Link to='/Dashboard/modif-compte' className="nav-link">
                   <i className="nav-icon far fa-circle text-info" />
                   <p>Modifier les paramètres du compte</p>
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>

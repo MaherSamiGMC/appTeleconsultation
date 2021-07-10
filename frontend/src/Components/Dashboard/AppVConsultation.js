@@ -10,7 +10,6 @@ import Options from './Options';
 import Notifications from './Notifications';
 import {makeStyles} from '@material-ui/core/styles'
 import { CAlert } from '@coreui/react';
-
 import {Overlay} from 'react-bootstrap'
 
 import CopyToClipboard from 'react-copy-to-clipboard';
@@ -53,7 +52,7 @@ function AppVConsultation({userdetails}) {
 
     const classes=useStyles()
     const VCallAppointments=userdetails && userdetails.patients.map(el=>el.socketId===undefined ? {...el,socketId:''} : el).filter(el=>el.socketId.length>3)
-    console.log(VCallAppointments)
+
     return (
         <div className="content-wrapper list-patients">
         {/* Content Header (Page header) */}
