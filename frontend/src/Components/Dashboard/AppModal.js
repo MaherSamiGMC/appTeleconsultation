@@ -3,12 +3,19 @@ import { useState } from 'react';
 import { Modal, Button, Row, Col } from 'react-bootstrap';
 import moment from 'moment'
 import 'moment/locale/fr';
-
+import {useDispatch} from 'react-redux'
+import { deleteUser } from '../../Redux/Actions/userActions';
+import { LaptopWindows } from '@material-ui/icons';
 
 const AppModal = ({Profil}) => {
+  const dispatch = useDispatch()
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleDelete=()=>{
+    dispatch(deleteUser("patient",Profil._id)) 
+    window.location.reload()
+  }
     return (
     <div className="modal-profile">
       <Button variant="primary" onClick={handleShow} className="link-profil">
@@ -75,8 +82,8 @@ const AppModal = ({Profil}) => {
         </Row>
 
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>Close</Button>
-          <Button variant="danger">Supprimer</Button>
+          <Button variant="secondary" onClick={handleClose}>Fermer fenêtre</Button>
+          <Button variant="danger" onClick={handleDelete}>Supprimer</Button>
         </Modal.Footer>
       </Modal>
     </div>

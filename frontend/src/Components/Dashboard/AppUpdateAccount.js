@@ -5,6 +5,8 @@ import {
     Link
   } from "react-router-dom";
 import { Container, Col, Row, Form, Button } from 'react-bootstrap'
+import "react-datepicker/dist/react-datepicker.css";
+
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 import 'bootstrap-daterangepicker/daterangepicker.css';
 import { updateUserProfile,deleteUser } from '../../Redux/Actions/userActions';
@@ -14,7 +16,7 @@ import Loader from '../../Components/LandingPage/Loader'
 import { withRouter} from 'react-router-dom'
 
 
-const AppUpdateAssistant = withRouter(({userdetails,history}) => {
+const AppUpdateAccount = withRouter(({userdetails,history}) => {
 
     const dispatch = useDispatch()
     const userRegister = useSelector(state => state.userUpdateProfile)
@@ -23,31 +25,34 @@ const AppUpdateAssistant = withRouter(({userdetails,history}) => {
     const [nom, setNom] = useState('')
     const [prenom, setPrenom] = useState('')
     const [email, setEmail] = useState('')
-    const [date, setDate] = useState('')
     const [tel, setTel] = useState('')
-    const [sexe, setSexe] = useState('')
+    const [adresse, setAdresse] = useState('')
+    const [special, setSpecial] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmpassword, setConfirmPassword] = useState('')
+    const [message, setMessage] = useState(null)
+
     useEffect(() => {
-        setNom(userdetails && userdetails.assistant.lastName)
-        setPrenom(userdetails && userdetails.assistant.firstName)
-        setEmail(userdetails && userdetails.assistant.email)
-        setDate(userdetails && userdetails.assistant.dateOfBirth)
-        setTel(userdetails && userdetails.assistant.phoneNumber)
-        setSexe(userdetails && userdetails.assistant.gender)
+        setNom(userdetails && userdetails.lastName)
+        setPrenom(userdetails && userdetails.firstName)
+        setEmail(userdetails && userdetails.email)
+        setTel(userdetails && userdetails.phoneNumber)
+        setAdresse(userdetails && userdetails.address)
+        setSpecial(userdetails && userdetails.medicalSpeciality)
+
     }, [userdetails])
     const submitHandler=(e)=>{
         e.preventDefault()
-        const updateAssistant={firstName:prenom,lastName:nom,phoneNumber:tel,email,dateOfBirth:date,gender:sexe,password:"123456",affiliateDoctor:userdetails._id}
-        //DISPATCH UPDATE
+        const updateAccount={firstName:prenom,lastName:nom,phoneNumber:tel,email,password:password,medicalSpeciality:special,address:adresse}
+        if(password !== confirmpassword || password===''){
+            setMessage('Les mots de passe que vous avez entrés ne sont pas identiques.')
+        }
+        else{
+            dispatch(updateUserProfile('doctor',userdetails._id,'authDoctor',updateAccount))  
 
-        dispatch(updateUserProfile('assistant',userdetails.assistant._id,'authDoctor',updateAssistant))  
+        }
     }
-    const deleteAssistant=(e)=>{
-        e.preventDefault()
-        dispatch(deleteUser('assistant',userdetails.assistant._id))
-        history.push("/Dashboard/new-assistant")
-        window.location.reload()  
 
-    }
     return (
         <>
             { userdetails == null ? 
@@ -58,12 +63,12 @@ const AppUpdateAssistant = withRouter(({userdetails,history}) => {
                         <div className="container-fluid">
                             <div className="row mb-2">
                                 <div className="col-sm-6">
-                                    <h1 className="m-0">Modifier les données de l'assistant :</h1>
+                                    <h1 className="m-0">Modifier les paramètres du compte :</h1>
                                 </div>{/* /.col */}
                                 <div className="col-sm-6">
                                     <ol className="breadcrumb float-sm-right">
                                     <li className="breadcrumb-item"><a href="/">Accueil</a></li>
-                                    <li className="breadcrumb-item active">Modifier les données de l'assistant</li>
+                                    <li className="breadcrumb-item active">Modifier les paramètres du compte</li>
                                     </ol>
                                 </div>{/* /.col */}
                             </div>{/* /.row */}
@@ -82,7 +87,7 @@ const AppUpdateAssistant = withRouter(({userdetails,history}) => {
                                         <div className="card-header1">
                                             <h3 className="card-title">
                                             <i className="fas fa-users" />
-                                                {' '}Modifier Assistant :
+                                                {' '}Modifier les paramètres du compte :
                                             </h3>
 
                                         </div>{/* /.card-header */}
@@ -115,16 +120,11 @@ const AppUpdateAssistant = withRouter(({userdetails,history}) => {
                                                     </Form.Group>
                                                     <Row>
                                                         <Col>
-                                                        <DateRangePicker
-                                                            initialSettings={{
-                                                            singleDatePicker: true,
-                                                            showDropdowns: true,
-                                                            }}
-                                                            onApply={(e)=>setDate(e.target.value)}
-                                                            value={date}
-                                                        >
-                                                            <input type="text"  className="form-control col-9" />
-                                                        </DateRangePicker>
+                                                        <Form.Group controlId="formBasicAdress">
+                                                                <Form.Control 
+                                                                value={adresse} onChange={(e)=>setAdresse(e.target.value)}
+                                                                type="text" placeholder="Adresse du cabinet" required/>
+                                                            </Form.Group>
                                                         </Col>
                                                         <Col>
                                                             <Form.Group controlId="formBasicTel">
@@ -134,24 +134,29 @@ const AppUpdateAssistant = withRouter(({userdetails,history}) => {
                                                             </Form.Group>
                                                         </Col>
                                                         <Col>
-                                                        <select  onChange={(e)=>setSexe(e.target.value)} className="form-select form-select-lg mb-2" value={sexe} aria-label="Default select example">
-                                                                        <option selected>Assistant : </option>
-                                                                        <option  value="Homme">Homme</option>
-                                                                        <option  value="Femme">Femme</option>
-                        
-                                                        </select>
+                                                            <Form.Group controlId="formBasicSpec">
+                                                                <Form.Control 
+                                                                value={special} onChange={(e)=>setSpecial(e.target.value)}
+                                                                type="text" placeholder="Specialité medicale" required/>
+                                                            </Form.Group>
+                                            
                                                         </Col>
+                                                        <Form.Group controlId="formBasicPassword">
+                                                        <Form.Control 
+                                                            value={password} onChange={(e)=>setPassword(e.target.value)}
+                                                            type="password" placeholder="Mot de passe" />
+                                                        </Form.Group>
+                                                        <Form.Group controlId="formBasicPassword">
+                                                            <Form.Control 
+                                                            value={confirmpassword} onChange={(e)=>setConfirmPassword(e.target.value)}
+                                                            type="password" placeholder="Confirmer Mot de passe" />
+                                                        </Form.Group>
                                                     </Row>
-
+                                                    {message && <Message variant='danger'>{message}</Message>}
                                                     
                                                     <Button variant="primary" type="submit" className="adbtn" onClick={submitHandler}>
-                                                        Modifier les données de l'assistant
+                                                        Modifier les données du compte
                                                     </Button>
-                                                    {'  '}
-                                                    <Button variant="primary" type="submit" className="adbtn" onClick={deleteAssistant}>
-                                                        Supprimer les données de l'assistant
-                                                    </Button>
-                                          
 
                                                 </Form>
 
@@ -171,4 +176,4 @@ const AppUpdateAssistant = withRouter(({userdetails,history}) => {
     )
 })
 
-export default AppUpdateAssistant
+export default AppUpdateAccount

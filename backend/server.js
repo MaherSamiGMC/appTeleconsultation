@@ -41,7 +41,8 @@ app.post('/api/mail',(req,res)=>{
 		subject:"Vos identifiants",
 		html:`
 		Bonjour ! vous trouverez ci-dessous votre mot de passe pour accéder à la plateforme Near Doctor ©  :
-		Mot de passe :${data.password}    
+		<br>
+		Mot de passe :<b> ${data.password}</b>    
 		`
 	}
 	transporter.sendMail(mailOptions,(error,response)=>{

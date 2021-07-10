@@ -12,6 +12,7 @@ import {useDispatch,useSelector} from 'react-redux'
 import Message from '../../Components/LandingPage/Message'
 import Loader from '../../Components/LandingPage/Loader'
 import axios from 'axios'
+import generator from "generate-password";
 
 function AppNewPatient({userdetails}) {
     const userRegister = useSelector(state => state.userRegister)
@@ -26,11 +27,14 @@ function AppNewPatient({userdetails}) {
     
     const submitHandler=async(e)=>{
         e.preventDefault()
-        const newpatient={firstName:prenom,lastName:nom,phoneNumber:tel,email,dateOfBirth:date,gender:sexe,password:"123456",affiliateDoctor:userdetails._id}
-        await axios.post('http://localhost:5000/api/mail',{sender:newpatient.email,password:newpatient.password})
+        const newpatient={firstName:prenom,lastName:nom,phoneNumber:tel,email,dateOfBirth:date,gender:sexe,password:generator.generate({
+          length: 10,
+          numbers: true
+      }),affiliateDoctor:userdetails._id}
         //DISPATCH REGISTER
-
         dispatch(Register('patient','newpatient',newpatient))
+        await axios.post('http://localhost:5000/api/mail',{sender:newpatient.email,password:newpatient.password})
+
 
         
     }
@@ -106,8 +110,6 @@ function AppNewPatient({userdetails}) {
                                     initialSettings={{
                                     singleDatePicker: true,
                                     showDropdowns: true,
-                                    startDate: '10/18/1984',
-                                    minYear: 1901,
                                     }}
                                     onApply={(e)=>setDate(e.target.value)}
                                     value={date}
