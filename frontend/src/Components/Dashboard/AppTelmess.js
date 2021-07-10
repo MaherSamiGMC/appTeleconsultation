@@ -61,7 +61,7 @@ const AppTelmess = ({userdetails}) => {
                                 </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="1">
                                     <Card.Body className="px-3">
-                                        <Card.Text className="ques">{p.question} <span className="text-right repDate">{moment(p.questionDate).format("MMM Do YYYY")}</span></Card.Text>
+                                        <Card.Text className="ques">{p.question} <span className="text-right repDate">{moment(p.questionDate).format("MMM Do YYYY")}<br/>{moment(p.questionDate).endOf('day').fromNow()}</span></Card.Text>
                                         
                                         <Card.Text>
                                             <Form>

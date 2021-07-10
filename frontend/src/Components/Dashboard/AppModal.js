@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { Modal, Button, Row, Col } from 'react-bootstrap';
 import moment from 'moment'
+import 'moment/locale/fr';
 
 
 const AppModal = ({Profil}) => {
@@ -32,7 +33,7 @@ const AppModal = ({Profil}) => {
                               <h4 className="text-uppercase">{Profil && Profil.firstName} {Profil && Profil.lastName}</h4>
                               <ul>
                                 <li className="text-muted mb-0"><i class="fas fa-envelope-square"></i> {Profil && Profil.email}</li>
-                                <li className="text-muted mb-0"><i class="fas fa-phone-square-alt"></i> <a href={`tel:${Profil && Profil.phoneNumber}`}>{Profil && Profil.phoneNumber}</a></li>
+                                <li className="text-muted mb-0"><i class="fas fa-phone-square-alt"></i> <a href={`tel:$`} className="text-muted">{Profil && Profil.phoneNumber}</a></li>
                                 <li className="text-muted "><i class="fas fa-calendar-alt"></i> {Profil && Profil.dateOfBirth}</li>
                               </ul>
                           </div>
@@ -42,27 +43,29 @@ const AppModal = ({Profil}) => {
             </Modal.Body>
           </Col>
           <Col md={7} className="pt-4" >
-            <div className="msg">
-              <h5>Messages :</h5>
-              <div>{ ! Profil && !Profil.messages ? Profil && Profil.messages.map(x =>
-                <div>
-                  <p className="ques mb-1">{x.question}</p> 
-                  <p className="text-right rep mb-1">{x.response}</p>
-                </div>
-                  ) : <p className="nothing">aucun message</p>}
+            <div className="msg mb-3">
+              <h5 className="mb-2">Messages :</h5>
+              <div>{ Profil && Profil.messages.length > 0 ? Profil && Profil.messages.map(x =>
+                  <div>
+                    <p className="ques mb-1">{x.question}</p> 
+                    <p className="text-right rep mb-1">{x.response}</p>
+                  </div>
+                  ) 
+                  : <p className="nothing">aucun message</p>
+                  }
               </div>
             </div>
 
 
             <div className="rdv">
-              <h5>rendez vous :</h5>
-              <div>{Profil && Profil.appointments.map(x =>
+              <h5 className="mb-2">rendez vous :</h5>
+              <div>{Profil && Profil.appointments.length > 0 ? Profil && Profil.appointments.map(x =>
                 <div>
                   <p className="mb-0">Sujet : {x.title}</p> 
-                  <p className="mb-1">vous avez un rendez vous au <br/><strong>{moment(x.endDate).format("MMM Do YYYY,h:mm:ss a")}</strong></p>
+                  <p className="mb-1">vous avez un rendez vous au <strong>{moment(x.endDate).format("MMM Do YYYY")}</strong></p>
                 </div>
                   )  
-                  // : <p className="nothing">aucun rendez vous</p>
+                  : <p className="nothing">aucun rendez vous</p>
                   }
               </div>
             </div>

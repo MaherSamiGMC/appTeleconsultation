@@ -251,7 +251,7 @@ function AppDashboard({userdetails}) {
               </section>
               {/* /.Left col */}
               {/* right col (We are only adding the ID to make the widgets sortable)*/}
-              <div className="col-lg-5 col-6">
+              <div className="col-lg-6 col-6">
                 {/* small box */}
                 <div>
                   <div className="inner">
@@ -263,7 +263,7 @@ function AppDashboard({userdetails}) {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-7 col-6 chartjs mb-3">
+              <div className="col-lg-6 col-6 chartjs mb-3">
               <Bar data={data} options={options} />
 
               </div>

@@ -12,6 +12,7 @@ import {makeStyles} from '@material-ui/core/styles'
 import { SocketContext } from '../../SocketContext';
 import { Button } from '@material-ui/core';
 import { Phone } from '@material-ui/icons';
+import { Col, Container, Row} from 'react-bootstrap'
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -61,9 +62,24 @@ const MainDocPortal = ({ history }) => {
         <>  
             <Header />
             {Loader}
-            <div className={classes.wrapper}>
+            
             <PortailPatient userdetails={user.getPatient} />
-            <VideoPlayer nameId={user && user.getPatient && `${user.getPatient.firstName} ${user.getPatient.lastName}`} />
+            <div className={classes.wrapper}>
+              <Container className="appel">
+                <Row>
+                  <Col md={6}>
+                    <h2 className="mb-5">Guide pour démarrer la téléconsultation</h2>
+                    <p className="text-justify pr-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non ante ipsum. Ut in ultricies justo. Phasellus laoreet, arcu id efficitur facilisis, massa lacus rutrum eros, sit amet bibendum urna justo et urna.</p>
+                    <h3 className="mb-4">guide pour démarrer la téléconsultation :</h3>
+                    <ol>
+                      <li>Lorem ipsum dolor sit amet</li>
+                      <li>Lorem ipsum dolor sit amet</li>
+                      <li>Lorem ipsum dolor sit amet</li>
+                      <li>Lorem ipsum dolor sit amet</li>
+                    </ol>
+                  </Col>
+                  <Col md={6}>
+                    <VideoPlayer nameId={user && user.getPatient && `${user.getPatient.firstName} ${user.getPatient.lastName}`} />
                     <Options thecaller={false} userInfo={userInfo}>
                         <Button variant="contained" 
                                 color="#00e676" 
@@ -74,6 +90,9 @@ const MainDocPortal = ({ history }) => {
                         </Button>
                         <Notifications/>
                     </Options>
+                  </Col>
+                </Row>
+              </Container>
             </div>
             <Footer />
         </>
