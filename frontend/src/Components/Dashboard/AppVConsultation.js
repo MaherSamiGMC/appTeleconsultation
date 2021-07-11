@@ -1,17 +1,11 @@
 import React from 'react'
-import Datatable from 'react-bs-datatable';
 import { useState } from 'react';
 import 'react-calendar/dist/Calendar.css';
-import {
-    Link
-  } from "react-router-dom";
 import VideoPlayer from './VideoPlayer';
 import Options from './Options';
 import Notifications from './Notifications';
 import {makeStyles} from '@material-ui/core/styles'
 import { CAlert } from '@coreui/react';
-import {Overlay} from 'react-bootstrap'
-
 import CopyToClipboard from 'react-copy-to-clipboard';
 
 

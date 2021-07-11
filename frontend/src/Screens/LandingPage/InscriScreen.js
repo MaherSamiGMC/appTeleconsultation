@@ -3,7 +3,7 @@ import { Container, Col, Row, Form, Button } from 'react-bootstrap'
 // import {Link} from 'react-router-dom'
 
 import {useDispatch,useSelector} from 'react-redux'
-import { Login, Register } from '../../Redux/Actions/userActions'
+import { Register } from '../../Redux/Actions/userActions'
 import Message from '../../Components/LandingPage/Message'
 import Loader from '../../Components/LandingPage/Loader'
 

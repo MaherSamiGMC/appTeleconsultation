@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useEffect} from 'react'
 import {useDispatch,useSelector} from 'react-redux'
 import AppSidebar from '../../Components/Dashboard/AppSidebar'
 import AppHeader from '../../Components/Dashboard/AppHeader'
@@ -11,7 +11,7 @@ const ListOfPatients = ({history}) => {
   const userLogin = useSelector(state => state.userLogin)
   const {userInfo}=userLogin
   const userDetails = useSelector(state => state.userDetails)
-  const {Loading,error,user}=userDetails
+  const {user}=userDetails
   useEffect(()=>{
 
     if (!userInfo){

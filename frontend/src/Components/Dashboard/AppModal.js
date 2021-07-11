@@ -5,7 +5,6 @@ import moment from 'moment'
 import 'moment/locale/fr';
 import {useDispatch} from 'react-redux'
 import { deleteUser } from '../../Redux/Actions/userActions';
-import { LaptopWindows } from '@material-ui/icons';
 
 const AppModal = ({Profil}) => {
   const dispatch = useDispatch()
