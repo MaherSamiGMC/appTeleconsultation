@@ -1,26 +1,21 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
 import 'react-calendar/dist/Calendar.css';
-import {
-    Link
-  } from "react-router-dom";
-import { Container, Col, Row, Form, Button } from 'react-bootstrap'
+import {  Col, Row, Form, Button } from 'react-bootstrap'
 import "react-datepicker/dist/react-datepicker.css";
-
-import DateRangePicker from 'react-bootstrap-daterangepicker';
 import 'bootstrap-daterangepicker/daterangepicker.css';
-import { updateUserProfile,deleteUser } from '../../Redux/Actions/userActions';
+import { updateUserProfile } from '../../Redux/Actions/userActions';
 import {useDispatch,useSelector} from 'react-redux'
 import Message from '../../Components/LandingPage/Message'
 import Loader from '../../Components/LandingPage/Loader'
 import { withRouter} from 'react-router-dom'
 
 
-const AppUpdateAccount = withRouter(({userdetails,history}) => {
+const AppUpdateAccount = withRouter(({userdetails}) => {
 
     const dispatch = useDispatch()
     const userRegister = useSelector(state => state.userUpdateProfile)
-    const {Loading,error,userInfo}=userRegister
+    const {error,userInfo}=userRegister
 
     const [nom, setNom] = useState('')
     const [prenom, setPrenom] = useState('')
