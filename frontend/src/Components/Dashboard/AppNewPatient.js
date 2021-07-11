@@ -80,7 +80,7 @@ function AppNewPatient({userdetails}) {
                     <Col  md={{ size: 9, offset: 1 }}>
                         <p className="mb-5"><strong>Rensigner ci-dessous les informations du nouveau patient à ajouter : </strong></p>
                         {error && <Message variant='danger'>"Merci de renseigner tous les champs correctement"</Message>}
-                        {!error && userInfo && <Message variant='success'>"Patient ajouté avec succès"</Message>}
+                        {!error && userInfo && userInfo.newPatient && <Message variant='success'>"Patient ajouté avec succès"</Message>}
                         {Loading && <Loader/>}
                         <Form >
                             <Row>

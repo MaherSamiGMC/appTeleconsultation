@@ -22,15 +22,15 @@ const InscriScreen = ({history}) => {
 
     // const redirect=location.search ? location.search.split('=')[1]:'/'
     const dispatch = useDispatch()
-    const userRegister = useSelector(state => state.userRegister)
-    const {Loading,error,userInfo}=userRegister
+    const userLogin = useSelector(state => state.userLogin)
+    const {Loading,error,userInfo}=userLogin
 
 
     useEffect(()=>{
         if (userInfo){
-            history.push('/Dashboard')
+            history.push('/Dashboard/')
         }
-    },[userInfo])
+    },[userInfo,history])
 
     const submitHandler=(e)=>{
         e.preventDefault()

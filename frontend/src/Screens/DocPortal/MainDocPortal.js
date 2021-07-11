@@ -46,17 +46,16 @@ const MainDocPortal = ({ history }) => {
     const userLogin = useSelector(state => state.userLogin)
     const {userInfo}=userLogin
     const userDetails = useSelector(state => state.userDetails)
-    const {Loading,error,user}=userDetails
-    const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } = useContext(SocketContext);
+    const {user}=userDetails
+    const { me } = useContext(SocketContext);
 
     useEffect(()=>{
         if (!userInfo){
             history.push('/connexion')
         } else {
           dispatch(Getuserdetails('patient',userInfo.authPatient._id,'authPatient'))
-        
         }
-    },[dispatch,userInfo,history])
+    },[dispatch,userInfo,history,user])
 
     return (
         <>  
