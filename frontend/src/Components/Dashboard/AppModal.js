@@ -68,7 +68,7 @@ const AppModal = ({Profil}) => {
               <div>{Profil && Profil.appointments.length > 0 ? Profil && Profil.appointments.map(x =>
                 <div>
                   <p className="mb-0">Sujet : {x.title}</p> 
-                  <p className="mb-1">Vous avez un rendez vous le <strong>{moment(x.endDate).format("MMM Do YYYY")}</strong></p>
+                  <p className="mb-1">Vous avez un rendez vous le <strong>{moment(x.endDate).format("MMM Do YYYY")}<br/> {moment(x.endDate).format("h:mm:ss")}</strong></p>
                 </div>
                   )  
                   : <p className="nothing">Aucun rendez vous fixé</p>
