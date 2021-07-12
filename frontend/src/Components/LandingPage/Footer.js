@@ -8,7 +8,7 @@ const Footer = () => {
                     
                     <Col sm={6} className=' py-3'>
                     <h3 className="mb-4">Contactez-nous</h3>
-                    <p className="card-text"><i className="fas fa-building pr-3"></i>3755 Commercial, Coin avec Sunny Boulevard, Tunis</p>
+                    <p className="card-text"><i className="fas fa-building pr-3"></i>3755 Commercial, Coin Boulevard, Tunis</p>
                     <p className="card-text"><i className="fas fa-phone pr-3"></i><a href="tel:%28305%29+555-4446"><font>(305) 555-4446</font></a></p>
                     <p className="card-text"><i className="far fa-envelope pr-3"></i><a href='mailto:neardoctor@gmail.com'>neardoctor@gmail.com</a></p>
                     </Col>

@@ -133,7 +133,7 @@ const PortailPatient = ({userdetails}) => {
                                         {userdetails && userdetails.messages.filter(el=>el.response ==="").map(el=>
                                         <div>
                                             {/* <h5>Question(s) en attente de reponse :</h5> */}
-                                            <div className="ques"><div>{el.question}<br/><span className="repDate">{moment(el.questionDate).format("MMM Do YYYY")}</span></div>
+                                            <div className="ques"><div>{el.question}<br/><span className="repDate">{moment(el.questionDate).format("MMM Do YYYY")}<br/>{moment(el.questionDate).format("h:mm:ss")}</span></div>
 
                                             {userdetails.gender === 'F'?  <div className="doc-image"><img src="https://images.emojiterra.com/google/android-11/512px/1f467.png" class="img-circle elevation-2" alt="User Image" /></div>
                                                         : <div className="doc-image"><img src="https://images.emojiterra.com/google/android-11/512px/1f9d1.png" class="img-circle elevation-2" alt="User Image" /></div>}
@@ -157,12 +157,12 @@ const PortailPatient = ({userdetails}) => {
                                                     
                                                     
                                                     <div className="ques">
-                                                        <div>{el.question} <br/> <span className="repDate">{moment(el.questionDate).format("MMM Do YYYY")}</span></div>
+                                                        <div>{el.question} <br/> <span className="repDate">{moment(el.questionDate).format("h:mm:ss")}<br/>{moment(el.questionDate).format("MMM Do YYYY")}</span></div>
                                                         {userdetails.gender === 'F'?  <div className="doc-image"><img src="https://images.emojiterra.com/google/android-11/512px/1f467.png" class="img-circle elevation-2" alt="User Image" /></div>
                                                         : <div className="doc-image"><img src="https://images.emojiterra.com/google/android-11/512px/1f9d1.png" class="img-circle elevation-2" alt="User Image" /></div>}
                                                     </div>
 
-                                                    <div className="rep"><div className="doc-image"><img src="https://images.emojiterra.com/google/android-oreo/512px/1f468-1f3fb-2695.png" class="img-circle elevation-2" alt="User Image" /></div> <div>{el.response} <br/> <span className="repDate">{moment(el.ResponseDate).format("MMM Do YYYY")}</span></div></div>
+                                                    <div className="rep"><div className="doc-image"><img src="https://images.emojiterra.com/google/android-oreo/512px/1f468-1f3fb-2695.png" class="img-circle elevation-2" alt="User Image" /></div> <div>{el.response} <br/> <span className="repDate">{moment(el.ResponseDate).format("h:mm:ss")}<br/>{moment(el.ResponseDate).format("MMM Do YYYY")}</span></div></div>
                                                 </div>)}
                                             
                                         </Card.Text>
