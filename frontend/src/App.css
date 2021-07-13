@@ -865,6 +865,22 @@ select.form-select-lg {
     justify-content: flex-end;
   }
 }
+@media only screen and (max-width: 980px) {
+  .makeStyles-paper-6 .MuiGrid-grid-md-6 {
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+  .makeStyles-video-4 {
+    width: 100% !important;
+  }
+  .inscri {
+    background: none;
+  }
+  .inscri .col-md {
+    margin-left: 0;
+    width: 100%;
+  }
+}
 @media only screen and (max-width: 767px) {
   .slider .slogan {
     font-size: 28px;
@@ -876,6 +892,13 @@ select.form-select-lg {
   }
   header.top .navbar img {
     max-width: 100%;
+  }
+  .profile .block__picture .row {
+    display: block;
+    text-align: center;
+  }
+  .profile .block__picture p.line-icon {
+    display: block;
   }
 }
 
