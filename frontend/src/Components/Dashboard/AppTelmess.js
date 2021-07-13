@@ -39,7 +39,7 @@ const AppTelmess = ({userdetails}) => {
                                 <Accordion.Toggle eventKey="1" onClick={Toggle} className="toggle-arrow text-left">
                                     <Card.Header>
                                         <Row style={{alignItems :'center'}}>
-                                            <Col md={11}>
+                                            <Col md={11} xs={10}>
                                             <div className="user-panel d-flex" style={{alignItems :'center'}}>
                                                 <div className="image">
                                                     {p.gender == "Homme"? <img src="https://images.emojiterra.com/google/android-11/512px/1f64b-1f3fc-2642.png" alt="User Image" /> :
@@ -51,7 +51,7 @@ const AppTelmess = ({userdetails}) => {
                                                 </div>
                                             </div>
                                             </Col>
-                                            <Col md={1}>  
+                                            <Col md={1} xs={2}>  
                                                 <Card.Text>
                                                     {isOn ? <i class="fas fa-arrow-circle-up"></i> : <i class="fas fa-arrow-circle-down"></i>}
                                                 </Card.Text> 

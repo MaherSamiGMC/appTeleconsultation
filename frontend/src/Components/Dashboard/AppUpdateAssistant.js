@@ -141,7 +141,7 @@ const AppUpdateAssistant = withRouter(({userdetails,history}) => {
                                                     </Row>
 
                                                     
-                                                    <Button variant="primary" type="submit" className="adbtn" onClick={submitHandler}>
+                                                    <Button variant="primary" type="submit" className="adbtn mb-2" onClick={submitHandler}>
                                                         Modifier les données de l'assistant
                                                     </Button>
                                                     {'  '}
