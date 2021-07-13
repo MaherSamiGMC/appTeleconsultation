@@ -850,6 +850,12 @@ select.form-select-lg {
 }
 
 /******** Responsive ********/
+
+@media only screen and (min-width: 1440px) {
+  .chartjs canvas {
+    height: 258px !important;
+  }
+}
 @media only screen and (max-width: 1024px) {
   .container,
   .container-md,
@@ -863,6 +869,9 @@ select.form-select-lg {
   header.top .navbar .navbar-nav {
     flex-direction: row;
     justify-content: flex-end;
+  }
+  .chartjs canvas {
+    height: 258px !important;
   }
 }
 @media only screen and (max-width: 980px) {
@@ -881,9 +890,24 @@ select.form-select-lg {
     width: 100%;
   }
 }
+@media only screen and (max-width: 768px) {
+  .link-profil {
+    font-size: 12px;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
+
 @media only screen and (max-width: 767px) {
   .slider .slogan {
     font-size: 28px;
+  }
+  .list-patients .content .MuiGrid-grid-sm-6 {
+    max-width: 100% !important;
+    flex-basis: 100% !important;
+  }
+  .list-patients .card .card-body {
+    overflow-x: auto;
   }
 }
 @media only screen and (max-width: 568px) {
@@ -900,6 +924,17 @@ select.form-select-lg {
   .profile .block__picture p.line-icon {
     display: block;
   }
+  .list-patients .MuiButton-outlinedSizeLarge {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+  .list-patients .content .MuiGrid-container {
+    overflow-x: auto;
+  }
+  .modal-profile .modal-dialog {
+    margin: 0 auto;
+    width: 85%;
+  }
 }
 
 @media only screen and (max-width: 375px) {
@@ -914,12 +949,23 @@ select.form-select-lg {
   .carousel-control-prev {
     display: none;
   }
-}
-@media only screen and (max-width: 375px) {
+  .list-patients .content .bg-success h5 {
+    font-size: 17px;
+  }
   .contenu h1 {
     font-size: 28px;
   }
   .card-info h1 {
     font-size: 28px;
+  }
+  .MuiButtonGroup-grouped {
+    min-width: 20px;
+  }
+  .table100 {
+    overflow-x: auto;
+  }
+  .MuiInputBase-input::-webkit-input-placeholder {
+    font-size: 10px !important;
+    font-weight: normal;
   }
 }
